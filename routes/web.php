@@ -24,3 +24,7 @@ Route::prefix('admin')->middleware('admin_area')->group(function(){
 	Route::get('/home', 'HomeController@index')->name('home');
 	Route::get('/form', 'HomeController@index')->name('home');
 });
+Route::prefix('nutritionist')->middleware('nutritionist')->group(function(){
+	Route::get('/home', 'HomeController@index')->name('home');
+	Route::get('/form', 'HomeController@index')->name('home');
+});

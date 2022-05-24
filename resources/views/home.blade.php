@@ -224,26 +224,7 @@
 
 
                             </div>
-                            <table class="border">
-                                <tr class="form-group border">
-                                    <td class="pr-4">Id</td>
-                                    <td class="px-4">Name</td>
-                                    <td class="px-4">Role</td>
-                                    <td class="px-4">Status</td>
-                                    <td class="px-4">Approve</td>
-                                    <td class="px-4">Delete</td>
-                                </tr>
-                                <tr>
-                                    @foreach($users as $user)
-                                    <td class="pr-4">{{ $user->id }}</td>
-                                    <td>{{ $user->name }}</td>
-                                    <td>{{ $user->role }}</td>
-                                    <td>{{ $user->status }}</td>
-                                    <td><a href="">Approve</a></td>
-                                    <td><a href="">Delete</a></td>
-                                    @endforeach
-                                </tr>
-                            </table>
+                         
                             <canvas id="worldwide-sales"></canvas>
                         </div>
                     </div>
