@@ -47,10 +47,10 @@ class User extends Authenticatable
         return $this->hasMany(Meal::class);
     }
     public function experiences(){
-        return $this->hasMany(Experience::class);
+        return $this->hasMany(Experience::class, 'experience_id');
     }
      public function educations(){
-        return $this->hasMany(Education::class);
+        return $this->hasMany(Education::class, 'education_id');
     }
      public function carts(){
         return $this->hasMany(Cart::class);
@@ -66,5 +66,8 @@ class User extends Authenticatable
     }
      public function messages(){
         return $this->hasMany(Message::class);
+    }
+    public function cartitems(){
+        return $this->hasMany(CartItem::class);
     }
 }
