@@ -17,7 +17,7 @@ class CreateRatingsTable extends Migration
             $table->id();
             $table->integer('rate');
              $table->foreignId('user_id')->constrained('users')->onDelete('cascade')->onUpdate('cascade');
-              $table->foreignId('diet_plan_id')->constrained('diet_plan')->onDelete('cascade')->onUpdate('cascade');
+              $table->foreignId('diet_plan_id')->constrained('diet_plans')->onDelete('cascade')->onUpdate('cascade');
             $table->timestamps();
         });
     }

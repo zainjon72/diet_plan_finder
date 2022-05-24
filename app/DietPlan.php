@@ -16,4 +16,8 @@ class DietPlan extends Model
      public function cart(){
     	return $this->belongTo(Cart::class);
     }
+     public function healthcondition(){
+        return $this->belongTo(HealthCondition::class, 'health_condition_id');
+    }
+
 }
