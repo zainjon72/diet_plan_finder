@@ -4,10 +4,11 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Meal extends Model
+class Feedback extends Model
 {
     //
-     public function user(){
+
+    public function user(){
     	return $this->belongTo(User::class);
     }
 }

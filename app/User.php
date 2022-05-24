@@ -52,4 +52,16 @@ class User extends Authenticatable
      public function educations(){
         return $this->hasMany(Education::class);
     }
+     public function carts(){
+        return $this->hasMany(Cart::class);
+    } 
+    public function feedback(){
+        return $this->hasOne(Feedback::class);
+    }
+     public function orders(){
+        return $this->hasMany(Order::class);
+    }
+     public function rating(){
+        return $this->hasOne(Rating::class);
+    }
 }

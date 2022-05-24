@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateDietPlansTable extends Migration
+class CreateFeedbackTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,14 +13,11 @@ class CreateDietPlansTable extends Migration
      */
     public function up()
     {
-        Schema::create('diet_plans', function (Blueprint $table) {
+        Schema::create('feedback', function (Blueprint $table) {
             $table->id();
             $table->string('title');
-            $table->string('discription');
-            $table->string('price');
             $table->foreignId('user_id')->constrained('users')->onDelete('cascade')->onUpdate('cascade');
-            $table->foreignId('health_condition_id')->constrained('health_conditions')->onDelete('cascade')->onUpdate('cascade');
-            $table->foreignId('meal_id')->constrained('meals')->onDelete('cascade')->onUpdate('cascade');
+              $table->foreignId('diet_plan_id')->constrained('diet_plan')->onDelete('cascade')->onUpdate('cascade');
             $table->timestamps();
         });
     }
@@ -32,6 +29,6 @@ class CreateDietPlansTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('diet_plans');
+        Schema::dropIfExists('feedback');
     }
 }
