@@ -224,9 +224,9 @@
 
 
                             </div>
-                            <table>
-                                <tr class="form-group">
-                                    <td class="px-4">Id</td>
+                            <table class="border">
+                                <tr class="form-group border">
+                                    <td class="pr-4">Id</td>
                                     <td class="px-4">Name</td>
                                     <td class="px-4">Role</td>
                                     <td class="px-4">Status</td>
@@ -235,7 +235,7 @@
                                 </tr>
                                 <tr>
                                     @foreach($users as $user)
-                                    <td>{{ $user->id }}</td>
+                                    <td class="pr-4">{{ $user->id }}</td>
                                     <td>{{ $user->name }}</td>
                                     <td>{{ $user->role }}</td>
                                     <td>{{ $user->status }}</td>
