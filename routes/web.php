@@ -19,7 +19,8 @@ Route::get('/', function () {
 
 Auth::routes();
 
-
+Route::get('/home', 'UserController@index');
 Route::prefix('admin')->middleware('admin_area')->group(function(){
 	Route::get('/home', 'HomeController@index')->name('home');
+	Route::get('/form', 'HomeController@index')->name('home');
 });
