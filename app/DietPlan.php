@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class DietPlan extends Model
 {
     //
+    protected $fillable = ['title', 'discription', 'price', 'created_by', 'health_condition_id'];
      public function user(){
     	return $this->belongTo(User::class);
     }
@@ -17,7 +18,7 @@ class DietPlan extends Model
     	return $this->belongTo(Cart::class);
     }
      public function healthcondition(){
-        return $this->belongTo(HealthCondition::class, 'health_condition_id');
+        return $this->belongTo(HealthCondition::class);
     }
      public function cartitem(){
         return $this->belongTo(CartItem::class);

@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class HealthCondition extends Model
 {
     //
+    protected $fillable = ['title', 'created_by'];
      public function user(){
     	return $this->belongTo(User::class);
     }

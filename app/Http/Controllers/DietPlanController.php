@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\DietPlan;
+use Auth;
+use App\HealthCondition;
 use Illuminate\Http\Request;
 
 class DietPlanController extends Controller
@@ -14,7 +16,31 @@ class DietPlanController extends Controller
      */
     public function index()
     {
-        //
+        
+        $health = HealthCondition::all();
+        $diet_plans = DietPlan::all();
+        $data = [];
+        $data['health_conditions'] = $health;
+        $data['diet_plans'] = $diet_plans;
+        // dd($data['diet_plans']);
+        return view('nutritionist-home', $data);
+    
+    }
+    //   public function show()
+    // {
+        
+    //     $diet = DietPlan::all();
+    //     $data = [];
+    //     $data['diet-plans'] = $diet;
+    //     return view('nutritionist-home', $data);
+    
+    // }
+        public function view()
+    {
+        $diet = DietPlan::all();
+        $data = [];
+        $data['diet_plans'] = $diet;
+        return view('nutritionist-diet', $data);
     }
 
     /**
@@ -22,9 +48,16 @@ class DietPlanController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(Request $request)
     {
-        //
+        $data = $request->all();
+        // dd($request->all());
+        unset($data['_token']);
+        $diet_plans = DietPlan::all();
+        $data['created_by'] = Auth::user()->id;
+        $created_plan = DietPlan::create($data);
+        return redirect(url('/nutritionist/form'));
+        // dd($diet_plans);
     }
 
     /**
@@ -44,9 +77,11 @@ class DietPlanController extends Controller
      * @param  \App\DietPlan  $dietPlan
      * @return \Illuminate\Http\Response
      */
-    public function show(DietPlan $dietPlan)
+    public function show()
     {
-        //
+    
+
+    // return view('nutritionist-diet', $data);
     }
 
     /**

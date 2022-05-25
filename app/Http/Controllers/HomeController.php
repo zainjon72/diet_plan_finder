@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\HealthCondition;
+use App\DietPlan;
 
 class HomeController extends Controller
 {
@@ -25,8 +27,18 @@ class HomeController extends Controller
     {
         return view('home');
     }
+    public function view()
+    {
+        $health = HealthCondition::all();
+        $data = [];
+        $data['health_conditions'] = $health;
+        return view('form', $data);
+    }
+
+
     public function show()
     {
         return view('welcome');
     }
+ 
 }

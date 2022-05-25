@@ -222,30 +222,34 @@
             <div class="container-fluid pt-4 px-4">
                 <div class="bg-light text-center rounded p-4">
                     <div class="d-flex align-items-center justify-content-between mb-4">
-                        <h6 class="mb-0">Users</h6>
+                        <h6 class="mb-0">Diet Plans</h6>
                         <a href="">Show All</a>
                     </div>
                     <div class="table-responsive">
                         <table class="table text-start align-middle table-bordered table-hover mb-0">
                             <thead>
                                 <tr class="text-dark">
-                                    <th scope="col">Name</th>
-                                    <th scope="col">Email</th>
-                                    <th scope="col">Role</th>
+                                    <th scope="col">Title</th>
+                                    <th scope="col">Discription</th>
+                                    <th scope="col">Price</th>
+                                    <th scope="col">Created By</th>
+                                    <th scope="col">Health-Condition Id</th>
                                     <th scope="col">Status</th>
-                                    <th scope="col">Approve</th>
+                                    <th scope="col">Update</th>
                                     <th scope="col">Delete</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach($users as $user)
+                                @foreach($diet_plans as $plan)
                                 <tr>
-                                    <td>{{ $user->name }}</td>
-                                    <td>{{ $user->email }}</td>
-                                    <td>{{ $user->role }}</td>
-                                    <td>{{ $user->status }}</td>
-                                    <td><a href="{{ url('/admin/approve/'.$user->id) }}" class="btn btn-primary">Approve</a></td>
-                                    <td><a class="btn btn-primary" href="{{ url('/admin/delete/'.$user->id) }}">Delete</a></td>
+                                    <td>{{ $plan->title }}</td>
+                                    <td>{{ $plan->discription }}</td>
+                                    <td>{{ $plan->price }}</td>
+                                    <td>{{ $plan->created_by }}</td>
+                                    <td>{{ $plan->health_condition_id }}</td>
+                                    <td>{{ $plan->status }}</td>
+                                    <td><a href="{{ url('/admin/approve/'.$plan->id) }}" class="btn btn-primary">Approve</a></td>
+                                    <td><a class="btn btn-primary" href="{{ url('/admin/delete/'.$plan->id) }}">Delete</a></td>
                                 </tr>
                                 @endforeach
                                 

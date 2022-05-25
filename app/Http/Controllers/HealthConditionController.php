@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\HealthCondition;
 use Illuminate\Http\Request;
+use Auth;
 
 class HealthConditionController extends Controller
 {
@@ -15,6 +16,11 @@ class HealthConditionController extends Controller
     public function index()
     {
         //
+        $health_condition = HealthCondition::all();
+        $data = [];
+        $data['health_conditions'] = $health_condition;
+        dd($health_condition);
+        return view('form', $data);
     }
 
     /**
@@ -22,9 +28,17 @@ class HealthConditionController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function add(Request $request)
     {
-        //
+        $data = $request->all();
+        // dd($data);
+        $health_condition = HealthCondition::all();
+        unset($data['_token']);
+        $data['created_by'] = Auth::user()->id;
+        // dd($data);
+        HealthCondition::create($data);
+        return redirect(url('/admin/form'));
+
     }
 
     /**
@@ -67,9 +81,27 @@ class HealthConditionController extends Controller
      * @param  \App\HealthCondition  $healthCondition
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, HealthCondition $healthCondition)
+    public function update(Request $request, $id=NULL)
     {
-        //
+         if($request->isMethod('post')){
+        $data = request()->all();
+        // dd($data);
+        $obj = HealthCondition::find($id);
+        $obj->update($data);
+        return redirect(url('/admin/form'));
+        // return view('form', $data);
+        }
+    
+        // dd($request->title);
+        $id = $request->id;
+        $data = [];
+        $data = [
+            'title' => $request->title
+        ];
+         $data['healthcondition'] = HealthCondition::find($id)->toArray();
+         $data['id'] = $id;
+        return view('edit', $data);
+        
     }
 
     /**
@@ -78,8 +110,9 @@ class HealthConditionController extends Controller
      * @param  \App\HealthCondition  $healthCondition
      * @return \Illuminate\Http\Response
      */
-    public function destroy(HealthCondition $healthCondition)
+    public function delete($id)
     {
-        //
+        HealthCondition::destroy($id);
+        return redirect(url('/admin/form'));
     }
 }
