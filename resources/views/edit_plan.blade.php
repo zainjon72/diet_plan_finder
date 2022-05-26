@@ -1,5 +1,6 @@
 @extends('layouts.app')
 @section('content')
+
 <div class="container-xxl position-relative bg-white d-flex p-0">
     <!-- Spinner Start -->
     <div id="spinner" class="show bg-white position-fixed translate-middle w-100 vh-100 top-50 start-50 d-flex align-items-center justify-content-center">
@@ -22,8 +23,8 @@
                     <div class="bg-success rounded-circle border border-2 border-white position-absolute end-0 bottom-0 p-1"></div>
                 </div>
                 <div class="ms-3">
-                    <h6 class="mb-0">{{ Auth::user()->name }}</h6>
-                    <span>{{ Auth::user()->role }}</span>
+                    <h6 class="mb-0">Jhon Doe</h6>
+                    <span>Admin</span>
                 </div>
             </div>
             <div class="navbar-nav w-100">
@@ -37,7 +38,6 @@
                         </div>
                     </div> --}}
                     <a href="{{ 'form' }}" class="nav-item nav-link"><i class="fa fa-th me-2"></i>Health </a>
-                    <a href="{{ 'plans' }}" class="nav-item nav-link"><i class="fa fa-th me-2"></i>Plans </a>
                    {{--  <a href="form.html" class="nav-item nav-link active"><i class="fa fa-keyboard me-2"></i>Forms</a>
                     <a href="table.html" class="nav-item nav-link"><i class="fa fa-table me-2"></i>Tables</a>
                     <a href="chart.html" class="nav-item nav-link"><i class="fa fa-chart-bar me-2"></i>Charts</a> --}}
@@ -152,48 +152,70 @@
             <!-- Form Start -->
             <div class="container-fluid pt-4 px-4">
                 <div class="row g-4">
-                    <div class="col-sm-12 col-xl-6">
-                        <div class="bg-light rounded h-100 p-4">
-                            <h6 class="mb-4">Add Health Conditions</h6>
-                            <form method="post" action="{{ url('/admin/add-health') }}">
-                                @csrf
-                                <div class="mb-3">
-                                    <label for="exampleInputEmail1" class="form-label">Title</label>
-                                    <input type="text" name="title" class="form-control" id="exampleInputEmail1"
-                                    aria-describedby="emailHelp">
-                                    {{-- <div id="emailHelp" class="form-text">We'll never share your email with anyone else.
-                                    </div> --}}
-                                </div>
-                                
-                                <button type="submit" name="submit" class="btn btn-primary">Add Health Condition</button>
-                            </form>
-                        </div>
-                    </div>
-                    <div class="col-sm-12 col-xl-6">
-                        <div class="bg-light rounded h-100 p-4">
-                            <table class="table text-start align-middle table-bordered table-hover mb-0">
-                                <thead>
-                                    <tr class="text-dark">
-                                        <th scope="col">ID</th>
-                                        <th scope="col">Title</th>
-                                        <th scope="col">Created By</th>
-                                        <th scope="col">Update</th>
-                                        <th scope="col">Delete</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
+                 <div class="col-sm-12 col-xl-8 mx-auto">
+                    <div class="bg-light rounded h-100 p-4">
+                        <h6 class="mb-4">Update Diet Plan</h6>
+                        <form method="post" action="{{ url('/nutritionist/edit_plan/'.$id) }}">
+                            @csrf
+                            <div class="mb-3">
+                                <label for="exampleInputEmail1" class="form-label">Title</label>
+                                {{-- @dd($diet_plans) --}}
+                                <input value="{{ $diet_plans['title'] }}" name="title" type="text" class="form-control" id="exampleInputEmail1"
+                                aria-describedby="emailHelp">
+                            </div>
+                            <div class="mb-3">
+                                <label for="exampleInputPassword1" class="form-label">Discription</label>
+                                <input value="{{ $diet_plans['discription'] }}" name="discription" type="text" class="form-control" id="exampleInputPassword1">
+                            </div>
+                            <div class="mb-3">
+                                <label for="exampleInputPassword1" class="form-label">Price</label>
+                                <input value="{{ $diet_plans['price'] }}" name="price" type="number" class="form-control" id="exampleInputPassword1">
+                            </div> 
+                              <div class="mb-3">
+                                {{-- @dd($diet_plans) --}}
+                                <select value="" name="health_condition_id" class="form-control" >
+                                    
                                     @foreach($health_conditions as $health_condition)
+
+                                    <option value="{{ $health_condition['id'] }}">{{ $health_condition['title']}}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+                            
+                       
+
+                            <button name="submit" type="submit" class="btn btn-primary">Update Plan</button>
+                        </form>
+                    </div>
+                </div>
+                <div class="col-sm-12 col-xl-6">
+                    <div class="bg-light rounded h-100 p-4">
+                       {{--  <table class="table text-start align-middle table-bordered table-hover mb-0">
+                            <thead>
+                                <tr class="text-dark">
+                                    <th scope="col">ID</th>
+                                    <th scope="col">Title</th>
+                                    <th scope="col">Discription</th>
+                                    <th scope="col">Category</th>
+                                    <th scope="col">Update</th>
+                                    <th scope="col">Delete</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                    @foreach($plans as $diet_plan)
                                     <tr>
-                                        <td>{{ $health_condition->id }}</td>
-                                        <td>{{ $health_condition->title }}</td>
-                                        <td>{{ $health_condition->created_by }}</td>
-                                        <td><a href="{{ url('/admin/edit/'.$health_condition->id) }}" class="btn btn-primary">Update</a></td>
-                                        <td><a class="btn btn-primary" href="{{ url('/admin/delete-health/'.$health_condition->id) }}">Delete</a></td>
+                                        <td>{{ $diet_plan->id }}</td>
+                                        <td>{{ $diet_plan->title }}</td>
+                                        <td>{{ $diet_plan->discription }}</td>
+                                        <td>{{ $diet_plan->price }}</td>
+                                        <td>{{ $diet_plan->health_condition_id }}</td>
+                                        <td><a href="{{ url('/admin/edit/'.$diet_plan->id) }}" class="btn btn-primary">Update</a></td>
+                                        <td><a class="btn btn-primary" href="{{ url('/admin/delete-health/'.$diet_plan->id) }}">Delete</a></td>
                                     </tr>
                                     @endforeach
                                     
                                 </tbody>
-                            </table>
+                            </table> --}}
                         </div>
                     </div>
 

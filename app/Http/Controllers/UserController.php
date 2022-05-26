@@ -4,15 +4,18 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\User;
+use App\DietPlan;
 use Auth;
 class UserController extends Controller
 {
     //
     public function index(){
     	$users = User::all();
+        $plans = DietPlan::all();
     	// dd($users);
     	$data = [];
     	$data['users'] = $users;
+        $data['plans'] = $plans;
     	return view('home', $data);
     } 	
     public function approve($id){

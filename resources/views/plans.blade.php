@@ -42,9 +42,9 @@
                     <img class="rounded-circle" src="img/user.jpg" alt="" style="width: 40px; height: 40px;">
                     <div class="bg-success rounded-circle border border-2 border-white position-absolute end-0 bottom-0 p-1"></div>
                 </div>
-                <div class="ms-3">
-                    <h6 class="mb-0">Jhon Doe</h6>
-                    <span>Admin</span>
+                 <div class="ms-3">
+                    <h6 class="mb-0">{{ Auth::user()->name }}</h6>
+                    <span>{{ Auth::user()->role }}</span>
                 </div>
             </div>
             <div class="navbar-nav w-100">
@@ -59,6 +59,7 @@
                     </div> --}}
                     {{-- <a href="widget.html" class="nav-item nav-link"><i class="fa fa-th me-2"></i>Widgets</a> --}}
                     <a href="{{'form'}}" class="nav-item nav-link"><i class="fa fa-keyboard me-2"></i>Health</a>
+                    <a href="{{'plans'}}" class="nav-item nav-link"><i class="fa fa-keyboard me-2"></i>Plans</a>
                     {{--  <a href="table.html" class="nav-item nav-link"><i class="fa fa-table me-2"></i>Tables</a> --}}
                     {{-- <a href="chart.html" class="nav-item nav-link"><i class="fa fa-chart-bar me-2"></i>Charts</a> --}}
                     {{-- <div class="nav-item dropdown">
@@ -221,8 +222,10 @@
             <!-- Recent Sales Start -->
             <div class="container-fluid pt-4 px-4">
                 <div class="bg-light text-center rounded p-4">
-                    <div class="d-flex align-items-center justify-content-between mb-4">
-                        <h6 class="mb-0">Diet Plans</h6>
+                  
+                  
+                     <div class="d-flex align-items-center justify-content-between mb-4">
+                        <h6 class="mb-0 mt-5">Diet Plans</h6>
                         <a href="">Show All</a>
                     </div>
                     <div class="table-responsive">
@@ -232,26 +235,27 @@
                                     <th scope="col">Title</th>
                                     <th scope="col">Discription</th>
                                     <th scope="col">Price</th>
-                                    <th scope="col">Created By</th>
-                                    <th scope="col">Health-Condition Id</th>
                                     <th scope="col">Status</th>
-                                    <th scope="col">Update</th>
+                                    <th scope="col">Created By</th>
+                                    <th scope="col">Health Condition Id</th>
+                                    <th scope="col">Approve</th>
                                     <th scope="col">Delete</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach($diet_plans as $plan)
+                                {{-- @dd($plans) --}}
+                               @foreach($plans as $plan)
                                 <tr>
                                     <td>{{ $plan->title }}</td>
                                     <td>{{ $plan->discription }}</td>
                                     <td>{{ $plan->price }}</td>
+                                    <td>{{ $plan->status }}</td>
                                     <td>{{ $plan->created_by }}</td>
                                     <td>{{ $plan->health_condition_id }}</td>
-                                    <td>{{ $plan->status }}</td>
-                                    <td><a href="{{ url('/nutritionist/edit_plan/'.$plan->id) }}" class="btn btn-primary">Update</a></td>
-                                    <td><a class="btn btn-primary" href="{{ url('/nutritionist/delete_plan/'.$plan->id) }}">Delete</a></td>
+                                    <td><a href="{{ url('/admin/approve_plan/'.$plan->id) }}" class="btn btn-primary">Approve</a></td>
+                                    <td><a class="btn btn-primary" href="{{ url('/admin/delete_plan/'.$plan->id) }}">Delete</a></td>
                                 </tr>
-                                @endforeach
+                              @endforeach
                                 
                             </tbody>
                         </table>

@@ -42,9 +42,9 @@
                     <img class="rounded-circle" src="img/user.jpg" alt="" style="width: 40px; height: 40px;">
                     <div class="bg-success rounded-circle border border-2 border-white position-absolute end-0 bottom-0 p-1"></div>
                 </div>
-                <div class="ms-3">
-                    <h6 class="mb-0">Jhon Doe</h6>
-                    <span>Admin</span>
+                 <div class="ms-3">
+                    <h6 class="mb-0">{{ Auth::user()->name }}</h6>
+                    <span>{{ Auth::user()->role }}</span>
                 </div>
             </div>
             <div class="navbar-nav w-100">
@@ -59,6 +59,7 @@
                     </div> --}}
                     {{-- <a href="widget.html" class="nav-item nav-link"><i class="fa fa-th me-2"></i>Widgets</a> --}}
                     <a href="{{'form'}}" class="nav-item nav-link"><i class="fa fa-keyboard me-2"></i>Health</a>
+                    <a href="{{'plans'}}" class="nav-item nav-link"><i class="fa fa-keyboard me-2"></i>Plans</a>
                     {{--  <a href="table.html" class="nav-item nav-link"><i class="fa fa-table me-2"></i>Tables</a> --}}
                     {{-- <a href="chart.html" class="nav-item nav-link"><i class="fa fa-chart-bar me-2"></i>Charts</a> --}}
                     {{-- <div class="nav-item dropdown">
@@ -156,12 +157,12 @@
                     <div class="nav-item dropdown">
                         <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">
                             <img class="rounded-circle me-lg-2" src="img/user.jpg" alt="" style="width: 40px; height: 40px;">
-                            <span class="d-none d-lg-inline-flex">John Doe</span>
+                            <span class="d-none d-lg-inline-flex">{{ Auth::user()->name }}</span>
                         </a>
                         <div class="dropdown-menu dropdown-menu-end bg-light border-0 rounded-0 rounded-bottom m-0">
                             <a href="#" class="dropdown-item">My Profile</a>
                             <a href="#" class="dropdown-item">Settings</a>
-                            <a href="#" class="dropdown-item">Log Out</a>
+                            <a href="{{ url('/logout') }}" class="dropdown-item">Log Out</a>
                         </div>
                     </div>
                 </div>
@@ -252,6 +253,41 @@
                             </tbody>
                         </table>
                     </div>
+                     <div class="d-flex align-items-center justify-content-between mb-4">
+                        <h6 class="mb-0 mt-5">Diet Plans</h6>
+                        <a href="">Show All</a>
+                    </div>
+                  {{--   <div class="table-responsive">
+                        <table class="table text-start align-middle table-bordered table-hover mb-0">
+                            <thead>
+                                <tr class="text-dark">
+                                    <th scope="col">Title</th>
+                                    <th scope="col">Discription</th>
+                                    <th scope="col">Price</th>
+                                    <th scope="col">Status</th>
+                                    <th scope="col">Created By</th>
+                                    <th scope="col">Health Condition Id</th>
+                                    <th scope="col">Approve</th>
+                                    <th scope="col">Delete</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                               @foreach($plans as $plan)
+                                <tr>
+                                    <td>{{ $plan->title }}</td>
+                                    <td>{{ $plan->discription }}</td>
+                                    <td>{{ $plan->price }}</td>
+                                    <td>{{ $plan->status }}</td>
+                                    <td>{{ $plan->created_by }}</td>
+                                    <td>{{ $plan->health_condition_id }}</td>
+                                    <td><a href="{{ url('/admin/approve/'.$plan->id) }}" class="btn btn-primary">Approve</a></td>
+                                    <td><a class="btn btn-primary" href="{{ url('/admin/delete/'.$plan->id) }}">Delete</a></td>
+                                </tr>
+                              @endforeach
+                                
+                            </tbody>
+                        </table>
+                    </div> --}}
                 </div>
             </div>
             <!-- Recent Sales End -->

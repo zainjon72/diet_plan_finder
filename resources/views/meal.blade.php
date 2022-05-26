@@ -1,5 +1,6 @@
 @extends('layouts.app')
 @section('content')
+
 <div class="container-xxl position-relative bg-white d-flex p-0">
     <!-- Spinner Start -->
     <div id="spinner" class="show bg-white position-fixed translate-middle w-100 vh-100 top-50 start-50 d-flex align-items-center justify-content-center">
@@ -22,8 +23,8 @@
                     <div class="bg-success rounded-circle border border-2 border-white position-absolute end-0 bottom-0 p-1"></div>
                 </div>
                 <div class="ms-3">
-                    <h6 class="mb-0">{{ Auth::user()->name }}</h6>
-                    <span>{{ Auth::user()->role }}</span>
+                    <h6 class="mb-0">Jhon Doe</h6>
+                    <span>Admin</span>
                 </div>
             </div>
             <div class="navbar-nav w-100">
@@ -37,7 +38,6 @@
                         </div>
                     </div> --}}
                     <a href="{{ 'form' }}" class="nav-item nav-link"><i class="fa fa-th me-2"></i>Health </a>
-                    <a href="{{ 'plans' }}" class="nav-item nav-link"><i class="fa fa-th me-2"></i>Plans </a>
                    {{--  <a href="form.html" class="nav-item nav-link active"><i class="fa fa-keyboard me-2"></i>Forms</a>
                     <a href="table.html" class="nav-item nav-link"><i class="fa fa-table me-2"></i>Tables</a>
                     <a href="chart.html" class="nav-item nav-link"><i class="fa fa-chart-bar me-2"></i>Charts</a> --}}
@@ -152,79 +152,78 @@
             <!-- Form Start -->
             <div class="container-fluid pt-4 px-4">
                 <div class="row g-4">
-                    <div class="col-sm-12 col-xl-6">
-                        <div class="bg-light rounded h-100 p-4">
-                            <h6 class="mb-4">Add Health Conditions</h6>
-                            <form method="post" action="{{ url('/admin/add-health') }}">
-                                @csrf
-                                <div class="mb-3">
-                                    <label for="exampleInputEmail1" class="form-label">Title</label>
-                                    <input type="text" name="title" class="form-control" id="exampleInputEmail1"
-                                    aria-describedby="emailHelp">
-                                    {{-- <div id="emailHelp" class="form-text">We'll never share your email with anyone else.
-                                    </div> --}}
-                                </div>
-                                
-                                <button type="submit" name="submit" class="btn btn-primary">Add Health Condition</button>
-                            </form>
-                        </div>
+                   <div class="col-sm-12 col-xl-6">
+                    <div class="bg-light rounded h-100 p-4">
+                        <h6 class="mb-4">Add Meal</h6>
+                        <form method="post" action="{{ url('/nutritionist/meal') }}">
+                            @csrf
+                            <div class="mb-3">
+                                <label for="exampleInputEmail1" class="form-label">Title</label>
+                                <input name="title" type="text" class="form-control" id="exampleInputEmail1"
+                                aria-describedby="emailHelp">
+                            </div>
+                            <button name="submit" type="submit" class="btn btn-primary">Add Meal</button>
+                        </form>
                     </div>
-                    <div class="col-sm-12 col-xl-6">
-                        <div class="bg-light rounded h-100 p-4">
-                            <table class="table text-start align-middle table-bordered table-hover mb-0">
-                                <thead>
-                                    <tr class="text-dark">
-                                        <th scope="col">ID</th>
-                                        <th scope="col">Title</th>
-                                        <th scope="col">Created By</th>
-                                        <th scope="col">Update</th>
-                                        <th scope="col">Delete</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    @foreach($health_conditions as $health_condition)
+                </div>
+                <div class="col-sm-12 col-xl-6">
+                    
+                        <table class="table text-start align-middle table-bordered table-hover mb-0">
+                            <thead>
+                                <tr class="text-dark">
+                                    <th scope="col">ID</th>
+                                    <th scope="col">Title</th>
+                                    <th scope="col">Created By</th>
+                                    <th scope="col">Update</th>
+                                    <th scope="col">Delete</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                    @foreach($meals as $meal)
                                     <tr>
-                                        <td>{{ $health_condition->id }}</td>
-                                        <td>{{ $health_condition->title }}</td>
-                                        <td>{{ $health_condition->created_by }}</td>
-                                        <td><a href="{{ url('/admin/edit/'.$health_condition->id) }}" class="btn btn-primary">Update</a></td>
-                                        <td><a class="btn btn-primary" href="{{ url('/admin/delete-health/'.$health_condition->id) }}">Delete</a></td>
+                                        <td>{{ $meal->id }}</td>
+                                        <td>{{ $meal->title }}</td>
+                                        <td>{{ $meal->created_by }}</td>
+                                        <td><a href="{{ url('/nutritionist/edit_meal/'.$meal->id) }}" class="btn btn-primary">Update</a></td>
+                                    <td><a class="btn btn-primary" href="{{ url('/nutritionist/delete_meal/'.$meal->id) }}">Delete</a></td>
                                     </tr>
                                     @endforeach
                                     
                                 </tbody>
                             </table>
-                        </div>
+
+                        
                     </div>
+                    
 
 
+                        </div>
+
+                        <!-- Form End -->
+
+
+                        <!-- Footer Start -->
+                        <div class="container-fluid pt-4 px-4">
+                            <div class="bg-light rounded-top p-4">
+                                <div class="row">
+                                    <div class="col-12 col-sm-6 text-center text-sm-start">
+                                        &copy; <a href="#">Your Site Name</a>, All Right Reserved. 
+                                    </div>
+                                    <div class="col-12 col-sm-6 text-center text-sm-end">
+                                        <!--/*** This template is free as long as you keep the footer author’s credit link/attribution link/backlink. If you'd like to use the template without the footer author’s credit link/attribution link/backlink, you can purchase the Credit Removal License from "https://htmlcodex.com/credit-removal". Thank you for your support. ***/-->
+                                        Designed By <a href="https://htmlcodex.com">HTML Codex</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Footer End -->
+                    </div>
+                    <!-- Content End -->
+
+
+                    <!-- Back to Top -->
+                    <a href="#" class="btn btn-lg btn-primary btn-lg-square back-to-top"><i class="bi bi-arrow-up"></i></a>
                 </div>
 
-                <!-- Form End -->
-
-
-                <!-- Footer Start -->
-                <div class="container-fluid pt-4 px-4">
-                    <div class="bg-light rounded-top p-4">
-                        <div class="row">
-                            <div class="col-12 col-sm-6 text-center text-sm-start">
-                                &copy; <a href="#">Your Site Name</a>, All Right Reserved. 
-                            </div>
-                            <div class="col-12 col-sm-6 text-center text-sm-end">
-                                <!--/*** This template is free as long as you keep the footer author’s credit link/attribution link/backlink. If you'd like to use the template without the footer author’s credit link/attribution link/backlink, you can purchase the Credit Removal License from "https://htmlcodex.com/credit-removal". Thank you for your support. ***/-->
-                                Designed By <a href="https://htmlcodex.com">HTML Codex</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!-- Footer End -->
-            </div>
-            <!-- Content End -->
-
-
-            <!-- Back to Top -->
-            <a href="#" class="btn btn-lg btn-primary btn-lg-square back-to-top"><i class="bi bi-arrow-up"></i></a>
-        </div>
-
-        <!-- JavaScript Libraries -->
-        @endsection
+                <!-- JavaScript Libraries -->
+                @endsection

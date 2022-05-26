@@ -152,7 +152,7 @@
             <!-- Form Start -->
             <div class="container-fluid pt-4 px-4">
                 <div class="row g-4">
-                 <div class="col-sm-12 col-xl-6">
+                 <div class="col-sm-12 col-xl-8 mx-auto">
                     <div class="bg-light rounded h-100 p-4">
                         <h6 class="mb-4">Add Diet Plan</h6>
                         <form method="post" action="{{ url('/nutritionist/home') }}">
@@ -172,77 +172,93 @@
                             </div>
                             <div class="mb-3">
                                 <label for="exampleInputPassword1" class="form-label">Select Health Condition</label>
-                                <select value="" class="form-control" name="health_condition_id">
+                                <select value="" class="form-control" name="health_condition_id" required="">
+                                    <option class="form-control" value="">Select Health Condition </option>
                                     @foreach($health_conditions as $health_condition)
 
                                     <option value="{{ $health_condition->id }}">{{ $health_condition->title }}</option>
                                     @endforeach
                                 </select>
-                            </div>
-
-                            <button name="submit" type="submit" class="btn btn-primary">Add Plan</button>
-                        </form>
-                    </div>
-                </div>
-                <div class="col-sm-12 col-xl-6">
-                    <div class="bg-light rounded h-100 p-4">
-                       {{--  <table class="table text-start align-middle table-bordered table-hover mb-0">
-                            <thead>
-                                <tr class="text-dark">
-                                    <th scope="col">ID</th>
-                                    <th scope="col">Title</th>
-                                    <th scope="col">Discription</th>
-                                    <th scope="col">Category</th>
-                                    <th scope="col">Update</th>
-                                    <th scope="col">Delete</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                    @foreach($plans as $diet_plan)
-                                    <tr>
-                                        <td>{{ $diet_plan->id }}</td>
-                                        <td>{{ $diet_plan->title }}</td>
-                                        <td>{{ $diet_plan->discription }}</td>
-                                        <td>{{ $diet_plan->price }}</td>
-                                        <td>{{ $diet_plan->health_condition_id }}</td>
-                                        <td><a href="{{ url('/admin/edit/'.$diet_plan->id) }}" class="btn btn-primary">Update</a></td>
-                                        <td><a class="btn btn-primary" href="{{ url('/admin/delete-health/'.$diet_plan->id) }}">Delete</a></td>
-                                    </tr>
-                                    @endforeach
-                                    
-                                </tbody>
-                            </table> --}}
-                        </div>
-                    </div>
+                                
 
 
-                </div>
-
-                <!-- Form End -->
 
 
-                <!-- Footer Start -->
-                <div class="container-fluid pt-4 px-4">
-                    <div class="bg-light rounded-top p-4">
-                        <div class="row">
-                            <div class="col-12 col-sm-6 text-center text-sm-start">
-                                &copy; <a href="#">Your Site Name</a>, All Right Reserved. 
-                            </div>
-                            <div class="col-12 col-sm-6 text-center text-sm-end">
-                                <!--/*** This template is free as long as you keep the footer author’s credit link/attribution link/backlink. If you'd like to use the template without the footer author’s credit link/attribution link/backlink, you can purchase the Credit Removal License from "https://htmlcodex.com/credit-removal". Thank you for your support. ***/-->
-                                Designed By <a href="https://htmlcodex.com">HTML Codex</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!-- Footer End -->
+
+                             {{--  <select multiple placeholder="Choose skills" name="meals[]" class="select2 form-control mt-4" data-allow-clear="1">
+                               @foreach($meals as $meal)
+                               <option value="{{ $meal['id'] }}">{{ $meal['title'] }}</option>
+                               @endforeach
+                           </select> --}}
+                       </div>
+
+                       <button name="submit" type="submit" class="btn btn-primary">Add Plan</button>
+                   </form>
+               </div>
+           </div>
+           <div class="col-sm-12 col-xl-6">
+            <div class="bg-light rounded h-100 p-4">
+
             </div>
-            <!-- Content End -->
-
-
-            <!-- Back to Top -->
-            <a href="#" class="btn btn-lg btn-primary btn-lg-square back-to-top"><i class="bi bi-arrow-up"></i></a>
         </div>
+        <table class="table text-start align-middle table-bordered table-hover mb-0">
+            <thead>
+                <tr class="text-dark">
+                    <th scope="col">ID</th>
+                    <th scope="col">Title</th>
+                    <th scope="col">Discription</th>
+                    <th scope="col">Price</th>
+                    <th scope="col">Health Condition Id</th>
+                    <th scope="col">Update</th>
+                    <th scope="col">Delete</th>
+                </tr>
+            </thead>
+            <tbody>
 
-        <!-- JavaScript Libraries -->
-        @endsection
+                @foreach($plans as $diet_plan)
+
+                <tr>
+                    <td>{{ $diet_plan->id }}</td>
+                    <td>{{ $diet_plan->title }}</td>
+                    <td>{{ $diet_plan->discription }}</td>
+                    <td>{{ $diet_plan->price }}</td>
+                    <td>{{ $diet_plan->health_condition_id }}</td>
+                    <td><a href="{{ url('/nutritionist/edit_plan/'.$diet_plan->id) }}" class="btn btn-primary">Update</a></td>
+                    <td><a class="btn btn-primary" href="{{ url('/nutritionist/delete_plan/'.$diet_plan->id) }}">Delete</a></td>
+                </tr>
+                @endforeach
+
+            </tbody>
+        </table>
+
+
+    </div>
+
+    <!-- Form End -->
+
+
+    <!-- Footer Start -->
+    <div class="container-fluid pt-4 px-4">
+        <div class="bg-light rounded-top p-4">
+            <div class="row">
+                <div class="col-12 col-sm-6 text-center text-sm-start">
+                    &copy; <a href="#">Your Site Name</a>, All Right Reserved. 
+                </div>
+                <div class="col-12 col-sm-6 text-center text-sm-end">
+                    <!--/*** This template is free as long as you keep the footer author’s credit link/attribution link/backlink. If you'd like to use the template without the footer author’s credit link/attribution link/backlink, you can purchase the Credit Removal License from "https://htmlcodex.com/credit-removal". Thank you for your support. ***/-->
+                    Designed By <a href="https://htmlcodex.com">HTML Codex</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Footer End -->
+</div>
+<!-- Content End -->
+
+
+<!-- Back to Top -->
+<a href="#" class="btn btn-lg btn-primary btn-lg-square back-to-top"><i class="bi bi-arrow-up"></i></a>
+</div>
+
+<!-- JavaScript Libraries -->
+@endsection

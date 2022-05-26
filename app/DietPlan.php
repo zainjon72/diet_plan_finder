@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class DietPlan extends Model
 {
     //
+    public $table = 'diet_plans';
     protected $fillable = ['title', 'discription', 'price', 'created_by', 'health_condition_id'];
      public function user(){
     	return $this->belongTo(User::class);

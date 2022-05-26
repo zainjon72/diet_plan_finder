@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Meal;
+use Auth;
 use Illuminate\Http\Request;
 
 class MealController extends Controller
@@ -15,6 +16,10 @@ class MealController extends Controller
     public function index()
     {
         //
+        $meal = Meal::all();
+        $data = [];
+        $data['meals'] = $meal;
+        return view('meal', $data);
     }
 
     /**
@@ -24,7 +29,7 @@ class MealController extends Controller
      */
     public function create()
     {
-        //
+        
     }
 
     /**
@@ -35,7 +40,15 @@ class MealController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $data = $request->all();
+        // dd($data);
+        unset($data['_token']);
+        $data['created_by'] = Auth::user()->id;
+        $meals = Meal::all();
+        $meal = Meal::create(['title' => $request->title, 'created_by' => Auth::user()->id]);
+        return redirect(url('/nutritionist/meal'));
+        // $data['diet_plan_id'] = ;
+        // dd($data);
     }
 
     /**
@@ -55,9 +68,29 @@ class MealController extends Controller
      * @param  \App\Meal  $meal
      * @return \Illuminate\Http\Response
      */
-    public function edit(Meal $meal)
+    public function edit(Request $request, $id)
     {
-        //
+          if($request->isMethod('post')){
+        $data = request()->all();
+        // dd($data);
+        $obj = Meal::find($id);
+        // dd($obj);
+        $obj->update($data);
+        return redirect(url('/nutritionist/meal'));
+        // return view('form', $data);
+        }
+        // $obj = DietPlan::find($id);
+    
+        // dd($request->title);
+        $id = $request->id;
+        $data = [];
+        $data = [
+            'title' => $request->title
+        ];
+         $data['meals'] = Meal::find($id)->toArray();
+         // $data['meals'] = M::all();
+         $data['id'] = $id;
+        return view('edit_meal', $data);
     }
 
     /**

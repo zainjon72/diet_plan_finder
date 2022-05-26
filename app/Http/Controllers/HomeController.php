@@ -25,7 +25,11 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+        $plans = DietPlan::all();
+        $data = [];
+        $data['plans'] = $plans;
+
+        return view('plans', $data);
     }
     public function view()
     {
@@ -40,5 +44,26 @@ class HomeController extends Controller
     {
         return view('welcome');
     }
- 
+    public function delete($id)
+    {
+      DietPlan::destroy($id);
+      return redirect(url('/admin/plans'));
+  }
+  public function approve($id)
+  {
+
+    $plan = DietPlan::find($id);
+        // dd($user->status);
+        // $status = [
+        //     'status' => 'Approved'
+        // ];
+        // dd($plan->status);
+        $plan->status = 'Approved';
+        $plan->save();
+        // dd($plan);
+      // $plan = DietPlan::find($id);
+      // $plan->update(['status' => 'Approved']);
+      return redirect(url('/admin/plans'));
+  }
+
 }

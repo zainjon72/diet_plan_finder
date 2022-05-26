@@ -17,7 +17,7 @@ class CreateMealsTable extends Migration
             $table->id();
             $table->string('title');
               $table->foreignId('created_by')->constrained('users')->onDelete('cascade')->onUpdate('cascade');
-            $table->foreignId('diet_plan_id')->constrained('diet_plans')->onDelete('cascade')->onUpdate('cascade');
+          
             $table->timestamps();
         });
     }
