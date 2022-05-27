@@ -25,7 +25,7 @@ Route::prefix('admin')->middleware('admin_area')->group(function(){
 	// Route::post('/plans', 'HomeController@index')->name('home');
 	Route::get('/delete_plan/{id}', 'HomeController@delete')->name('home');
 	Route::get('/approve_plan/{id}', 'HomeController@approve');
-	Route::get('/form', 'HomeController@view')->name('home');
+	Route::get('/form', 'HomeController@view');
 	Route::post('/form', 'HealthConditionController@index')->name('home');
 	Route::get('/home', 'UserController@index');
 	Route::get('/update/{id}', 'UserController@approve');

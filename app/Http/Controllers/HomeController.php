@@ -25,16 +25,18 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $plans = DietPlan::all();
+        $plans = DietPlan::with('user', 'healthcondition')->get();
         $data = [];
+        // dd($plans);
         $data['plans'] = $plans;
 
         return view('plans', $data);
     }
     public function view()
     {
-        $health = HealthCondition::all();
+        $health = HealthCondition::with('user')->get();
         $data = [];
+        // dd($health->user);
         $data['health_conditions'] = $health;
         return view('form', $data);
     }

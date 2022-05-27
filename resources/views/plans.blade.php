@@ -80,7 +80,7 @@
         <!-- Content Start -->
         <div class="content">
             <!-- Navbar Start -->
-            <nav class="navbar navbar-expand  bg-light navbar-light sticky-top px-4 py-0">
+           {{--  <nav class="navbar navbar-expand  bg-light navbar-light sticky-top px-4 py-0">
                 <a href="index.html" class="navbar-brand d-flex d-lg-none me-4">
                     <h2 class="text-primary mb-0"><i class="fa fa-hashtag"></i></h2>
                 </a>
@@ -166,7 +166,7 @@
                         </div>
                     </div>
                 </div>
-            </nav>
+            </nav> --}}
             <!-- Navbar End -->
 
 
@@ -250,8 +250,8 @@
                                     <td>{{ $plan->discription }}</td>
                                     <td>{{ $plan->price }}</td>
                                     <td>{{ $plan->status }}</td>
-                                    <td>{{ $plan->created_by }}</td>
-                                    <td>{{ $plan->health_condition_id }}</td>
+                                    <td>{{ $plan->user->name }}</td>
+                                    <td>{{ $plan->healthcondition->title}}</td>
                                     <td><a href="{{ url('/admin/approve_plan/'.$plan->id) }}" class="btn btn-primary">Approve</a></td>
                                     <td><a class="btn btn-primary" href="{{ url('/admin/delete_plan/'.$plan->id) }}">Delete</a></td>
                                 </tr>

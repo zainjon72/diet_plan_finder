@@ -20,8 +20,11 @@ class DietPlanController extends Controller
         
         $health = HealthCondition::all();
         $diet_plans = DietPlan::all();
-        // $diet_plans = DietPlan::with('health_conditions')->get();
-        // dd($health);
+
+        $diet_plans = DietPlan::with('healthcondition', 'user')->get();
+        // dd($diet_plans);
+
+
 
         $meals = Meal::all();
         $data = [];
@@ -58,18 +61,25 @@ class DietPlanController extends Controller
     public function create(Request $request)
     {
         $data = $request->all();
-        // dd($data);
+       
         // $id = $data['health_condition_id'];
         // $health_conditions = HealthCondition::find($id);
         // dd($health_conditions);
         // $data['health_condition_id'] = $health_conditions;
         // dd($data);
         unset($data['_token']);
+        unset($data['meal_id']);
+
         $diet_plans = DietPlan::all();
         $data['created_by'] = Auth::user()->id;
         $created_plan = DietPlan::create($data);
-        // dd($created_plan);
-        return redirect(url('/nutritionist/form'));
+        // dd($request->meal_id);
+        foreach($request->meal_id as $meal){
+            $created_plan->meals()->attach($meal);
+        }
+        // dd($created_plan->meals)->toArray();
+        
+        return redirect(url('/nutritionist/home'));
         // dd($diet_plans);
     }
 
@@ -125,7 +135,7 @@ class DietPlanController extends Controller
             'price' =>$request->price,
             'health_condition_id' =>$request->health_condition_id
         ];
-         $data['diet_plans'] = DietPlan::find($id)->toArray();
+         $data['diet_plans'] = DietPlan::find($id);
          $data['health_conditions'] = HealthCondition::all();
          $data['id'] = $id;
         return view('edit_plan', $data);

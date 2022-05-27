@@ -23,12 +23,12 @@
                     <div class="bg-success rounded-circle border border-2 border-white position-absolute end-0 bottom-0 p-1"></div>
                 </div>
                 <div class="ms-3">
-                    <h6 class="mb-0">Jhon Doe</h6>
-                    <span>Admin</span>
+                    <h6 class="mb-0">{{ Auth::user()->name }}</h6>
+                    <span>{{ Auth::user()->role }}</span>
                 </div>
             </div>
             <div class="navbar-nav w-100">
-                <a href="{{ 'home' }}" class="nav-item nav-link"><i class="fa fa-tachometer-alt me-2"></i>Users</a>
+                <a href="{{ 'home' }}" class="nav-item nav-link"><i class="fa fa-tachometer-alt me-2"></i>Diet Plans</a>
                  {{--    <div class="nav-item dropdown">
                         <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown"><i class="fa fa-laptop me-2"></i>Elements</a>
                         <div class="dropdown-menu bg-transparent border-0">
@@ -38,6 +38,7 @@
                         </div>
                     </div> --}}
                     <a href="{{ 'form' }}" class="nav-item nav-link"><i class="fa fa-th me-2"></i>Health </a>
+                    <a href="{{ 'meal' }}" class="nav-item nav-link"><i class="fa fa-th me-2"></i>Meals</a>
                    {{--  <a href="form.html" class="nav-item nav-link active"><i class="fa fa-keyboard me-2"></i>Forms</a>
                     <a href="table.html" class="nav-item nav-link"><i class="fa fa-table me-2"></i>Tables</a>
                     <a href="chart.html" class="nav-item nav-link"><i class="fa fa-chart-bar me-2"></i>Charts</a> --}}
@@ -59,7 +60,7 @@
         <!-- Content Start -->
         <div class="content">
             <!-- Navbar Start -->
-            <nav class="navbar navbar-expand bg-light navbar-light sticky-top px-4 py-0">
+            {{-- <nav class="navbar navbar-expand bg-light navbar-light sticky-top px-4 py-0">
                 <a href="index.html" class="navbar-brand d-flex d-lg-none me-4">
                     <h2 class="text-primary mb-0"><i class="fa fa-hashtag"></i></h2>
                 </a>
@@ -145,17 +146,56 @@
                         </div>
                     </div>
                 </div>
-            </nav>
+            </nav> --}}
             <!-- Navbar End -->
 
-
+            <div class="container-fluid pt-4 px-4">
+                <div class="row g-4">
+                    <div class="col-sm-6 col-xl-3">
+                        <div class="bg-light rounded d-flex align-items-center justify-content-between p-4">
+                            <i class="fa fa-chart-line fa-3x text-primary"></i>
+                            <div class="ms-3">
+                                <p class="mb-2">Today Sale</p>
+                                <h6 class="mb-0">$1234</h6>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-6 col-xl-3">
+                        <div class="bg-light rounded d-flex align-items-center justify-content-between p-4">
+                            <i class="fa fa-chart-bar fa-3x text-primary"></i>
+                            <div class="ms-3">
+                                <p class="mb-2">Total Sale</p>
+                                <h6 class="mb-0">$1234</h6>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-6 col-xl-3">
+                        <div class="bg-light rounded d-flex align-items-center justify-content-between p-4">
+                            <i class="fa fa-chart-area fa-3x text-primary"></i>
+                            <div class="ms-3">
+                                <p class="mb-2">Today Revenue</p>
+                                <h6 class="mb-0">$1234</h6>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-6 col-xl-3">
+                        <div class="bg-light rounded d-flex align-items-center justify-content-between p-4">
+                            <i class="fa fa-chart-pie fa-3x text-primary"></i>
+                            <div class="ms-3">
+                                <p class="mb-2">Total Revenue</p>
+                                <h6 class="mb-0">$1234</h6>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
             <!-- Form Start -->
             <div class="container-fluid pt-4 px-4">
                 <div class="row g-4">
-                 <div class="col-sm-12 col-xl-8 mx-auto">
+                   <div class="col-sm-12 col-xl-8 mx-auto">
                     <div class="bg-light rounded h-100 p-4">
                         <h6 class="mb-4">Add Diet Plan</h6>
-                        <form method="post" action="{{ url('/nutritionist/home') }}">
+                        <form class="text-left" method="post" action="{{ url('/nutritionist/home') }}">
                             @csrf
                             <div class="mb-3">
                                 <label for="exampleInputEmail1" class="form-label">Title</label>
@@ -164,22 +204,34 @@
                             </div>
                             <div class="mb-3">
                                 <label for="exampleInputPassword1" class="form-label">Discription</label>
-                                <input name="discription" type="text" class="form-control" id="exampleInputPassword1">
+                                <textarea rows="8" name="discription" type="textarea" class="form-control" id="exampleInputPassword1"></textarea>
                             </div>
                             <div class="mb-3">
                                 <label for="exampleInputPassword1" class="form-label">Price</label>
                                 <input name="price" type="number" class="form-control" id="exampleInputPassword1">
                             </div>
                             <div class="mb-3">
-                                <label for="exampleInputPassword1" class="form-label">Select Health Condition</label>
-                                <select value="" class="form-control" name="health_condition_id" required="">
-                                    <option class="form-control" value="">Select Health Condition </option>
+                                <label for="exampleInputPassword1" class="form-label">{{-- Select Health Condition --}}</label>
+                                <select value="" class="form-control py-5" name="health_condition_id" required="">
+                                    <option class="form-control " value="">Select Health Condition </option>
                                     @foreach($health_conditions as $health_condition)
 
                                     <option value="{{ $health_condition->id }}">{{ $health_condition->title }}</option>
                                     @endforeach
                                 </select>
                                 
+                                    <div class="container">
+                                      
+                                      
+                                        <div class="form-group mt-4">
+                                          <select  multiple placeholder="Choose skills" data-allow-clear="1" name="meal_id[]">
+                                            @foreach($meals as $meal )
+                                            <option value="{{ $meal->id }}">{{ $meal->title }}</option>
+                                            @endforeach
+                                        </select>
+                                    </div>
+                                </div>
+
 
 
 
@@ -197,9 +249,9 @@
                </div>
            </div>
            <div class="col-sm-12 col-xl-6">
-            <div class="bg-light rounded h-100 p-4">
+            {{-- <div class="bg-light rounded h-100 p-4">
 
-            </div>
+            </div> --}}
         </div>
         <table class="table text-start align-middle table-bordered table-hover mb-0">
             <thead>
@@ -208,7 +260,8 @@
                     <th scope="col">Title</th>
                     <th scope="col">Discription</th>
                     <th scope="col">Price</th>
-                    <th scope="col">Health Condition Id</th>
+                    <th scope="col">Health Condition</th>
+                    {{-- <th scope="col">Meal</th> --}}
                     <th scope="col">Update</th>
                     <th scope="col">Delete</th>
                 </tr>
@@ -222,7 +275,9 @@
                     <td>{{ $diet_plan->title }}</td>
                     <td>{{ $diet_plan->discription }}</td>
                     <td>{{ $diet_plan->price }}</td>
-                    <td>{{ $diet_plan->health_condition_id }}</td>
+                    <td>{{ $diet_plan->healthcondition->title }}</td>
+                    {{-- <td></td> --}}
+
                     <td><a href="{{ url('/nutritionist/edit_plan/'.$diet_plan->id) }}" class="btn btn-primary">Update</a></td>
                     <td><a class="btn btn-primary" href="{{ url('/nutritionist/delete_plan/'.$diet_plan->id) }}">Delete</a></td>
                 </tr>

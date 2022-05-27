@@ -16,10 +16,11 @@ class HealthConditionController extends Controller
     public function index()
     {
         //
-        $health_condition = HealthCondition::all();
+        $health_condition = HealthCondition::with('user')->get;
         $data = [];
+        // dd($health_condition);
         $data['health_conditions'] = $health_condition;
-        dd($health_condition);
+        // dd($health_condition);
         return view('form', $data);
     }
 

@@ -16,7 +16,9 @@ class MealController extends Controller
     public function index()
     {
         //
-        $meal = Meal::all();
+        $meal = Meal::with('user')->get();
+        // dd($meal);
+        // dd($meal->user);
         $data = [];
         $data['meals'] = $meal;
         return view('meal', $data);
@@ -45,7 +47,7 @@ class MealController extends Controller
         unset($data['_token']);
         $data['created_by'] = Auth::user()->id;
         $meals = Meal::all();
-        $meal = Meal::create(['title' => $request->title, 'created_by' => Auth::user()->id]);
+        $meal = Meal::create(['title' => $request->title, 'created_by' => Auth::user()->id, 'discription' => $request->discription]);
         return redirect(url('/nutritionist/meal'));
         // $data['diet_plan_id'] = ;
         // dd($data);

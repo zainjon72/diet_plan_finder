@@ -28,7 +28,7 @@
                 </div>
             </div>
             <div class="navbar-nav w-100">
-                <a href="{{ 'home' }}" class="nav-item nav-link"><i class="fa fa-tachometer-alt me-2"></i>Users</a>
+                <a href="{{ '/diet_plan_finder/nutritionist/home' }}" class="nav-item nav-link"><i class="fa fa-tachometer-alt me-2"></i>Users</a>
                  {{--    <div class="nav-item dropdown">
                         <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown"><i class="fa fa-laptop me-2"></i>Elements</a>
                         <div class="dropdown-menu bg-transparent border-0">
@@ -59,7 +59,7 @@
         <!-- Content Start -->
         <div class="content">
             <!-- Navbar Start -->
-            <nav class="navbar navbar-expand bg-light navbar-light sticky-top px-4 py-0">
+{{--             <nav class="navbar navbar-expand bg-light navbar-light sticky-top px-4 py-0">
                 <a href="index.html" class="navbar-brand d-flex d-lg-none me-4">
                     <h2 class="text-primary mb-0"><i class="fa fa-hashtag"></i></h2>
                 </a>
@@ -145,7 +145,7 @@
                         </div>
                     </div>
                 </div>
-            </nav>
+            </nav> --}}
             <!-- Navbar End -->
 
 
@@ -155,17 +155,17 @@
                  <div class="col-sm-12 col-xl-8 mx-auto">
                     <div class="bg-light rounded h-100 p-4">
                         <h6 class="mb-4">Update Diet Plan</h6>
-                        <form method="post" action="{{ url('/nutritionist/edit_plan/'.$id) }}">
+                        <form class="text-left" method="post" action="{{ url('/nutritionist/edit_plan/'.$id) }}">
                             @csrf
                             <div class="mb-3">
-                                <label for="exampleInputEmail1" class="form-label">Title</label>
+                                <label for="exampleInputEmail1">Title</label>
                                 {{-- @dd($diet_plans) --}}
-                                <input value="{{ $diet_plans['title'] }}" name="title" type="text" class="form-control" id="exampleInputEmail1"
+                                <input value="{{ $diet_plans->title }}" name="title" type="text" class="form-control" id="exampleInputEmail1"
                                 aria-describedby="emailHelp">
                             </div>
                             <div class="mb-3">
                                 <label for="exampleInputPassword1" class="form-label">Discription</label>
-                                <input value="{{ $diet_plans['discription'] }}" name="discription" type="text" class="form-control" id="exampleInputPassword1">
+                                <textarea rows="8" name="discription" class="form-control" id="exampleInputPassword1">{{ $diet_plans['discription'] }}</textarea>
                             </div>
                             <div class="mb-3">
                                 <label for="exampleInputPassword1" class="form-label">Price</label>
@@ -173,7 +173,7 @@
                             </div> 
                               <div class="mb-3">
                                 {{-- @dd($diet_plans) --}}
-                                <select value="" name="health_condition_id" class="form-control" >
+                                <select  value="" name="health_condition_id" class="form-control" >
                                     
                                     @foreach($health_conditions as $health_condition)
 

@@ -186,7 +186,7 @@
                                     <tr>
                                         <td>{{ $health_condition->id }}</td>
                                         <td>{{ $health_condition->title }}</td>
-                                        <td>{{ $health_condition->created_by }}</td>
+                                        <td>{{ $health_condition->user->name }}</td>
                                         <td><a href="{{ url('/admin/edit/'.$health_condition->id) }}" class="btn btn-primary">Update</a></td>
                                         <td><a class="btn btn-primary" href="{{ url('/admin/delete-health/'.$health_condition->id) }}">Delete</a></td>
                                     </tr>

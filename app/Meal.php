@@ -6,12 +6,11 @@ use Illuminate\Database\Eloquent\Model;
 
 class Meal extends Model
 {
-    //
-    protected $fillable = ['title', 'created_by'];
+    protected $fillable = ['title', 'created_by' ,'discription'];
      public function user(){
-    	return $this->belongTo(User::class);
+    	return $this->belongsTo(User::class, 'created_by');
     }
-    public function dietplan(){
-    	return $this->belongTo(DietPlan::class);
+    public function dietplans(){
+    	return $this->belongsToMany(DietPlan::class, 'diet_plan_meal');
     }
 }

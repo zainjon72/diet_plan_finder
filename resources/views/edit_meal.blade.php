@@ -59,7 +59,7 @@
         <!-- Content Start -->
         <div class="content">
             <!-- Navbar Start -->
-            <nav class="navbar navbar-expand bg-light navbar-light sticky-top px-4 py-0">
+            {{-- <nav class="navbar navbar-expand bg-light navbar-light sticky-top px-4 py-0">
                 <a href="index.html" class="navbar-brand d-flex d-lg-none me-4">
                     <h2 class="text-primary mb-0"><i class="fa fa-hashtag"></i></h2>
                 </a>
@@ -145,7 +145,7 @@
                         </div>
                     </div>
                 </div>
-            </nav>
+            </nav> --}}
             <!-- Navbar End -->
 
 
@@ -162,6 +162,11 @@
                             <div class="mb-3">
                                 <label for="exampleInputEmail1" class="form-label">Title</label>
                                 <input value="{{ $meals['title'] }}" name="title" type="text" class="form-control" id="exampleInputEmail1"
+                                aria-describedby="emailHelp">
+                            </div>
+                            <div class="mb-3">
+                                <label for="exampleInputEmail1" class="form-label">Discription</label>
+                                <input value="{{ $meals['discription'] }}" name="title" type="text" class="form-control" id="exampleInputEmail1"
                                 aria-describedby="emailHelp">
                             </div>
                             <button name="submit" type="submit" class="btn btn-primary">Add Meal</button>

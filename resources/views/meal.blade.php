@@ -28,7 +28,7 @@
                 </div>
             </div>
             <div class="navbar-nav w-100">
-                <a href="{{ 'home' }}" class="nav-item nav-link"><i class="fa fa-tachometer-alt me-2"></i>Users</a>
+                <a href="{{ 'home' }}" class="nav-item nav-link"><i class="fa fa-tachometer-alt me-2"></i>Diet Plans</a>
                  {{--    <div class="nav-item dropdown">
                         <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown"><i class="fa fa-laptop me-2"></i>Elements</a>
                         <div class="dropdown-menu bg-transparent border-0">
@@ -38,6 +38,7 @@
                         </div>
                     </div> --}}
                     <a href="{{ 'form' }}" class="nav-item nav-link"><i class="fa fa-th me-2"></i>Health </a>
+                     <a href="{{ 'meal' }}" class="nav-item nav-link"><i class="fa fa-th me-2"></i>Meals </a>
                    {{--  <a href="form.html" class="nav-item nav-link active"><i class="fa fa-keyboard me-2"></i>Forms</a>
                     <a href="table.html" class="nav-item nav-link"><i class="fa fa-table me-2"></i>Tables</a>
                     <a href="chart.html" class="nav-item nav-link"><i class="fa fa-chart-bar me-2"></i>Charts</a> --}}
@@ -59,7 +60,7 @@
         <!-- Content Start -->
         <div class="content">
             <!-- Navbar Start -->
-            <nav class="navbar navbar-expand bg-light navbar-light sticky-top px-4 py-0">
+            {{-- <nav class="navbar navbar-expand bg-light navbar-light sticky-top px-4 py-0">
                 <a href="index.html" class="navbar-brand d-flex d-lg-none me-4">
                     <h2 class="text-primary mb-0"><i class="fa fa-hashtag"></i></h2>
                 </a>
@@ -145,14 +146,53 @@
                         </div>
                     </div>
                 </div>
-            </nav>
+            </nav> --}}
             <!-- Navbar End -->
 
-
+            <div class="container-fluid pt-4 px-4">
+                <div class="row g-4">
+                    <div class="col-sm-6 col-xl-3">
+                        <div class="bg-light rounded d-flex align-items-center justify-content-between p-4">
+                            <i class="fa fa-chart-line fa-3x text-primary"></i>
+                            <div class="ms-3">
+                                <p class="mb-2">Today Sale</p>
+                                <h6 class="mb-0">$1234</h6>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-6 col-xl-3">
+                        <div class="bg-light rounded d-flex align-items-center justify-content-between p-4">
+                            <i class="fa fa-chart-bar fa-3x text-primary"></i>
+                            <div class="ms-3">
+                                <p class="mb-2">Total Sale</p>
+                                <h6 class="mb-0">$1234</h6>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-6 col-xl-3">
+                        <div class="bg-light rounded d-flex align-items-center justify-content-between p-4">
+                            <i class="fa fa-chart-area fa-3x text-primary"></i>
+                            <div class="ms-3">
+                                <p class="mb-2">Today Revenue</p>
+                                <h6 class="mb-0">$1234</h6>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-6 col-xl-3">
+                        <div class="bg-light rounded d-flex align-items-center justify-content-between p-4">
+                            <i class="fa fa-chart-pie fa-3x text-primary"></i>
+                            <div class="ms-3">
+                                <p class="mb-2">Total Revenue</p>
+                                <h6 class="mb-0">$1234</h6>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
             <!-- Form Start -->
             <div class="container-fluid pt-4 px-4">
                 <div class="row g-4">
-                   <div class="col-sm-12 col-xl-6">
+                   <div class="col-sm-12 col-xl-8 mx-auto">
                     <div class="bg-light rounded h-100 p-4">
                         <h6 class="mb-4">Add Meal</h6>
                         <form method="post" action="{{ url('/nutritionist/meal') }}">
@@ -162,17 +202,27 @@
                                 <input name="title" type="text" class="form-control" id="exampleInputEmail1"
                                 aria-describedby="emailHelp">
                             </div>
+                            <div class="mb-3">
+                                <label for="exampleInputEmail1" class="form-label">Discription</label>
+                                <input name="discription" type="text" class="form-control" id="exampleInputEmail1"
+                                aria-describedby="emailHelp">
+                            </div>
                             <button name="submit" type="submit" class="btn btn-primary">Add Meal</button>
                         </form>
                     </div>
                 </div>
                 <div class="col-sm-12 col-xl-6">
                     
-                        <table class="table text-start align-middle table-bordered table-hover mb-0">
+                        
+
+                        
+                    </div>
+                    <table class="table text-start align-middle table-bordered table-hover mb-0">
                             <thead>
                                 <tr class="text-dark">
                                     <th scope="col">ID</th>
                                     <th scope="col">Title</th>
+                                    <th scope="col">Discription</th>
                                     <th scope="col">Created By</th>
                                     <th scope="col">Update</th>
                                     <th scope="col">Delete</th>
@@ -183,7 +233,8 @@
                                     <tr>
                                         <td>{{ $meal->id }}</td>
                                         <td>{{ $meal->title }}</td>
-                                        <td>{{ $meal->created_by }}</td>
+                                        <td>{{ $meal->discription }}</td>
+                                        <td>{{ $meal->user->name }}</td>
                                         <td><a href="{{ url('/nutritionist/edit_meal/'.$meal->id) }}" class="btn btn-primary">Update</a></td>
                                     <td><a class="btn btn-primary" href="{{ url('/nutritionist/delete_meal/'.$meal->id) }}">Delete</a></td>
                                     </tr>
@@ -191,9 +242,6 @@
                                     
                                 </tbody>
                             </table>
-
-                        
-                    </div>
                     
 
 
