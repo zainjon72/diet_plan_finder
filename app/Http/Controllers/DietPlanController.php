@@ -19,9 +19,10 @@ class DietPlanController extends Controller
     {
         
         $health = HealthCondition::all();
-        // $diet_plans = DietPlan::all();
-        $diet_plans = DietPlan::with('healthcondition')->get();
-        dd($diet_plans);
+        $diet_plans = DietPlan::all();
+        // $diet_plans = DietPlan::with('health_conditions')->get();
+        // dd($health);
+
         $meals = Meal::all();
         $data = [];
         $data['health_conditions'] = $health;
