@@ -9,73 +9,77 @@
       <a href="#" id="filled" class="btn px-5 py-3 text-white mt-3 mt-sm-0 mx-1" style="border-radius: 30px; background-color: #9B5DE5;">Get Started</a>
       <!-- hover background-color: #9B5DE5; color: white; -->
       <a href="#" id="outlined" class="btn px-5 py-3 text-white mt-3 mt-sm-0 mx-1" style="border-radius: 30px; border:1px solid #9B5DE5;">Showcases</a>
-    </div>
   </div>
 </div>
-     
+</div>
+
 <!-- Credit: Componentity.com -->
-<a href="https://componentity.com" target="_blank" class="block">
+{{-- <a href="https://componentity.com" target="_blank" class="block"> --}}
 {{--   <img src="http://codenawis.com/componentity/wp-content/uploads/2020/08/logo-componentity-%E2%80%93-9.png" width="120px" class="d-block mx-auto my-5">
 </a> --}}
-<div class="contanier mt-5">
+{{-- <div class="container mt-5 cart" style="display: none;">
     <div class="row">
-        {{-- @dd($diet_plans) --}}
-        @foreach($diet_plans as $diet_plan)
-        <div class="col-4 ml-5">
-            <div class="card" style="width: 18rem;">
-              <img class="card-img-top" src="{{ asset('/img/download.jfif') }}" alt="Card image cap">
-              <div class="card-body">
-                <h5 class="card-title">{{ $diet_plan->title }}</h5>
-                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-            </div>
-            <ul class="list-group list-group-flush">
-                <li class="list-group-item">Cras justo odio</li>
-                <li class="list-group-item">Dapibus ac facilisis in</li>
-                <li class="list-group-item">Vestibulum at eros</li>
-            </ul>
-            <div class="card-body">
-                <a href="#" class="card-link">Card link</a>
-                <a href="#" class="card-link">Another link</a>
-            </div>
-        </div>
-    </div> 
-    @endforeach
-    <div class="col-4">
-        <div class="card" style="width: 18rem;">
-          <img class="card-img-top" src="{{ asset('/img/download.jfif') }}" alt="Card image cap">
-          <div class="card-body">
-            <h5 class="card-title">Card title</h5>
-            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-        </div>
-        <ul class="list-group list-group-flush">
-            <li class="list-group-item">Cras justo odio</li>
-            <li class="list-group-item">Dapibus ac facilisis in</li>
-            <li class="list-group-item">Vestibulum at eros</li>
-        </ul>
-        <div class="card-body">
-            <a href="#" class="card-link">Card link</a>
-            <a href="#" class="card-link">Another link</a>
+        <div class="col-8 mx-auto">
+            <div class="alert alert-success alert-dismissible fade show" role="alert">
+              <strong>Holy guacamole!</strong> You should check in on some of those fields below.
+              <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
         </div>
     </div>
 </div>
-<div class="col-3">
-    <div class="card" style="width: 18rem;">
-      <img class="card-img-top" src="{{ asset('/img/download.jfif') }}" alt="Card image cap">
+</div> --}}
+
+<div class="container-fluid bg-trasparent my-4 p-3" style="position: relative">
+  <div class="row row-cols-1 row-cols-xs-2 row-cols-sm-2 row-cols-lg-4 g-3">
+    @foreach($diet_plans as $diet_plan)
+    <div class="col-4 hp">
+      <div class="card h-100 shadow-sm">
+        <a href="#">
+          <img src="{{ asset('/img/download.jfif') }}" class="card-img-top" alt="product.title" />
+      </a>
+
+      <div class="label-top shadow-sm">
+          <a class="text-white" href="#">asus</a>
+      </div>
       <div class="card-body">
-        <h5 class="card-title">Card title</h5>
-        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-    </div>
-    <ul class="list-group list-group-flush">
-        <li class="list-group-item">Cras justo odio</li>
-        <li class="list-group-item">Dapibus ac facilisis in</li>
-        <li class="list-group-item">Vestibulum at eros</li>
-    </ul>
-    <div class="card-body">
-        <a href="#" class="card-link">Card link</a>
-        <a href="#" class="card-link">Another link</a>
-    </div>
+          <div class="clearfix mb-3">
+            <span class="float-start badge rounded-pill bg-success">${{ $diet_plan->price }}</span>
+
+            {{--  <span class="float-end"><a href="#" class="small text-muted text-uppercase aff-link">reviews</a></span> --}}
+        </div>
+        <h5 class="card-title">
+            <a target="_blank" href="#">{{ $diet_plan->discription }}</a>
+        </h5>
+
+        <div class="d-grid gap-2 my-4">
+
+            <a href="{{ url('/singal_plan/'.$diet_plan->id) }}" class=" btn btn-primary cart" onclick="addtocart();">View</a>
+
+        </div>
+        <div class="clearfix mb-1">
+
+            {{-- <span class="float-start"><a href="#"><i class="fas fa-question-circle"></i></a></span> --}}
+
+            {{-- <span class="float-end"> --}}
+              {{-- <i class="far fa-heart" style="cursor: pointer"></i> --}}
+
+          {{-- </span> --}}
+      </div>
+  </div>
+</div>
+</div>
+@endforeach
+
+<i class="far fa-heart" style="cursor: pointer"></i>
+
+</span>
 </div>
 </div>
 </div>
 </div>
+</div>
+</div>
+
+<div class="small text-muted my-4">Images by <a target="_blank" href="https://www.amazon.com/">Amazon</a></div>
 @endsection

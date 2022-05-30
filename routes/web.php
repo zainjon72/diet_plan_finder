@@ -13,13 +13,12 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-	return view('welcome');
-});
+// Route::get('/', function () {
+// 	return view('welcome');
+// });
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@show');
 Route::prefix('admin')->middleware('admin_area')->group(function(){
 	Route::get('/plans', 'HomeController@index')->name('home');
 	// Route::post('/plans', 'HomeController@index')->name('home');
@@ -55,8 +54,13 @@ Route::prefix('nutritionist')->middleware('nutritionist')->group(function(){
 	
 
 });
-Route::prefix('')->middleware('nutritionist')->group(function(){
+
 	// Route::get('/', 'HomeController@index')->name('home');
 	Route::get('/', 'DietPlanController@show');
+	// Route::get('/add_to_cart/{id}', 'DietPlanController@add_to_cart');
+	Route::get('/cart', 'DietPlanController@viewcart');
+	Route::post('/cart/{id}', 'DietPlanController@cart');
+	Route::get('/singal_plan/{id}', 'DietPlanController@singal_plan');
+	Route::get('/delete_cart/{id}', 'DietPlanController@delete_cart');
+	Route::get('/checkout', 'DietPlanController@checkout');
 
-});

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\DietPlan;
+use App\CartItem;
 use App\Meal;
 use Auth;
 use App\HealthCondition;
@@ -17,7 +18,7 @@ class DietPlanController extends Controller
      */
     public function index()
     {
-        
+
         $health = HealthCondition::all();
         $diet_plans = DietPlan::all();
 
@@ -33,19 +34,19 @@ class DietPlanController extends Controller
         $data['meals'] = $meals;
         
         return view('nutritionist-home', $data);
-    
+
     }
-      public function show()
+    public function show()
     {
-        
+
         $diet = DietPlan::all();
         $data = [];
         $data['diet_plans'] = $diet;
-        dd($data);
+        // dd($data);
         return view('welcome', $data);
-    
+
     }
-        public function view()
+    public function view()
     {
         $diet = DietPlan::all();
         $data = [];
@@ -62,7 +63,7 @@ class DietPlanController extends Controller
     public function create(Request $request)
     {
         $data = $request->all();
-       
+
         // $id = $data['health_condition_id'];
         // $health_conditions = HealthCondition::find($id);
         // dd($health_conditions);
@@ -101,7 +102,7 @@ class DietPlanController extends Controller
      * @param  \App\DietPlan  $dietPlan
      * @return \Illuminate\Http\Response
      */
- 
+
 
     /**
      * Show the form for editing the specified resource.
@@ -112,16 +113,16 @@ class DietPlanController extends Controller
     public function edit(Request $request, $id)
     {
         if($request->isMethod('post')){
-        $data = request()->all();
+            $data = request()->all();
         // dd($data);
-        $obj = DietPlan::find($id);
+            $obj = DietPlan::find($id);
         // dd($obj);
-        $obj->update($data);
-        return redirect(url('/nutritionist/home'));
+            $obj->update($data);
+            return redirect(url('/nutritionist/home'));
         // return view('form', $data);
         }
         // $obj = DietPlan::find($id);
-    
+
         // dd($request->title);
         $id = $request->id;
         $data = [];
@@ -131,9 +132,9 @@ class DietPlanController extends Controller
             'price' =>$request->price,
             'health_condition_id' =>$request->health_condition_id
         ];
-         $data['diet_plans'] = DietPlan::find($id);
-         $data['health_conditions'] = HealthCondition::all();
-         $data['id'] = $id;
+        $data['diet_plans'] = DietPlan::find($id);
+        $data['health_conditions'] = HealthCondition::all();
+        $data['id'] = $id;
         return view('edit_plan', $data);
 
     }
@@ -160,5 +161,58 @@ class DietPlanController extends Controller
     {
         DietPlan::destroy($id);
         return redirect(url('/nutritionist/home'));
+    }
+    public function add_to_cart(Request $request, $id){
+        $data = DietPlan::find($id);
+        $plans = DietPlan::all();
+        $cart = CartItem::all();
+        // dd($request->all);
+        $insert = [
+            'quantity' => $request->quantity,
+         'created_by' => Auth::user()->id,
+          'diet_plan_id' => $data['id']
+      ];
+        $created =  CartItem::create($insert);
+
+        // $diet_plans = [];
+        // $data_plans['diet_plans'] = $plans;
+        return redirect(url('/cart'));
+
+    }
+    public function singal_plan($id){
+        $plan = DietPlan::find($id);
+        $data = [];
+        $data['plans'] = $plan;
+        // dd($data);
+        return view('singal_plan', $data);
+    }
+    public function cart(Request $request, $id){
+        $data = DietPlan::find($id);
+        // dd($request->all());
+        $insert = [
+            'quantity' => $request->quantity,
+         'created_by' => Auth::user()->id,
+          'diet_plan_id' => $id
+      ];
+        $created =  CartItem::create($insert);
+        // dd($data);
+        return redirect(url('/cart'));
+    }
+    public function viewcart(){
+        $carts = CartItem::all();
+
+        $data = [];
+        $data['plans'] = $carts;
+        return view('cart', $data);
+    }
+    public function delete_cart($id){
+        CartItem::destroy($id);
+        return redirect(url('/cart'));
+    }
+    public function checkout(){
+        $check = CartItem::with('dietplans')->get();
+        $data = [];
+        $data['carts'] = $check;
+        return view('checkout', $data);
     }
 }

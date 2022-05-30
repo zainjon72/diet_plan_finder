@@ -28,9 +28,10 @@ if ( $user->role == 'admin' ) {// do your magic here
     return redirect(url('/admin/home'));
 }elseif ($user->role == 'nutritionist') {
     return redirect(url('/nutritionist/home'));
-}else{
-
+}elseif($user->role == 'customer'){
 return redirect('/home');
+}else{
+    return redirect('/');
 }
 }
 
