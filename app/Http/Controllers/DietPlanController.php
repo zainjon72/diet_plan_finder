@@ -35,15 +35,16 @@ class DietPlanController extends Controller
         return view('nutritionist-home', $data);
     
     }
-    //   public function show()
-    // {
+      public function show()
+    {
         
-    //     $diet = DietPlan::all();
-    //     $data = [];
-    //     $data['diet-plans'] = $diet;
-    //     return view('nutritionist-home', $data);
+        $diet = DietPlan::all();
+        $data = [];
+        $data['diet_plans'] = $diet;
+        dd($data);
+        return view('welcome', $data);
     
-    // }
+    }
         public function view()
     {
         $diet = DietPlan::all();
@@ -100,12 +101,7 @@ class DietPlanController extends Controller
      * @param  \App\DietPlan  $dietPlan
      * @return \Illuminate\Http\Response
      */
-    public function show()
-    {
-    
-
-    // return view('nutritionist-diet', $data);
-    }
+ 
 
     /**
      * Show the form for editing the specified resource.

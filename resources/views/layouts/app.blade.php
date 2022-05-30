@@ -130,7 +130,22 @@
           font-size: 14px;
       }
 
+
+      body {
+          font-family: "Poppins", sans-serif !important;
+      }
+      #filled:hover {
+          background-color: white !important; 
+          color: black !important;
+      }
+
+      #outlined:hover {
+          background-color: #9B5DE5; 
+          color: white;
+      }
+      @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap");
   </style>
+
   <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
 </head>
 <body>
@@ -302,7 +317,7 @@
 <!-- Template Javascript -->
 <script src="{{ asset('/js/main.js') }}"></script>
 <script type="text/javascript">
-   $('select').select2({
+ $('select').select2({
     width:'100%'
 });
 

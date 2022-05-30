@@ -55,3 +55,8 @@ Route::prefix('nutritionist')->middleware('nutritionist')->group(function(){
 	
 
 });
+Route::prefix('')->middleware('nutritionist')->group(function(){
+	// Route::get('/', 'HomeController@index')->name('home');
+	Route::get('/', 'DietPlanController@show');
+
+});
