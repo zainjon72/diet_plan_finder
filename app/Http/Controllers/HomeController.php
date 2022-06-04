@@ -8,64 +8,51 @@ use App\DietPlan;
 
 class HomeController extends Controller
 {
-    /**
-     * Create a new controller instance.
-     *
-     * @return void
-     */
-    public function __construct()
-    {
-        $this->middleware('auth');
+	private $view     =  "welcome";
+	private $action   =  "/";
+    public function index(){
+      $health = HealthCondition::with('dietplans')->get();
+      $lossplan = DietPlan::where('health_condition_id', 6)->get();
+      $gainplan = DietPlan::where('health_condition_id', 7)->get();
+      $highplan = DietPlan::where('health_condition_id', 8)->get();
+      $plans = DietPlan::all();
+      // dd($lossplan);
+      // dd($health);
+      $data = [];
+      $data['health'] = $health;
+      $data['lossplan'] = $lossplan;
+      $data['gainplan'] = $gainplan;
+      $data['highplan'] = $highplan;
+      $data['plans'] = $plans;
+      return view($this->view, $data);
     }
 
-    /**
-     * Show the application dashboard.
-     *
-     * @return \Illuminate\Contracts\Support\Renderable
-     */
-    public function index()
-    {
-        $plans = DietPlan::with('user', 'healthcondition')->get();
-        $data = [];
-        // dd($plans);
-        $data['plans'] = $plans;
+    public function plans(){
 
-        return view('plans', $data);
-    }
-    public function view()
-    {
-        $health = HealthCondition::with('user')->get();
-        $data = [];
-        // dd($health->user);
-        $data['health_conditions'] = $health;
-        return view('form', $data);
+      $health = HealthCondition::with('dietplans')->get();
+      $lossplan = DietPlan::where('health_condition_id', 6)->get();
+      $gainplan = DietPlan::where('health_condition_id', 7)->get();
+      $highplan = DietPlan::where('health_condition_id', 8)->get();
+      $plans = DietPlan::all();
+      // dd($lossplan);
+      // dd($health);
+      $data = [];
+      $data['health'] = $health;
+      $data['lossplan'] = $lossplan;
+      $data['gainplan'] = $gainplan;
+      $data['highplan'] = $highplan;
+      $data['plans'] = $plans;
+
+      return view('plans', $data);
     }
 
-
-    public function show()
-    {
-        return view('welcome');
+    public function product($id){
+    	$plan = DietPlan::find($id);
+    	$health = HealthCondition::with('dietplans')->get();
+    	// dd($plan);
+    	$data = [];
+    	$data['plan'] = $plan;
+    	$data['health'] = $health;
+    	return view('product', $data);
     }
-    public function delete($id)
-    {
-      DietPlan::destroy($id);
-      return redirect(url('/admin/plans'));
-  }
-  public function approve($id)
-  {
-
-    $plan = DietPlan::find($id);
-        // dd($user->status);
-        // $status = [
-        //     'status' => 'Approved'
-        // ];
-        // dd($plan->status);
-        $plan->status = 'Approved';
-        $plan->save();
-        // dd($plan);
-      // $plan = DietPlan::find($id);
-      // $plan->update(['status' => 'Approved']);
-      return redirect(url('/admin/plans'));
-  }
-
 }

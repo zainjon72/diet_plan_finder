@@ -20,47 +20,47 @@ use Illuminate\Support\Facades\Route;
 Auth::routes();
 
 Route::prefix('admin')->middleware('admin_area')->group(function(){
-	Route::get('/plans', 'HomeController@index')->name('home');
-	// Route::post('/plans', 'HomeController@index')->name('home');
-	Route::get('/delete_plan/{id}', 'HomeController@delete')->name('home');
-	Route::get('/approve_plan/{id}', 'HomeController@approve');
-	Route::get('/form', 'HomeController@view');
-	Route::post('/form', 'HealthConditionController@index')->name('home');
 	Route::get('/home', 'UserController@index');
-	Route::get('/update/{id}', 'UserController@approve');
-	Route::get('/edit/{id}', 'HealthConditionController@update');
-	Route::post('/edit/{id}', 'HealthConditionController@update');
-	Route::get('/delete/{id}', 'UserController@delete');
+	Route::get('/plan', 'UserController@plan');
+	Route::get('/health', 'HealthConditionController@index');
+	Route::post('/health', 'HealthConditionController@create');
+	Route::get('/add_health', 'HealthConditionController@add_health');
+	Route::get('/delete_health/{id}', 'HealthConditionController@delete');
+	Route::get('/edit_health/{id}', 'HealthConditionController@edit');
+	Route::post('/edit_health/{id}', 'HealthConditionController@edit');
+	Route::get('/delete_user/{id}', 'UserController@delete');
+	Route::get('/edit_user_admin/{id}', 'UserController@admin_role');
+	Route::get('/edit_user_nutritionist/{id}', 'UserController@nutritionist_role');
 	Route::get('/approve/{id}', 'UserController@approve');
-	
-	Route::get('/delete-health/{id}', 'HealthConditionController@delete');
-	Route::post('/add-health', 'HealthConditionController@add');
-	Route::get('/add-health', 'HealthConditionController@index');
-	// ->name('home');
+	Route::get('/approve_plan/{id}', 'UserController@approve_plan');
+	Route::get('/pending_plan/{id}', 'UserController@pending_plan');
 });
 Route::prefix('nutritionist')->middleware('nutritionist')->group(function(){
-	Route::get('/home', 'DietPlanController@index');
-	// Route::get('/home', 'DietPlanController@show');
-	Route::post('/home', 'DietPlanController@create')->name('home');
-	Route::get('/form', 'DietPlanController@view');
-	Route::get('/edit_plan/{id}', 'DietPlanController@edit');
-	Route::post('/edit_plan/{id}', 'DietPlanController@edit');
-	Route::get('/delete_plan/{id}', 'DietPlanController@delete');
-	Route::get('/meal', 'MealController@index');
-	Route::post('/meal', 'MealController@store');
-	Route::get('/edit_meal/{id}', 'MealController@edit');
-	Route::post('/edit_meal/{id}', 'MealController@edit');
-	Route::get('/delete_meal/{id}', 'MealController@delete');
-	
-
+	Route::get('/home', 'Nutritionist\\DietPlanController@index');
+	Route::post('/home', 'Nutritionist\\DietPlanController@create');
+	Route::get('/add_plan', 'Nutritionist\\DietPlanController@add_plan');
+	Route::get('/delete_plan/{id}', 'Nutritionist\\DietPlanController@delete');
+	Route::get('/approve/{id}', 'Nutritionist\\DietPlanController@approve');
+	Route::get('/edit_plan/{id}', 'Nutritionist\\DietPlanController@edit');
+	Route::post('/edit_plan/{id}', 'Nutritionist\\DietPlanController@edit');
+	// Route::post('/add_plan', 'Nutritionist\\DietPlanController@create');
+	Route::get('/meal', 'Nutritionist\\MealController@index');
+	Route::post('/meal', 'Nutritionist\\MealController@create');
+	Route::get('/add_meal', 'Nutritionist\\MealController@add_meal');
+	Route::get('/delete_meal/{id}', 'Nutritionist\\MealController@delete');
+	Route::get('/update_meal/{id}', 'Nutritionist\\MealController@update');
+	Route::post('/update_meal/{id}', 'Nutritionist\\MealController@update');
 });
 
-	// Route::get('/', 'HomeController@index')->name('home');
-	Route::get('/', 'DietPlanController@show');
-	// Route::get('/add_to_cart/{id}', 'DietPlanController@add_to_cart');
-	Route::get('/cart', 'DietPlanController@viewcart');
-	Route::post('/cart/{id}', 'DietPlanController@cart');
-	Route::get('/singal_plan/{id}', 'DietPlanController@singal_plan');
-	Route::get('/delete_cart/{id}', 'DietPlanController@delete_cart');
-	Route::get('/checkout', 'DietPlanController@checkout');
+Route::get('/', 'HomeController@index')->name('home');
+Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/plan', 'HomeController@plans');
+Route::get('/product/{id}', 'HomeController@product');
+Route::get('/cart', 'CartItemController@index');
+Route::post('/cart', 'CartItemController@create');
+// Route::get('/', 'DietPlanController@show');
+
+Route::prefix('')->middleware('nutritionist')->group(function(){
+
+});
 

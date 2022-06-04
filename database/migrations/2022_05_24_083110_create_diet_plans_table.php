@@ -19,6 +19,7 @@ class CreateDietPlansTable extends Migration
             $table->string('discription');
             $table->string('price');
             $table->string('status')->default('Pending');
+            $table->string('image')->nullable();
             $table->foreignId('created_by')->constrained('users')->onDelete('cascade')->onUpdate('cascade');
             // $table->foreignId('meal_id')->constrained('meals')->onDelete('cascade')->onUpdate('cascade');
             $table->foreignId('health_condition_id')->constrained('health_conditions')->onDelete('cascade')->onUpdate('cascade');

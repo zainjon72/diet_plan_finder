@@ -16,6 +16,7 @@ class CreateHealthConditionsTable extends Migration
         Schema::create('health_conditions', function (Blueprint $table) {
             $table->id();
             $table->string('title');
+            $table->string('discription');
             $table->foreignId('created_by')->constrained('users')->onDelete('cascade')->onUpdate('cascade');
             $table->timestamps();
         });

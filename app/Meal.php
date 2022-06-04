@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Meal extends Model
 {
-    protected $fillable = ['title', 'created_by' ,'discription'];
+    protected $fillable = ['title', 'created_by' ,'discription', 'image'];
      public function user(){
     	return $this->belongsTo(User::class, 'created_by');
     }

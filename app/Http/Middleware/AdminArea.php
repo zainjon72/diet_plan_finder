@@ -23,3 +23,4 @@ class AdminArea
             return redirect('/home');
     }
 }
+   

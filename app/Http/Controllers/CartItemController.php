@@ -2,84 +2,33 @@
 
 namespace App\Http\Controllers;
 
-use App\CartItem;
 use Illuminate\Http\Request;
+use App\CartItem;
+use App\HealthCondition;
+use Auth;
 
 class CartItemController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
-    {
-        //
+    public function index(){
+    	$health = HealthCondition::with('dietplans')->get();
+    	$cart_items = CartItem::with('dietplans')->get();
+    	$data = [];
+    	$data['cart_items'] = $cart_items;
+    	$data['health'] = $health;
+    	return view('cart', $data);
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\CartItem  $cartItem
-     * @return \Illuminate\Http\Response
-     */
-    public function show(CartItem $cartItem)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\CartItem  $cartItem
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(CartItem $cartItem)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\CartItem  $cartItem
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, CartItem $cartItem)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\CartItem  $cartItem
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(CartItem $cartItem)
-    {
-        //
+    public function create(Request $request, $id=null){
+    	// dd($request->all());
+    	$health = HealthCondition::with('dietplans')->where('created_by', Auth::user()->id)->get();
+    	$data = $request->all();
+    	$data['created_by'] = Auth::user()->id;
+    	unset($data['_token']);
+    	$obj = new CartItem();
+    	$created = $obj->insert($data);
+    	// dd($created);
+    	$data['health'] = $health;
+    	// return view('cart', $data);
+    	return redirect('/cart');
     }
 }
