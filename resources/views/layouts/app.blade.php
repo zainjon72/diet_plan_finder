@@ -47,12 +47,12 @@
     <link href="select2-bootstrap4.css" rel="stylesheet">
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
-   
 
 
 
- 
-<link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
+
+
+    <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
 </head>
 <body>
     <div id="app">
@@ -87,102 +87,6 @@
                             </li>
                             @endif
                             @else
-
-                            {{-- main navbar --}}
-
-                            {{-- <nav class="navbar navbar-expand  bg-light navbar-light sticky-top px-4 py-0" w-100>
-                                <a href="index.html" class="navbar-brand d-flex d-lg-none me-4">
-                                    <h2 class="text-primary mb-0"><i class="fa fa-hashtag"></i></h2>
-                                </a>
-                                <a href="#" class="sidebar-toggler flex-shrink-0">
-                                    <i class="fa fa-bars"></i>
-                                </a>
-                                <form class="d-none d-md-flex ms-4">
-                                    <input class="form-control border-0" type="search" placeholder="Search">
-                                </form>
-
-                                <div class="navbar-nav align-items-center ms-auto">
-                                    <div class="nav-item dropdown">
-
-                                        <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">
-                                            <i class="fa fa-envelope me-lg-2"></i>
-                                            <span class="d-none d-lg-inline-flex">Message</span>
-                                        </a>
-                                        <div class="dropdown-menu dropdown-menu-end bg-light border-0 rounded-0 rounded-bottom m-0">
-                                            <a href="#" class="dropdown-item">
-                                                <div class="d-flex align-items-center">
-                                                    <img class="rounded-circle" src="img/user.jpg" alt="" style="width: 40px; height: 40px;">
-                                                    <div class="ms-2">
-                                                        <h6 class="fw-normal mb-0">Jhon send you a message</h6>
-                                                        <small>15 minutes ago</small>
-                                                    </div>
-                                                </div>
-                                            </a>
-                                            <hr class="dropdown-divider">
-                                            <a href="#" class="dropdown-item">
-                                                <div class="d-flex align-items-center">
-                                                    <img class="rounded-circle" src="img/user.jpg" alt="" style="width: 40px; height: 40px;">
-                                                    <div class="ms-2">
-                                                        <h6 class="fw-normal mb-0">Jhon send you a message</h6>
-                                                        <small>15 minutes ago</small>
-                                                    </div>
-                                                </div>
-                                            </a>
-                                            <hr class="dropdown-divider">
-                                            <a href="#" class="dropdown-item">
-                                                <div class="d-flex align-items-center">
-                                                    <img class="rounded-circle" src="img/user.jpg" alt="" style="width: 40px; height: 40px;">
-                                                    <div class="ms-2">
-                                                        <h6 class="fw-normal mb-0">Jhon send you a message</h6>
-                                                        <small>15 minutes ago</small>
-                                                    </div>
-                                                </div>
-                                            </a>
-                                            <hr class="dropdown-divider">
-                                            <a href="#" class="dropdown-item text-center">See all message</a>
-                                        </div>
-                                    </div>
-                                    <div class="nav-item dropdown">
-                                        <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">
-                                            <i class="fa fa-bell me-lg-2"></i>
-                                            <span class="d-none d-lg-inline-flex">Notificatin</span>
-                                        </a>
-                                        <div class="dropdown-menu dropdown-menu-end bg-light border-0 rounded-0 rounded-bottom m-0">
-                                            <a href="#" class="dropdown-item">
-                                                <h6 class="fw-normal mb-0">Profile updated</h6>
-                                                <small>15 minutes ago</small>
-                                            </a>
-                                            <hr class="dropdown-divider">
-                                            <a href="#" class="dropdown-item">
-                                                <h6 class="fw-normal mb-0">New user added</h6>
-                                                <small>15 minutes ago</small>
-                                            </a>
-                                            <hr class="dropdown-divider">
-                                            <a href="#" class="dropdown-item">
-                                                <h6 class="fw-normal mb-0">Password changed</h6>
-                                                <small>15 minutes ago</small>
-                                            </a>
-                                            <hr class="dropdown-divider">
-                                            <a href="#" class="dropdown-item text-center">See all notifications</a>
-                                        </div>
-                                    </div>
-                                    <div class="nav-item dropdown">
-                                        <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">
-                                            <img class="rounded-circle me-lg-2" src="img/user.jpg" alt="" style="width: 40px; height: 40px;">
-                                            <span class="d-none d-lg-inline-flex">John Doe</span>
-                                        </a>
-                                        <div class="dropdown-menu dropdown-menu-end bg-light border-0 rounded-0 rounded-bottom m-0">
-                                            <a href="#" class="dropdown-item">My Profile</a>
-                                            <a href="#" class="dropdown-item">Settings</a>
-                                            <a class="dropdown-item" href="{{ route('logout') }}"
-                                            onclick="event.preventDefault();
-                                            document.getElementById('logout-form').submit();">
-                                        {{ __('Logout') }}</a>
-                                    </div>
-                                </div>
-
-                            </div> --}}
-
                             <nav class="navbar navbar-expand-lg">
                               <div class="container-fluid">
                                 <a class="navbar-brand" href="#"></a>
@@ -209,60 +113,33 @@
                                           <hr class="dropdown-divider">
                                       </li>
 
-                                <a class="dropdown-item" href="{{ route('logout') }}"
-                                onclick="event.preventDefault();
-                                document.getElementById('logout-form').submit();">
-                                {{ __('Logout') }}
-                            </a>
+                                      <a class="dropdown-item" href="{{ route('logout') }}"
+                                      onclick="event.preventDefault();
+                                      document.getElementById('logout-form').submit();">
+                                      {{ __('Logout') }}
+                                  </a>
 
-                            <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
-                                @csrf
-                            </form>      
-                                  </ul>
-                              </li>
-                          </ul>
-                      </div>
-                  </div>
-              </nav>
-
-              {{-- end main navbar --}}
-
-              
-                             {{--    <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                    {{ Auth::user()->name }}
-                                </a> --}}
-
-                            </nav>
-                                {{-- <a href="{{ route('logout') }}"
-                                onclick="event.preventDefault();
-                                document.getElementById('logout-form').submit();">
-                            {{ __('Logout') }}</a> --}}
-
-                            {{-- logout link --}}
-
-                         {{--    <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                                <a class="dropdown-item" href="{{ route('logout') }}"
-                                onclick="event.preventDefault();
-                                document.getElementById('logout-form').submit();">
-                                {{ __('Logout') }}
-                            </a>
-
-                            <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
-                                @csrf
-                            </form>
-                        </div> --}}
-
-                        {{-- end logout --}}
-                    </li>
-                    @endguest
-                </ul>
+                                  <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                                    @csrf
+                                </form>      
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
             </div>
-        </div>
+        </nav>
     </nav>
+    
+</li>
+@endguest
+</ul>
+</div>
+</div>
+</nav>
 
-    <main class="pb-4">
-        @yield('content')
-    </main>
+<main class="pb-4">
+    @yield('content')
+</main>
 </div>
 <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>

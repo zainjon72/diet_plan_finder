@@ -46,13 +46,13 @@ class HomeController extends Controller
       return view('plans', $data);
     }
 
-    public function product($id){
+    public function plan($id){
     	$plan = DietPlan::find($id);
     	$health = HealthCondition::with('dietplans')->get();
     	// dd($plan);
     	$data = [];
     	$data['plan'] = $plan;
     	$data['health'] = $health;
-    	return view('product', $data);
+    	return view('plan', $data);
     }
 }

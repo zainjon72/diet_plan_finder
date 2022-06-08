@@ -129,198 +129,194 @@
                                 </div>
                                 <a class="dropdown-item" href="#"><i class="fas fa-user mr-2"></i>Account</a>
                                 <a class="dropdown-item" href="#"><i class="fas fa-cog mr-2"></i>Setting</a>
-                                  <a class="dropdown-item" href="{{ route('logout') }}"
+                                <a class="dropdown-item" href="{{ route('logout') }}"
                                 onclick="event.preventDefault();
                                 document.getElementById('logout-form').submit();"><i class="fa fa-sign-out mr-2"></i>
                                 {{ __('Logout') }}
-                                </a>
+                            </a>
 
-                                <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                            <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
                                 @csrf
-                                </form> 
-                            </div>
+                            </form> 
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+    </div>
+    <!-- ============================================================== -->
+    <!-- end navbar -->
+    <!-- ============================================================== -->
+    <!-- ============================================================== -->
+    <!-- left sidebar -->
+    <!-- ============================================================== -->
+    <div class="nav-left-sidebar sidebar-dark">
+        <div class="menu-list">
+            <nav class="navbar navbar-expand-lg navbar-light">
+                <a class="d-xl-none d-lg-none" href="#">Dashboard</a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav flex-column">
+                        <li class="nav-divider">
+                            Menu
                         </li>
+                        <li class="nav-item ">
+                            <a class="nav-link" href="{{ url('/admin/home') }}"><i class="fa fa-fw fa-user-circle"></i>Dashboard <span class="badge badge-success">6</span></a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ url('/admin/health') }}"><i class="fa fa-fw fa-rocket"></i>Health Conditions</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ url('/admin/plan') }}"><i class="fas fa-fw fa-chart-pie"></i>Diet Plans</a>
+                        </li>
+
                     </ul>
                 </div>
             </nav>
         </div>
-        <!-- ============================================================== -->
-        <!-- end navbar -->
-        <!-- ============================================================== -->
-        <!-- ============================================================== -->
-        <!-- left sidebar -->
-        <!-- ============================================================== -->
-        <div class="nav-left-sidebar sidebar-dark">
-            <div class="menu-list">
-                <nav class="navbar navbar-expand-lg navbar-light">
-                    <a class="d-xl-none d-lg-none" href="#">Dashboard</a>
-                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                        <span class="navbar-toggler-icon"></span>
-                    </button>
-                    <div class="collapse navbar-collapse" id="navbarNav">
-                        <ul class="navbar-nav flex-column">
-                            <li class="nav-divider">
-                                Menu
-                            </li>
-                            <li class="nav-item ">
-                                <a class="nav-link" href="{{ url('/nutritionist/home') }}"><i class="fa fa-fw fa-user-circle"></i>Diet Plans<span class="badge badge-success">6</span></a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="{{ url('/nutritionist/meal') }}"><i class="fa fa-fw fa-rocket"></i>Meal</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="{{ url('/nutritionist/plan') }}"><i class="fas fa-fw fa-chart-pie"></i>...</a>
-                            </li>
-
-                        </ul>
-                    </div>
-                </nav>
-            </div>
-        </div>
-        <!-- ============================================================== -->
-        <!-- end left sidebar -->
-        <!-- ============================================================== -->
-        <!-- ============================================================== -->
-        <!-- wrapper  -->
-        <!-- ============================================================== -->
-        <div class="dashboard-wrapper">
-            <div class="dashboard-finance">
-                <div class="container-fluid dashboard-content">
-                    <!-- ============================================================== -->
-                    <!-- pageheader  -->
-
-                    <!-- ============================================================== -->
-                    <div class="row">
-                        <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
-                            <div class="page-header">
-                                <h3 class="mb-2">{{ $page_title }}</h3>
-                                <p class="pageheader-text">Proin placerat ante duiullam scelerisque a velit ac porta, fusce sit amet vestibulum mi. Morbi lobortis pulvinar quam.</p>
-                                <div class="page-breadcrumb">
-                                    <nav aria-label="breadcrumb">
-                                        <ol class="breadcrumb">
-                                            <li class="breadcrumb-item"><a href="#" class="breadcrumb-link">Dashboard</a></li>
-                                            <li class="breadcrumb-item active" aria-current="page">{{ $page_title }}</li>
-                                        </ol>
-                                    </nav>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <a type="button" class="btn btn-primary my-3" href="{{ url('/nutritionist/add_plan') }}">
-                      Add New
-                  </a>
-                    <!-- ============================================================== -->
-                    <!-- end pageheader  -->
-                    <!-- ============================================================== -->
-                    <div class="row">
-                        <div class="col-xl-12 mx-auto col-lg-12 col-md-12 col-sm-12 col-12">
-                            <div class="card">
-                                <h5 class="card-header">Basic Table</h5>
-                                <div class="card-body">
-                                    <table class="table table-bordered table-striped">
-                                        <thead>
-                                            <tr>
-                                                <th scope="col">#</th>
-                                                <th scope="col">Name</th>
-                                                <th scope="col">Discription</th>
-                                                <th scope="col">Price</th>
-                                                <th scope="col">Status</th>
-                                                <th scope="col">Action</th>
-                                                
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                        @if(!empty($plans) && $plans->count())
-                                            @foreach($plans as $plan)
-                                            <tr>
-                                                <th scope="row">{{ $plan->id }}</th>
-                                                <td>{{ $plan->title }}</td>
-                                                <td>{{ $plan->discription }}</td>
-                                                <td>{{ $plan->price }}</td>
-                                                <td>{{ $plan->status }}</td>
-                                                <td>
-                                                    <div class="dropdown">
-                                                        <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                                            Action
-                                                        </button>
-                                                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                                            <a class="dropdown-item" data-action="delete_record"  href="{{url('/nutritionist/delete_plan/'.$plan->id) }}" data-url="" >Delete</a> 
-                                                            {{-- <a class="dropdown-item" href="{{url('/nutritionist/approve/'.$plans['id'])}}"> Approve </a> --}}
-                                                            <a class="dropdown-item" href="{{url('/nutritionist/edit_plan/'.$plan->id)}}"> Edit </a>
-                                                        </div>
-                                                    </div>
-                                                </td>
-                                                {{-- <td>
-                                                    <a class="dropdown-item" data-action="delete_record"  href="{{url('/nutritionist/delete_plans/'.$plans['id']) }}" data-url="" >Delete</a>
-                                                </td> --}}
-
-                                            </tr>
-                                            @endforeach
-                                            @endif
-                                        </tbody>
-                                    </table>
-                                    <div class="link text-left" style="float: right;margin-top: 20px;">
-                                        {{-- @dd($plans) --}}
-                                    {!! $plans->links() !!}
-                                </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    
-            <!-- ============================================================== -->
-            <!-- end footer -->
-            <!-- ============================================================== -->
-        </div>
-        <!-- ============================================================== -->
-        <!-- end wrapper  -->
-        <!-- ============================================================== -->
     </div>
     <!-- ============================================================== -->
-    <!-- end main wrapper  -->
+    <!-- end left sidebar -->
     <!-- ============================================================== -->
-    <!-- jquery 3.3.1  -->
-    <script src="{{ asset('assets/vendor/jquery/jquery-3.3.1.min.js') }}"></script>
-    <!-- bootstap bundle js -->
-    <script src="{{ asset('assets/vendor/bootstrap/js/bootstrap.bundle.js') }}"></script>
-    <!-- slimscroll js -->
-    <script src="{{ asset('assets/vendor/slimscroll/jquery.slimscroll.js') }}"></script>
-    <!-- chart chartist js -->
-    <script src="{{ asset('assets/vendor/charts/chartist-bundle/chartist.min.js') }}"></script>
-    <script src="{{ asset('assets/vendor/charts/chartist-bundle/Chartistjs.js') }}"></script>
-    <script src="{{ asset('assets/vendor/charts/chartist-bundle/chartist-plugin-threshold.js') }}"></script>
-    <!-- chart C3 js -->
-    <script src="{{ asset('assets/vendor/charts/c3charts/c3.min.js') }}"></script>
-    <script src="{{ asset('assets/vendor/charts/c3charts/d3-5.4.0.min.js') }}"></script>
-    <!-- chartjs js -->
-    <script src="{{ asset('assets/vendor/charts/charts-bundle/Chart.bundle.js') }}"></script>
-    <script src="{{ asset('assets/vendor/charts/charts-bundle/chartjs.js') }}"></script>
-    <!-- sparkline js -->
-    <script src="{{ asset('assets/vendor/charts/sparkline/jquery.sparkline.js') }}"></script>
-    <!-- dashboard finance js -->
-    <script src="{{ asset('assets/libs/js/dashboard-finance.js') }}"></script>
-    <!-- main js -->
-    <script src="{{ asset('assets/libs/js/main-js.js') }}"></script>
-    <!-- gauge js -->
-    <script src="{{ asset('assets/vendor/gauge/gauge.min.js') }}"></script>
-    <!-- morris js -->
-    <script src="{{ asset('assets/vendor/charts/morris-bundle/raphael.min.js') }}"></script>
-    <script src="{{ asset('assets/vendor/charts/morris-bundle/morris.js') }}"></script>
-    <script src="{{ asset('assets/vendor/charts/morris-bundle/morrisjs.html') }}"></script>
-    <!-- daterangepicker js -->
-    <script src="../../../../cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
-    <script src="../../../../cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
-    {{--  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script> --}}
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-    <script>
-        $(function() {
-            $('input[name="daterange"]').daterangepicker({
-                opens: 'left'
-            }, function(start, end, label) {
-                console.log("A new date selection was made: " + start.format('YYYY-MM-DD') + ' to ' + end.format('YYYY-MM-DD'));
+    <!-- ============================================================== -->
+    <!-- wrapper  -->
+    <!-- ============================================================== -->
+    <div class="dashboard-wrapper">
+        <div class="dashboard-finance">
+            <div class="container-fluid dashboard-content">
+                <!-- ============================================================== -->
+                <!-- pageheader  -->
+                <!-- ============================================================== -->
+                <div class="row">
+                    <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                        <div class="page-header">
+                            {{-- <h3 class="mb-2">{{ $page_title }} </h3> --}}
+                            <p class="pageheader-text">Proin placerat ante duiullam scelerisque a velit ac porta, fusce sit amet vestibulum mi. Morbi lobortis pulvinar quam.</p>
+                            <div class="page-breadcrumb">
+                                <nav aria-label="breadcrumb">
+                                    <ol class="breadcrumb">
+                                        <li class="breadcrumb-item"><a href="#" class="breadcrumb-link">Dashboard</a></li>
+                                        {{-- <li class="breadcrumb-item active" aria-current="page">{{ $page_title }}</li> --}}
+                                    </ol>
+                                </nav>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- ============================================================== -->
+                <!-- end pageheader  -->
+                <!-- ============================================================== -->
+                <div class="row">
+                    <div class="col-xl-12 mx-auto col-lg-12 col-md-12 col-sm-12 col-12">
+                        <div class="card">
+                            <h5 class="card-header">Basic Table</h5>
+                            <div class="card-body">
+                                <table class="table table-bordered table-striped">
+                                    <thead>
+                                        <tr class="text-center">
+                                            <th scope="col">#</th>
+                                            <th scope="col">Title</th>
+                                            <th scope="col">Discription</th>
+                                            <th scope="col">Status</th>
+                                            {{-- <th scope="col">Delete</th> --}}
+                                            <th scope="col">Action</th>
+
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                       
+                                        @foreach($plans as $plan)
+                                        @foreach($plan['meals'] as $meal)
+                                        <tr class="text-center">
+                                            <th scope="row">{{ $meal['id'] }}</th>
+                                            <th scope="row">{{ $meal['title'] }}</th>
+                                            <td>{{ $meal['discription']}}</td>
+                                            {{-- <td>{{ $plan->discription }}</td> --}}
+                                            {{-- <td>{{ $meal }}</td> --}}
+                                           
+                                            <td>{{ $meal['status'] }}</td>
+                                            {{-- <td><a class=" btn btn-primary text-center dropdown-item" data-action="delete_record"  href="{{url('/admin/delete_plan/'.$plan['id']) }}" data-url="" >Delete</a></td> --}}
+                                            <td>
+                                             <div class="dropdown text-center">
+                                                <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                    Action
+                                                </button>
+                                                <div class="dropdown-menu text-center" aria-labelledby="dropdownMenuButton">
+                                                    @if($meal['status'] == 'Pending' || $meal['status'] == 'Cancel')
+                                                    <a class="dropdown-item" href="{{url('/admin/approve_meal/'.$meal['id'])}}"> Approve </a>
+                                                    @endif
+                                                    @if($meal['status'] == 'Approve')
+                                                    <a class="dropdown-item" href="{{url('/admin/cancel_meal/'.$meal['id'])}}"> Cancel </a>
+                                                    @endif
+
+                                                </div>
+                                            </div>
+                                        </tr>
+                                        @endforeach
+                                        @endforeach
+
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ============================================================== -->
+                <!-- end footer -->
+                <!-- ============================================================== -->
+            </div>
+            <!-- ============================================================== -->
+            <!-- end wrapper  -->
+            <!-- ============================================================== -->
+        </div>
+        <!-- ============================================================== -->
+        <!-- end main wrapper  -->
+        <!-- ============================================================== -->
+        <!-- jquery 3.3.1  -->
+        <script src="{{ asset('assets/vendor/jquery/jquery-3.3.1.min.js') }}"></script>
+        <!-- bootstap bundle js -->
+        <script src="{{ asset('assets/vendor/bootstrap/js/bootstrap.bundle.js') }}"></script>
+        <!-- slimscroll js -->
+        <script src="{{ asset('assets/vendor/slimscroll/jquery.slimscroll.js') }}"></script>
+        <!-- chart chartist js -->
+        <script src="{{ asset('assets/vendor/charts/chartist-bundle/chartist.min.js') }}"></script>
+        <script src="{{ asset('assets/vendor/charts/chartist-bundle/Chartistjs.js') }}"></script>
+        <script src="{{ asset('assets/vendor/charts/chartist-bundle/chartist-plugin-threshold.js') }}"></script>
+        <!-- chart C3 js -->
+        <script src="{{ asset('assets/vendor/charts/c3charts/c3.min.js') }}"></script>
+        <script src="{{ asset('assets/vendor/charts/c3charts/d3-5.4.0.min.js') }}"></script>
+        <!-- chartjs js -->
+        <script src="{{ asset('assets/vendor/charts/charts-bundle/Chart.bundle.js') }}"></script>
+        <script src="{{ asset('assets/vendor/charts/charts-bundle/chartjs.js') }}"></script>
+        <!-- sparkline js -->
+        <script src="{{ asset('assets/vendor/charts/sparkline/jquery.sparkline.js') }}"></script>
+        <!-- dashboard finance js -->
+        <script src="{{ asset('assets/libs/js/dashboard-finance.js') }}"></script>
+        <!-- main js -->
+        <script src="{{ asset('assets/libs/js/main-js.js') }}"></script>
+        <!-- gauge js -->
+        <script src="{{ asset('assets/vendor/gauge/gauge.min.js') }}"></script>
+        <!-- morris js -->
+        <script src="{{ asset('assets/vendor/charts/morris-bundle/raphael.min.js') }}"></script>
+        <script src="{{ asset('assets/vendor/charts/morris-bundle/morris.js') }}"></script>
+        <script src="{{ asset('assets/vendor/charts/morris-bundle/morrisjs.html') }}"></script>
+        <!-- daterangepicker js -->
+        <script src="../../../../cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
+        <script src="../../../../cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
+        {{--  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script> --}}
+        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+        <script>
+            $(function() {
+                $('input[name="daterange"]').daterangepicker({
+                    opens: 'left'
+                }, function(start, end, label) {
+                    console.log("A new date selection was made: " + start.format('YYYY-MM-DD') + ' to ' + end.format('YYYY-MM-DD'));
+                });
             });
-        });
-    </script>
-</body>
-</html>
+        </script>
+    </body>
+    </html>

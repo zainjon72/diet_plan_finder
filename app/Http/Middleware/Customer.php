@@ -3,6 +3,7 @@
 namespace App\Http\Middleware;
 
 use Closure;
+use Auth;
 
 class Customer
 {
@@ -19,7 +20,7 @@ class Customer
            if(Auth::user()->role == 'customer'){
             return $next($request);
         }else{
-            return redirect(url('/home'));
+            return redirect(url('/login'));
         }
     }
 }

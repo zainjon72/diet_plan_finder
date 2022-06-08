@@ -239,6 +239,7 @@
                                     </tr>
                                 </thead>
                                 <tbody>
+                                    @if(!empty($health_conditions) && $health_conditions->count())
                                     @foreach($health_conditions as $health_condition)
                                     <tr>
                                         <th scope="row">{{ $health_condition->id }}</th>
@@ -259,9 +260,12 @@
 
                               </tr>
                               @endforeach
-
+                              @endif
                           </tbody>
                       </table>
+                      <div class="link text-left" style="float: right;margin-top: 20px;">
+                                    {!! $health_conditions->links() !!}
+                                </div>
                   </div>
               </div>
           </div>

@@ -476,6 +476,7 @@ body{
     animation-iteration-count: 1;
 }
 #biof-loading{
+    display: none !important;
     background-color: #F2F1EF;
     height: 100%;
     width: 100%;
@@ -6907,13 +6908,13 @@ body.open-overlay #overlay{
     height: 1072px;
 }
 .slider-opt03__layout01.slide-bgr-mode03-01 .media{
-     background-image: url('../images/home-01/main-slide-01.jpg');
+     background-image: url('https://images.pexels.com/photos/1640777/pexels-photo-1640777.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1');
  }
 .slider-opt03__layout01.slide-bgr-mode03-02 .media{
-    background-image: url('../images/home-01/main-slide-02.jpg');
+    background-image: url('https://images.pexels.com/photos/235294/pexels-photo-235294.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1');
 }
 .slider-opt03__layout01.slide-bgr-mode03-03 .media{
-    background-image: url('../images/home-01/main-slide-03.jpg');
+    background-image: url('https://images.pexels.com/photos/1414651/pexels-photo-1414651.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1');
 }
 .slider-opt03__layout02 .media{
     z-index: 10;

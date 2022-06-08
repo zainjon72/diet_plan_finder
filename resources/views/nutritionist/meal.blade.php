@@ -230,6 +230,7 @@
                                             </tr>
                                         </thead>
                                         <tbody>
+                                             @if(!empty($meals) && $meals->count())
                                             @foreach($meals as $meal)
                                             <tr>
                                                 <th scope="row">{{ $meal->id }}</th>
@@ -256,9 +257,12 @@
 
                                             </tr>
                                             @endforeach
-
+                                            @endif
                                         </tbody>
                                     </table>
+                                    <div class="link text-left" style="float: right;margin-top: 20px;">
+                                    {!! $meals->links() !!}
+                                </div>
                                 </div>
                             </div>
                         </div>

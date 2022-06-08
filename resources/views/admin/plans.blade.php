@@ -227,10 +227,11 @@
                                         </tr>
                                     </thead>
                                     <tbody>
+                                         @if(!empty($plans) && $plans->count())
                                         @foreach($plans as $plan)
                                         <tr class="text-center">
                                             <th scope="row">{{ $plan->id }}</th>
-                                            <td>{{ $plan->title }}</td>
+                                            <td><a href="{{ url('/admin/meal/'.$plan->id) }}">{{ $plan->title }}</a></td>
                                             <td>{{ $plan->discription }}</td>
                                             <td>{{ $plan->price }}</td>
                                             <td>{{ $plan->status }}</td>
@@ -242,20 +243,25 @@
                                                 </button>
                                                 <div class="dropdown-menu text-center" aria-labelledby="dropdownMenuButton">
                                                     {{-- <a class="dropdown-item" data-action="delete_record"  href="{{url('/admin/delete_user/'.$plan['id']) }}" data-url="" >Delete</a> --}} 
+                                                   
+                                                    @if($plan->status == 'Pending')
                                                     <a class="dropdown-item" href="{{url('/admin/approve_plan/'.$plan['id'])}}"> Approve </a>
-                                                    <a class="dropdown-item" href="{{url('/admin/pending_plan/'.$plan['id'])}}"> Pending </a>
-                                            {{--         <a class="dropdown-item" href="{{url('/admin/edit_plan_admin/'.$plan['id'])}}"> Change Roll to Admin </a>
-                                                    <a class="dropdown-item" href="{{url('/admin/edit_plan_nutritionist/'.$plan['id'])}}"> Change Roll to Nutritionist </a> --}}
+                                                    @endif
+                                                       @if($plan->status == 'Cancel')
+                                                    <a class="dropdown-item" href="{{url('/admin/delete_plan/'.$plan['id'])}}"> Delete </a>
+                                                    @endif
+                                                    @if($plan->status == 'Pending' || $plan->status == 'Approve')
+                                                    <a class="dropdown-item" href="{{url('/admin/cancel_plan/'.$plan['id'])}}"> Cancel </a>
+                                                    @endif
                                                 </div>
-                                            </div>
-                                            {{--  <a class=" btn btn-primary text-center dropdown-item" href="{{url('/admin/approve_plan/'.$plan['id'])}}"> Approve </a> --}}
-
-
-                                        </tr>
+                                            </tr>
                                         @endforeach
-
+                                          @endif
                                     </tbody>
                                 </table>
+                                  <div class="link text-left" style="float: right;margin-top: 20px;">
+                                    {!! $plans->links() !!}
+                                </div>
                             </div>
                         </div>
                     </div>

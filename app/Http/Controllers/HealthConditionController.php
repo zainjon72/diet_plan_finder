@@ -14,8 +14,9 @@ class HealthConditionController extends Controller
 	private $plural   =  "Health Conditions";
 	private $view     =  "admin.health";
 	private $action   =  "/admin/health";
+	private $perpage = 5;
 	public function index(){
-		$health_conditions = HealthCondition::all();
+		$health_conditions = HealthCondition::paginate($this->perpage);
 		$data   = array(
 			"page_title"=>$this->plural." List",
 			"page_heading"=>$this->plural.' List',

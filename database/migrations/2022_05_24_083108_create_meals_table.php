@@ -18,6 +18,7 @@ class CreateMealsTable extends Migration
             $table->string('title')->nullable();
             $table->string('discription')->nullable();
             $table->string('image')->nullable();
+            $table->string('status')->default('Pending');
             $table->foreignId('created_by')->nullable()->constrained('users')->onDelete('cascade')->onUpdate('cascade');
           
             $table->timestamps();

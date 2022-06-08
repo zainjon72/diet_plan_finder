@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Meal;
 use App\HealthCondition;
+use App\DietPlan;
 use Auth;
 use Illuminate\Support\Facades\Storage;
 class MealController extends Controller
@@ -15,8 +16,9 @@ class MealController extends Controller
 	private $plural   =  "Meals";
 	private $view     =  "nutritionist.meal";
 	private $action   =  "/nutritionist/meal";
+	private $perpage = 5;
 	public function index(){
-		$meal = Meal::all();
+		$meal = Meal::paginate($this->perpage);
 		$data = [];
 		
 		$data   = array(
@@ -87,8 +89,21 @@ class MealController extends Controller
 		$data['id'] = $id;
 		return view('nutritionist.edit_meal', $data);
 	}
+
+	
+	public function approve($id){
+		$meal = Meal::find($id);
+		$data = ['status' => 'Approve'];
+		$meal->update($data);
+		return redirect()->back();
+	}
 	public function delete($id){
 		Meal::destroy($id);
 		return redirect($this->action);
+	}
+	public function cancel_meal($id){
+		$data = ['status' => 'Cancel'];
+		Meal::find($id)->update($data);
+		return redirect()->back();
 	}
 }
