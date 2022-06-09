@@ -18,15 +18,16 @@ class DietPlanController extends Controller
 	private $plural   =  "Diet Plans";
 	private $view     =  "Nutritionist.home";
 	private $action   =  "/nutritionist/home";
-  private $perpage = 5;
+    private $perpage = 5;
+
     public function index(){
       $plans = DietPlan::paginate(5);
-    	$data = [];
-    	$data   = array(
-           "page_title"=>$this->plural." ",
-           "page_heading"=>$this->plural.' ',
-           "breadcrumbs"=>array("#"=>$this->plural." ")
-       );
+      $data = [];
+      $data   = array(
+       "page_title"=>$this->plural." ",
+       "page_heading"=>$this->plural.' ',
+       "breadcrumbs"=>array("#"=>$this->plural." ")
+   );
       $data['plans'] = $plans;
       return view($this->view, $data);
   }
@@ -58,7 +59,7 @@ $created = $obj->create($data);
 $meal = $request->meals;
 foreach ($meal as $meal_id) {
     		# code...
- $created->meals()->attach($meal_id);
+    $created->meals()->attach($meal_id);
 
 }
 return redirect($this->action);

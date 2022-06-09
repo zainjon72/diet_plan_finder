@@ -15,8 +15,10 @@ class CreateCartsTable extends Migration
     {
         Schema::create('carts', function (Blueprint $table) {
             $table->id();
-               $table->foreignId('user_id')->constrained('users')->onDelete('cascade')->onUpdate('cascade');
-           $table->foreignId('diet_plan_id')->constrained('diet_plans')->onDelete('cascade')->onUpdate('cascade');
+            $table->string('total');
+            $table->foreignId('user_id')->constrained('users')->onDelete('cascade')->onUpdate('cascade');
+            $table->foreignId('order_id')->constrained('orders')->onDelete('cascade')->onUpdate('cascade');
+            $table->foreignId('diet_plan_id')->constrained('diet_plans')->onDelete('cascade')->onUpdate('cascade');
             $table->timestamps();
         });
     }

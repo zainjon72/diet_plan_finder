@@ -60,6 +60,7 @@ Route::middleware(['auth', 'customer'])->group(function(){
 Route::get('/cart', 'CartItemController@index');
 Route::post('/cart', 'CartItemController@create');
 Route::get('/checkout', 'CartItemController@checkout');
+Route::post('/checkout', 'CartItemController@checkout');
 Route::get('/delete_cart', 'CartItemController@delete_all');
 });
 
