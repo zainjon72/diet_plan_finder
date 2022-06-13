@@ -5,6 +5,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="csrf-token" content="{{ csrf_token() }}">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>Biolife - Organic Food</title>
 	<link href="https://fonts.googleapis.com/css?family=Cairo:400,600,700&amp;display=swap" rel="stylesheet">
@@ -19,6 +20,35 @@
 	<link rel="stylesheet" href="{{ asset('assets2/css/slick.min.css') }}">
 	<link rel="stylesheet" href="{{ asset('assets2/css/style.css') }}">
 	<link rel="stylesheet" href="{{ asset('assets2/css/main-color01.css') }}">
+	<style>
+
+		.badge {
+			padding-left: 9px;
+			padding-right: 9px;
+			-webkit-border-radius: 9px;
+			-moz-border-radius: 9px;
+			border-radius: 9px;
+		}
+
+		.label-warning[href],
+		.badge-warning[href] {
+			background-color: #c67605;
+		}
+		#lblCartCount {
+			font-size: 12px;
+			background: #ff0000;
+			color: #fff;
+			padding: 0 5px;
+			vertical-align: top;
+			margin-left: -10px; 
+		}
+		.nice-select .current{
+			padding: 0px !important;
+		}
+		.form-control{
+			display: block !important;
+		}
+	</style>
 </head>
 <body class="biolife-body">
 
@@ -49,7 +79,7 @@
 				</div>
 				<div class="top-bar right">
 					<ul class="horizontal-menu">
-						<li><a href="login.html" class="login-link"><i class="biolife-icon icon-login"></i>My Account</a></li>
+						<li><a href="{{ url('/profile') }}" class="login-link"><i class="biolife-icon icon-login"></i>My Account</a></li>
 						<li>
 							{{-- @guest --}}
 							@if(!Auth::check())
@@ -110,32 +140,15 @@
 							<li class="menu-item"><a href="{{ url('/home') }}">Home</a></li>
 							<li class="menu-item menu-item-has-children has-megamenu">
 								<a href="{{ url('/plan') }}" class="menu-name" data-title="Shop" >Plans</a>
-								<div class="wrap-megamenu lg-width-900 md-full-width">
-									<div class="mega-content">
-										{{-- foreach for plans --}}
-										@foreach($health as $health)
-										<div class="col-lg-3 col-md-3 col-xs-12 md-margin-bottom-0 xs-margin-bottom-25">
-											<div class="wrap-custom-menu vertical-menu">
-												<h4 class="menu-title">{{ $health->title }}</h4>
-												<ul class="menu">
-													@foreach($health->dietplans as $diet_plan)
-													<li><a href="{{ url('/plan') }}">{{ $diet_plan->title }}</a></li>
-													@endforeach
-												</ul>
-											</div>
-										</div>
-										@endforeach
-
-									</div>
-								</div>
+								
 							</li>
-							<li class="menu-item"><a href="contact.html">Contact</a></li>
+							<li class="menu-item"><a href="#">Contact</a></li>
 						</ul>
 					</div>
 				</div>
 				<div class="col-lg-3 col-md-2 col-sm-12 col-xs-12">
 					<div class="logo-for-mobile hidden-lg hidden-md">
-						<a href="home-01.html" class="biolife-logo"><img src="assets2/images/logo-biolife-1.png" alt="biolife logo" width="135" height="36"></a>
+						<a href="{{ url('/home') }}" class="biolife-logo"><img src="{{asset('assets2/images/logo-biolife-1.png')}}" alt="biolife logo" width="135" height="36"></a>
 					</div>
 					<div class="biolife-cart-info center-align-mobile">
 						<div class="mobile-search">
@@ -165,28 +178,31 @@
 								<div class="icon-contain">
 									<div class="span-index">
 										<i class="icon-cart-mini biolife-icon"></i>
-										<span class="qty">8</span>
-										<span class="sub-total"></span>
-									</div>
-									<a href="{{ url('/cart') }}" class="btn-to-cart">Go</a>
+										<span class='badge badge-warning' id='lblCartCount'> @php
+										// echo count($cart_items);
+									@endphp</span>
+									<span class="qty">8</span>
+									<span class="sub-total"></span>
 								</div>
+								<a href="{{ url('/cart') }}" class="btn-to-cart">Go</a>
 							</div>
 						</div>
-						<div class="mobile-menu-toggle">
-							<a class="btn-toggle" data-object="open-mobile-menu" href="javascript:void(0)">
-								<span></span>
-								<span></span>
-								<span></span>
-							</a>
-						</div>
+					</div>
+					<div class="mobile-menu-toggle">
+						<a class="btn-toggle" data-object="open-mobile-menu" href="javascript:void(0)">
+							<span></span>
+							<span></span>
+							<span></span>
+						</a>
 					</div>
 				</div>
 			</div>
 		</div>
 	</div>
+</div>
 </header>
 <main class="pb-4">
-    @yield('content')
+	@yield('content')
 </main>
 <footer id="footer" class="footer layout-01">
 	<div class="footer-content background-footer-03">
@@ -206,7 +222,7 @@
 						<div class="contact-info-block footer-layout simple-info">
 							<h4 class="title">Contact info</h4>
 							<div class="info-item">
-								<img src="assets2/images/location-icon.png" width="22" height="26" alt="" class="icon">
+								<img src="{{ asset('assets2/images/location-icon.png') }}" width="22" height="26" alt="" class="icon">
 								<p class="desc">7563 St. Vicent Place, Glasgow, Greater Newyork NH7689, UK </p>
 							</div>
 						</div>
@@ -301,13 +317,13 @@
 					</div>
 					<div class="col-lg-6 col-md-6 col-sm-12">
 						<div class="payment-methods">
-							<ul>
+							{{-- <ul>
 								<li><a href="#" class="payment-link"><img src="assets2/images/card1.jpg" width="51" height="36" alt=""></a></li>
 								<li><a href="#" class="payment-link"><img src="assets2/images/card2.jpg" width="51" height="36" alt=""></a></li>
 								<li><a href="#" class="payment-link"><img src="assets2/images/card3.jpg" width="51" height="36" alt=""></a></li>
 								<li><a href="#" class="payment-link"><img src="assets2/images/card4.jpg" width="51" height="36" alt=""></a></li>
 								<li><a href="#" class="payment-link"><img src="assets2/images/card5.jpg" width="51" height="36" alt=""></a></li>
-							</ul>
+							</ul> --}}
 						</div>
 					</div>
 				</div>
@@ -357,9 +373,32 @@
 		<div class="glb-item my-account">
 			<b class="title">My Account</b>
 			<ul class="list">
-				<li class="list-item"><a href="#">Login/register</a></li>
+					<li>
+							{{-- @guest --}}
+							@if(!Auth::check())
+							<li class="nav-item">
+								<a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
+							</li>
+							@if (Route::has('register'))
+							<li class="nav-item">
+								<a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
+							</li>
+							@endif
+							@endif
+						</li>
+				<li class="list-item"><a href="{{ url('/logout') }}">	@if(Auth::check())
+						<li class="horz-menu-item currency">
+							<a class="dropdown-item" href="{{ route('logout') }}"
+							onclick="event.preventDefault();
+							document.getElementById('logout-form').submit();"><i class="fa fa-sign-out mr-2"></i>
+							{{ __('Logout') }}
+						</a>
+						<form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+							@csrf
+						</form> 
+					</li> 
+					@endif</a></li>
 				<li class="list-item"><a href="#">Wishlist <span class="index">(8)</span></a></li>
-				<li class="list-item"><a href="#">Checkout</a></li>
 			</ul>
 		</div>
          {{--    <div class="glb-item currency">
@@ -373,12 +412,12 @@
             </div> --}}
             <div class="glb-item languages">
             	<b class="title">Language</b>
-            	<ul class="list inline">
+            	{{-- <ul class="list inline">
             		<li class="list-item"><a href="#"><img src="assets2/images/languages/us.jpg" alt="flag" width="24" height="18"></a></li>
             		<li class="list-item"><a href="#"><img src="assets2/images/languages/fr.jpg" alt="flag" width="24" height="18"></a></li>
             		<li class="list-item"><a href="#"><img src="assets2/images/languages/ger.jpg" alt="flag" width="24" height="18"></a></li>
             		<li class="list-item"><a href="#"><img src="assets2/images/languages/jap.jpg" alt="flag" width="24" height="18"></a></li>
-            	</ul>
+            	</ul> --}}
             </div>
         </div>
     </div>
@@ -389,7 +428,7 @@
     		<a href="#" class="btn-close-quickview" data-object="open-quickview-block"><span class="biolife-icon icon-close-menu"></span></a>
     		<div class="biolife-quickview-inner">
     			<div class="media">
-    				<ul class="biolife-carousel quickview-for" data-slick='{"arrows":false,"dots":false,"slidesMargin":30,"slidesToShow":1,"slidesToScroll":1,"fade":true,"asNavFor":".quickview-nav"}'>
+    				{{-- <ul class="biolife-carousel quickview-for" data-slick='{"arrows":false,"dots":false,"slidesMargin":30,"slidesToShow":1,"slidesToScroll":1,"fade":true,"asNavFor":".quickview-nav"}'>
     					<li><img src="assets2/images/details-product/detail_01.jpg" alt="" width="500" height="500"></li>
     					<li><img src="assets2/images/details-product/detail_02.jpg" alt="" width="500" height="500"></li>
     					<li><img src="assets2/images/details-product/detail_03.jpg" alt="" width="500" height="500"></li>
@@ -397,8 +436,8 @@
     					<li><img src="assets2/images/details-product/detail_05.jpg" alt="" width="500" height="500"></li>
     					<li><img src="assets2/images/details-product/detail_06.jpg" alt="" width="500" height="500"></li>
     					<li><img src="assets2/images/details-product/detail_07.jpg" alt="" width="500" height="500"></li>
-    				</ul>
-    				<ul class="biolife-carousel quickview-nav" data-slick='{"arrows":true,"dots":false,"centerMode":false,"focusOnSelect":true,"slidesMargin":10,"slidesToShow":3,"slidesToScroll":1,"asNavFor":".quickview-for"}'>
+    				</ul> --}}
+    				{{-- <ul class="biolife-carousel quickview-nav" data-slick='{"arrows":true,"dots":false,"centerMode":false,"focusOnSelect":true,"slidesMargin":10,"slidesToShow":3,"slidesToScroll":1,"asNavFor":".quickview-for"}'>
     					<li><img src="assets2/images/details-product/thumb_01.jpg" alt="" width="88" height="88"></li>
     					<li><img src="assets2/images/details-product/thumb_02.jpg" alt="" width="88" height="88"></li>
     					<li><img src="assets2/images/details-product/thumb_03.jpg" alt="" width="88" height="88"></li>
@@ -406,7 +445,7 @@
     					<li><img src="assets2/images/details-product/thumb_05.jpg" alt="" width="88" height="88"></li>
     					<li><img src="assets2/images/details-product/thumb_06.jpg" alt="" width="88" height="88"></li>
     					<li><img src="assets2/images/details-product/thumb_07.jpg" alt="" width="88" height="88"></li>
-    				</ul>
+    				</ul> --}}
     			</div>
     			<div class="product-attribute">
     				<h4 class="title"><a href="#" class="pr-name">National Fresh Fruit</a></h4>
@@ -483,6 +522,7 @@
     <script src="{{ asset('assets2/js/slick.min.js') }}"></script>
     <script src="{{ asset('assets2/js/biolife.framework.js') }}"></script>
     <script src="{{ asset('assets2/js/functions.js') }}"></script>
+    @yield('scripts')
 </body>
 
 </html>

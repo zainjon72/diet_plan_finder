@@ -12,7 +12,7 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
-
+//
 // Route::get('/', function () {
 // 	return view('welcome');
 // });
@@ -57,11 +57,16 @@ Route::prefix('nutritionist')->middleware('nutritionist')->group(function(){
 });
 
 Route::middleware(['auth', 'customer'])->group(function(){
-Route::get('/cart', 'CartItemController@index');
-Route::post('/cart', 'CartItemController@create');
-Route::get('/checkout', 'CartItemController@checkout');
-Route::post('/checkout', 'CartItemController@checkout');
-Route::get('/delete_cart', 'CartItemController@delete_all');
+	Route::get('/cart', 'CartItemController@index');
+	Route::post('/cart', 'CartItemController@create');
+	Route::get('/checkout', 'CartItemController@checkout');
+	Route::post('/checkout', 'CartItemController@checkout');
+	Route::get('/delete_cart', 'CartItemController@delete_all');
+	Route::get('/profile', 'UserController@profile');
+	Route::get('stripe', 'StripePaymentController@stripe');
+	Route::post('stripe', 'StripePaymentController@stripePost')->name('stripe.post');
+	Route::get('/my-plan', 'MyPlansController@index');
+	Route::post('/my-plan', 'MyPlansController@my_plan');
 });
 
 Route::get('/', 'HomeController@index')->name('home');

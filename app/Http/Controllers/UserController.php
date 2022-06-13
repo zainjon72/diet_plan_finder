@@ -76,5 +76,8 @@ public function plan(){
     $data['plans'] = $plans;
     return view('admin.plans', $data);
 }
+public function profile(){
+  return view('profile');
+}
 
 }

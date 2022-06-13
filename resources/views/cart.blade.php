@@ -80,7 +80,7 @@
                                         <tr class="cart_item wrap-buttons">
                                             <td class="wrap-btn-control" colspan="4">
                                                 <a class="btn back-to-shop" href="{{ url('/plan') }}">Back to Shop</a>
-                                                <button class="btn btn-update" type="submit" disabled>update</button>
+                                               {{--  <button class="btn btn-update" type="submit" disabled>update</button> --}}
                                                 <a href="{{ url('/delete_cart') }}" class="btn btn-clear" type="reset">clear all</a>
                                             </td>
                                         </tr>
@@ -96,7 +96,7 @@
                                 </div>
                                 <div class="subtotal-line">
                                     <b class="stt-name">Shipping</b>
-                                    <span class="stt-price">£0.00</span>
+                                    <span class="stt-price">$0.00</span>
                                 </div>
                                 <div class="tax-fee">
                                     <p class="title">Est. Taxes & Fees</p>

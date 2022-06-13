@@ -11,8 +11,8 @@
         <nav class="biolife-nav">
             <ul>
                 <li class="nav-item"><a href="index-2.html" class="permal-link">Home</a></li>
-                <li class="nav-item"><a href="#" class="permal-link">Natural Organic</a></li>
-                <li class="nav-item"><span class="current-page">Fresh Fruit</span></li>
+                <li class="nav-item"><a href="#" class="permal-link">Diet Plans</a></li>
+                
             </ul>
         </nav>
     </div>
@@ -36,7 +36,7 @@
                                             <a href="#" class="link-to-product">
                                                 <img src="{{ url('/storage/app/public/'.$plan->image) }}" alt="Vegetables" width="270" height="270" class="product-thumnail">
                                             </a>
-                                            <a class="lookup btn_call_quickview" href="#"><i class="biolife-icon icon-search"></i></a>
+                                            {{-- <a class="lookup btn_call_quickview" href="#"><i class="biolife-icon icon-search"></i></a> --}}
                                         </div>
                                         <div class="info">
                                             <b class="categories">Diet Plans</b>
