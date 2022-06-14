@@ -270,39 +270,36 @@
 							</li>
 						</ul>
 					</div>
-					<div class="tab-content">
-						<div id="tab01_1st" class="tab-contain active">
-							<ul class="products-list biolife-carousel nav-center-02 nav-none-on-mobile eq-height-contain" data-slick='{"rows":2 ,"arrows":true,"dots":false,"infinite":true,"speed":400,"slidesMargin":10,"slidesToShow":4, "responsive":[{"breakpoint":1200, "settings":{ "slidesToShow": 4}},{"breakpoint":992, "settings":{ "slidesToShow": 3, "slidesMargin": 30}},{"breakpoint":768, "settings":{ "slidesToShow": 2, "slidesMargin": 15}}]}'>
+					
+					<div class="shell">
+						<div class="container">
+							<div class="row">
 								@foreach($plans as $plan)
-								<li class="product-item">
-									<div class="contain-product layout-default">
-										<div class="product-thumb">
-											<a href="#" class="link-to-product">
-												<img src="{{ url('/storage/app/public/'.$plan->image) }}" alt="Vegetables" width="270" height="270" class="product-thumnail">
-											</a>
-											<a class="lookup btn_call_quickview" href="#"><i class="biolife-icon icon-search"></i></a>
-										</div>
-										<div class="info">
-											<b class="categories">Diet Plan</b>
-											<h4 class="product-title"><a href="#" class="pr-name">{{ $plan->title }}</a></h4>
-											<div class="price ">
-												<ins><span class="price-amount"><span class="currencySymbol">$</span>{{ $plan->price }}</span></ins>
+								<div class="col-md-3 p_card">
+									<div class="wsk-cp-product">
+										<div class="wsk-cp-img"><img src="{{ url('/storage/app/public/'.$plan->image) }}" alt="Product" class="img-responsive" /></div>
+										<div class="wsk-cp-text">
+											<div class="category">
+												<span>Diet Plan</span>
 											</div>
-											<div class="slide-down-box">
-												<p class="message">{{ $plan->discription }}</p>
-												<div class="buttons">
-													<a href="#" class="btn wishlist-btn"><i class="fa fa-heart" aria-hidden="true"></i></a>
-													<a href="{{ url('/plan/'.$plan->id) }}" class="btn add-to-cart-btn"><i class="fa fa-cart-arrow-down" aria-hidden="true"></i>View</a>
-													<a href="#" class="btn compare-btn"><i class="fa fa-random" aria-hidden="true"></i></a>
-												</div>
+											<div class="title-product">
+												<h3>{{ $plan->title }} </h3>
+											</div>
+											<div class="title-product">
+												<h5>{{ $plan->discription }} </h5>
+											</div>
+											<div class="card-footer">
+												{{-- <div class="wcf-left"><span class="price">Rp500.000</span></div> --}}
+												<div class="wcf-right view"><a href="{{ url('/plan/'.$plan->id) }}" class="text-center btn btn-success">View</a></div>
 											</div>
 										</div>
 									</div>
-								</li>
+								</div>
 								@endforeach
-							</ul>
+							</div>
 						</div>
 					</div>
+					
 				</div>
 			</div>
 		</div>

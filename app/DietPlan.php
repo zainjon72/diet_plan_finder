@@ -21,5 +21,8 @@ class DietPlan extends Model
      public function cartitem(){
         return $this->hasMany(CartItem::class);
     }
+      public function orderitems(){
+        return $this->belongsTo(OrderItems::class,'diet_plan_id');
+    }
 
 }

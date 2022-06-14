@@ -13,8 +13,8 @@ $factory->define(DietPlan::class, function (Faker $faker) {
     public function user(){
     	return $this->belongTo(User::class);
     } 
-    public function cart(){
-    	return $this->belongTo(Cart::class);
+    public function orderitems(){
+    	return $this->belongTo(OrderItems::class);
     }
 
 

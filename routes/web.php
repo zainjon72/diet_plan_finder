@@ -66,7 +66,9 @@ Route::middleware(['auth', 'customer'])->group(function(){
 	Route::get('stripe', 'StripePaymentController@stripe');
 	Route::post('stripe', 'StripePaymentController@stripePost')->name('stripe.post');
 	Route::get('/my-plan', 'MyPlansController@index');
-	Route::post('/my-plan', 'MyPlansController@my_plan');
+	// Route::post('/my-plan', 'MyPlansController@my_plan');
+	Route::get('/meal/{id}', 'MyPlansController@my_meal');
+	Route::get('/view_plan/{id}', 'MyPlansController@view_plans');
 });
 
 Route::get('/', 'HomeController@index')->name('home');

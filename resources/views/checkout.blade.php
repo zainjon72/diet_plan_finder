@@ -59,7 +59,6 @@
                                 <div class="form-group">
                                     @foreach($cart_items as $cart_item)
                                     @php
-// $total = [];
                                     $total[] = $cart_item->dietplans->price * $cart_item->quantity
                                     @endphp
                                     @endforeach

@@ -15,12 +15,12 @@ class CreateOrdersTable extends Migration
     {
         Schema::create('orders', function (Blueprint $table) {
             $table->id();
-            $table->string('payment_id');
             $table->string('name');
             $table->string('email');
             $table->string('address');
             $table->string('country');
             $table->string('state');
+            $table->string('payment_status')->default('pending');
             $table->foreignId('user_id')->constrained('users')->onDelete('cascade')->onUpdate('cascade');
             $table->timestamps();
         });

@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\CartItem;
-use App\Cart;
+use App\OrderItems;
 use App\HealthCondition;
 use App\Checkout;
 use Auth;
@@ -78,7 +78,7 @@ class CartItemController extends Controller
                 'user_id' => $user_id,
                 'diet_plan_id' => $diet['diet_plan_id']
             ];
-                $obj = new Cart();
+                $obj = new OrderItems();
                 $created_cart = $obj->insert($data);
                 // dd($created_cart);
             }

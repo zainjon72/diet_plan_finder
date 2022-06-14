@@ -4,13 +4,14 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Cart extends Model
+class OrderItems extends Model
 {
     //
+    protected $table = 'order_items';
      public function user(){
     	return $this->belongTo(User::class);
     }
      public function dietplans(){
-    	return $this->hasMany(DietPlan::class);
+    	return $this->hasMany(DietPlan::class,'id','diet_plan_id');
     }
 }
