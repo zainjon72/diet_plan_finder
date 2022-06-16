@@ -6,9 +6,9 @@
   <span>Create With <i class="zmdi zmdi-favorite red"></i>  By: <strong>Deni Kurniawan</strong> From: <i><a href="http://blog.wingerdstok.com" class="wsk-btn">Wingerdstok</a></i></span>
 </div>
 
-
 <div class="shell">
   <div class="container">
+<a href="{{ url('/my-plan') }}" class="btn btn-success" style="margin-top: 100px; padding: 10px 25px">Back To Plans</a>
     <div class="row">
 		@foreach($meals as $meal)
       <div class="col-md-3 p_card">
@@ -26,7 +26,7 @@
             </div>
             <div class="card-footer">
               {{-- <div class="wcf-left"><span class="price">Rp500.000</span></div> --}}
-              <div class="wcf-right"><a href="{{ url('/view_plan/'.$meal['id']) }}" class="text-center btn btn-primary">View Plan</a></div>
+              {{-- <div class="wcf-right"><a href="{{ url('/view_plan/'.$meal['id']) }}" class="text-center btn btn-primary">View Plan</a></div> --}}
             </div>
           </div>
         </div>

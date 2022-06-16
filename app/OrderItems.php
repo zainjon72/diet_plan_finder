@@ -9,9 +9,12 @@ class OrderItems extends Model
     //
     protected $table = 'order_items';
      public function user(){
-    	return $this->belongTo(User::class);
+    	return $this->belongsTo(User::class);
     }
      public function dietplans(){
     	return $this->hasMany(DietPlan::class,'id','diet_plan_id');
+    }
+     public function feedbacks(){
+    	return $this->hasMany(Feedback::class);
     }
 }

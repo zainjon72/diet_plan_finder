@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\HealthCondition;
 use App\DietPlan;
 use App\OrderItems;
+use App\Feedback;
 use Auth;
 
 class HomeController extends Controller
@@ -51,21 +52,26 @@ class HomeController extends Controller
     public function plan($id){
     	$plan = DietPlan::with('meals')->find($id);
       $health = HealthCondition::with('dietplans')->get();
+      $feedback = Feedback::with('user')->where('plan_id', $plan['id'])->get();
       // dd($health);
-      $order_items = OrderItems::with('dietplans')->where('user_id', Auth::user()->id)->get()->toArray();
-      // dd($order_items->toArray());
+      $order_items = OrderItems::with('dietplans')->where('user_id', Auth::user()->id)->pluck('diet_plan_id')->toArray();
+      $order = OrderItems::with('dietplans')->where('user_id', Auth::user()->id)->where('diet_plan_id', $plan['id'])->pluck('id')->toArray();
+      // dd($order);
       foreach ($order_items as $a) {
         # code...
       }
     	$meal = $plan->meals;
-      $meal1 = $plan->meals->first();
         // dd($meal1);
     	$data = [];
     	$data['plan'] = $plan;
-      $data['meal_one'] = $meal1;
       $data['meals'] = $meal;
     	$data['health'] = $health;
       $data['order_items'] = $order_items;
+      $data['order'] = $order;
+      $data['feedbacks'] = $feedback;
     	return view('plan', $data);
+    }
+    public function thankyou(){
+      return view('thank_you');
     }
 }

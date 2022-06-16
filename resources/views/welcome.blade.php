@@ -90,17 +90,17 @@
 					<div class="tab-content">
 						<div id="tab02_1st" class="tab-contain active">
 							<ul class="products-list biolife-carousel nav-center-02 nav-none-on-mobile eq-height-contain" data-slick='{"rows":1 ,"arrows":true,"dots":false,"infinite":true,"speed":400,"slidesMargin":10,"slidesToShow":4, "responsive":[{"breakpoint":1200, "settings":{ "slidesToShow": 4}},{"breakpoint":992, "settings":{ "slidesToShow": 3, "slidesMargin":30}},{"breakpoint":768, "settings":{ "slidesToShow": 2, "rows":2, "slidesMargin":15}}]}'>
-								@foreach($lossplan as $plan)
+								@foreach($plans as $plan)
 								<li class="product-item">
 									<div class="contain-product layout-default">
 										<div class="product-thumb">
 											<a href="#" class="link-to-product">
 												<img src="{{ url('/storage/app/public/'.$plan->image) }}" alt="Vegetables" width="270" height="270" class="product-thumnail">
 											</a>
-											<a class="lookup btn_call_quickview" href="#"><i class="biolife-icon icon-search"></i></a>
+											<a class="lookup btn_call_quickview" href="#"></a>
 										</div>
 										<div class="info">
-											<b class="categories"></b>
+											{{-- <b class="categories">Vegetables</b> --}}
 											<h4 class="product-title"><a href="#" class="pr-name">{{ $plan->title }}</a></h4>
 											<div class="price ">
 												<ins><span class="price-amount"><span class="currencySymbol">$</span>{{ $plan->price }}</span></ins>
@@ -122,7 +122,7 @@
 						</div>
 						<div id="tab02_2nd" class="tab-contain ">
 							<ul class="products-list biolife-carousel nav-center-02 nav-none-on-mobile eq-height-contain" data-slick='{"rows":1 ,"arrows":true,"dots":false,"infinite":true,"speed":400,"slidesMargin":10,"slidesToShow":4, "responsive":[{"breakpoint":1200, "settings":{ "slidesToShow": 4}},{"breakpoint":992, "settings":{ "slidesToShow": 3, "slidesMargin":30}},{"breakpoint":768, "settings":{ "slidesToShow": 2, "rows":2, "slidesMargin":15}}]}'>
-								@foreach($gainplan as $plan)
+								@foreach($plans as $plan)
 								<li class="product-item">
 									<div class="contain-product layout-default">
 										<div class="product-thumb">
@@ -154,7 +154,7 @@
 						</div>
 						<div id="tab02_3rd" class="tab-contain ">
 							<ul class="products-list biolife-carousel nav-center-02 nav-none-on-mobile eq-height-contain" data-slick='{"rows":1 ,"arrows":true,"dots":false,"infinite":true,"speed":400,"slidesMargin":10,"slidesToShow":4, "responsive":[{"breakpoint":1200, "settings":{ "slidesToShow": 4}},{"breakpoint":992, "settings":{ "slidesToShow": 3, "slidesMargin":30}},{"breakpoint":768, "settings":{ "slidesToShow": 2, "rows":2, "slidesMargin":15}}]}'>
-								@foreach($highplan as $plan)
+								@foreach($plans as $plan)
 								<li class="product-item">
 									<div class="contain-product layout-default">
 										<div class="product-thumb">
@@ -290,7 +290,7 @@
 											</div>
 											<div class="card-footer">
 												{{-- <div class="wcf-left"><span class="price">Rp500.000</span></div> --}}
-												<div class="wcf-right view"><a href="{{ url('/plan/'.$plan->id) }}" class="text-center btn btn-success">View</a></div>
+												<div class="wcf-right view"><a href="{{ url('/plan/'.$plan->id) }}" class="text-center btn btn-success btn-block">View</a></div>
 											</div>
 										</div>
 									</div>

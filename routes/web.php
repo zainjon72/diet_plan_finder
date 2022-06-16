@@ -69,6 +69,8 @@ Route::middleware(['auth', 'customer'])->group(function(){
 	// Route::post('/my-plan', 'MyPlansController@my_plan');
 	Route::get('/meal/{id}', 'MyPlansController@my_meal');
 	Route::get('/view_plan/{id}', 'MyPlansController@view_plans');
+	Route::get('/thank_you', 'HomeController@thankyou');
+	Route::post('/plan/{id}', 'FeedbackController@create');
 });
 
 Route::get('/', 'HomeController@index')->name('home');

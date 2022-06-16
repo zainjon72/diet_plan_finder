@@ -50,6 +50,6 @@ class StripePaymentController extends Controller
     	$data = ['payment_status' => 'approve'];
     	// dd($data);
     	$order->update($data);
-    	return redirect(url('/my-plan'));
+    	return redirect(url('/thank_you'));
     }
 }

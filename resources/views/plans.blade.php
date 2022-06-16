@@ -36,7 +36,7 @@
                                       </div>
                                       <div class="card-footer">
                                           {{-- <div class="wcf-left"><span class="price">Rp500.000</span></div> --}}
-                                          <div class="wcf-right view"><a href="{{ url('/plan/'.$plan->id) }}" class="text-center btn btn-success">View</a></div>
+                                          <div class="wcf-right view"><a href="{{ url('/plan/'.$plan->id) }}" class="text-center btn btn-success btn-block">View</a></div>
                                       </div>
                                   </div>
                               </div>

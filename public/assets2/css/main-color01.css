@@ -191,4 +191,5 @@ body.top-refine-opened .top-functions-area .flt-item.group-on-mobile .wrap-selec
 .slider-opt03__layout01 .buttons .btn-thin:not(:hover),
 .sidebar .wgt-content .check-list li a:hover::before{
 	border-color: #05a503;
+	text-align: center !important;
 }

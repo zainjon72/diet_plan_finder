@@ -8,6 +8,8 @@
 	<meta name="csrf-token" content="{{ csrf_token() }}">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>Biolife - Organic Food</title>
+	<link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
+    <link rel="stylesheet" type="text/css" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
 	<link href="https://fonts.googleapis.com/css?family=Cairo:400,600,700&amp;display=swap" rel="stylesheet">
 	<link href="https://fonts.googleapis.com/css?family=Poppins:600&amp;display=swap" rel="stylesheet">
 	<link href="https://fonts.googleapis.com/css?family=Playfair+Display:400i,700i" rel="stylesheet">
@@ -21,7 +23,57 @@
 	<link rel="stylesheet" href="{{ asset('assets2/css/style.css') }}">
 	<link rel="stylesheet" href="{{ asset('assets2/css/main-color01.css') }}">
 	<style>
+		/* component */
+		.far{
+			color: #ffdd5a;
+		}
+		.fas{
+			color: #ffdd5a;
+		}
+		.star{
+			font-size: 30px !important;
+		}
+		.star-ratingg {
+			/*border:solid 1px #ccc;*/
+			display:flex;
+			flex-direction: row-reverse;
+			font-size:2em;
+			justify-content:space-around;
+			padding:0.2em;
+			text-align:center;
+			width:5em;
+		}
 
+		.star-ratingg input {
+			display:none;
+		}
+
+		.star-ratingg label {
+			color:#ccc;
+			cursor:pointer;
+		}
+
+		.star-ratingg :checked ~ label {
+			color:#f90;
+		}
+
+		.star-ratingg label:hover,
+		.star-ratingg label:hover ~ label {
+			color:#fc0;
+		}
+
+		/* explanation */
+
+		article {
+			background-color:#ffe;
+			box-shadow:0 0 1em 1px rgba(0,0,0,.25);
+			color:#006;
+			font-family:cursive;
+			font-style:italic;
+			margin:4em;
+			max-width:30em;
+			padding:2em;
+		}
 		.badge {
 			padding-left: 9px;
 			padding-right: 9px;
@@ -181,7 +233,7 @@
 		}
 
 		.card-footer .wcf-right{
-		/*	float:right;*/
+			/*	float:right;*/
 		}
 
 		.price{
@@ -384,6 +436,7 @@
 						</div>
 						<div class="minicart-block layout-02">
 							<div class="minicart-contain">
+									<a href="{{ url('/cart') }}">
 								<div class="icon-contain">
 									<div class="span-index">
 										<i class="icon-cart-mini biolife-icon"></i>
@@ -395,6 +448,7 @@
 								</div>
 								<a href="{{ url('/cart') }}" class="btn-to-cart">Go</a>
 							</div>
+							</a>
 						</div>
 					</div>
 					<div class="mobile-menu-toggle">
@@ -558,7 +612,7 @@
 			</a>
 		</div>
 		<div class="mobile-block block-minicart">
-			<a class="link-to-cart" href="#">
+			<a class="link-to-cart" href="{{ url('/cart') }}">
 				<span class="fa fa-shopping-bag" aria-hidden="true"></span>
 				<span class="text">Cart</span>
 			</a>

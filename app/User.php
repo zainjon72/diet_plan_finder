@@ -55,8 +55,8 @@ class User extends Authenticatable
      public function orderitems(){
         return $this->hasMany(OrderItems::class);
     } 
-    public function feedback(){
-        return $this->hasOne(Feedback::class);
+    public function feedbacks(){
+        return $this->hasMany(Feedback::class);
     }
      public function orders(){
         return $this->hasMany(Order::class);
