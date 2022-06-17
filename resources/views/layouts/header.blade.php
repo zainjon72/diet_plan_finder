@@ -9,7 +9,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>Biolife - Organic Food</title>
 	<link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
-    <link rel="stylesheet" type="text/css" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+	<link rel="stylesheet" type="text/css" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
 	<link href="https://fonts.googleapis.com/css?family=Cairo:400,600,700&amp;display=swap" rel="stylesheet">
 	<link href="https://fonts.googleapis.com/css?family=Poppins:600&amp;display=swap" rel="stylesheet">
 	<link href="https://fonts.googleapis.com/css?family=Playfair+Display:400i,700i" rel="stylesheet">
@@ -24,6 +24,31 @@
 	<link rel="stylesheet" href="{{ asset('assets2/css/main-color01.css') }}">
 	<style>
 		/* component */
+		.none{
+			display: none;
+		}
+		.oops{
+			text-align: center;
+			font-size: 143px;
+			color: green;
+			font-weight: 900;
+		}
+		.no_plan{
+			text-align: center;
+			font-size: 50px;
+			font-weight: 700;
+		}
+		.view_plan{
+			margin-bottom: 150px;
+			text-align: center;
+			font-size: 40px;
+			font-weight: 700;
+		}
+		.checkplans{
+			border-radius: 20px;
+			padding: 10px;
+			font-size: 16px;
+		}
 		.far{
 			color: #ffdd5a;
 		}
@@ -111,7 +136,7 @@
 			/*background:#ddd;*/
 		}
 		.shell{
-			padding:80px 0;
+			/*padding:80px 0;*/
 		}
 		.wsk-cp-product{
 			background:#fff;
@@ -378,8 +403,9 @@
 				</div>
 				<div class="col-lg-9 col-md-10 padding-top-2px">
 					<div class="header-search-bar layout-01 no-product-cat">
-						<form action="#" class="form-search" name="desktop-seacrh" method="get">
-							<input type="text" name="s" class="input-text" value="" placeholder="Search here...">
+						<form action="{{ url('/plan') }}" class="form-search" name="desktop-seacrh" method="get">
+							{{-- @csrf --}}
+							<input type="text" name="search" class="input-text" value="" placeholder="Search here...">
 							<button type="submit" class="btn-submit"><i class="biolife-icon icon-search"></i></button>
 						</form>
 					</div>
@@ -436,18 +462,18 @@
 						</div>
 						<div class="minicart-block layout-02">
 							<div class="minicart-contain">
-									<a href="{{ url('/cart') }}">
-								<div class="icon-contain">
-									<div class="span-index">
-										<i class="icon-cart-mini biolife-icon"></i>
-										<span class='badge badge-warning' id='lblCartCount'> @php
+								<a href="{{ url('/cart') }}">
+									<div class="icon-contain">
+										<div class="span-index">
+											<i class="icon-cart-mini biolife-icon"></i>
+											<span class='badge badge-warning' id='lblCartCount'> @php
 										// echo count($cart_items);
-									@endphp</span>
-									<span class="qty">8</span>
-									<span class="sub-total"></span>
+										@endphp</span>
+										<span class="qty">8</span>
+										<span class="sub-total"></span>
+									</div>
+									<a href="{{ url('/cart') }}" class="btn-to-cart">Go</a>
 								</div>
-								<a href="{{ url('/cart') }}" class="btn-to-cart">Go</a>
-							</div>
 							</a>
 						</div>
 					</div>
@@ -552,45 +578,7 @@
 				</div>
 			</div>
 
-			<div class="footer-midle-pst">
-				<div class=" newsletter-block layout-04">
-					<div class="wrap-title">
-						<span class="biolife-icon icon-newsletter"></span>
-						<div class="texts">
-							<h3 class="newslt-title">Sign up for our newsletter</h3>
-							<p class="sub-title">Sign up our Newsletter for Exclusive Discount codes</p>
-						</div>
-					</div>
-					<div class="form-content">
-						<form action="#" name="new-letter-foter" method="post">
-							<input type="email" class="input-text email" value="" placeholder="Your email here...">
-							<button type="submit" class="bnt-submit" name="ok">Sign up</button>
-						</form>
-					</div>
-				</div>
-			</div>
 
-		</div>
-
-		<div class="copy-rights-contain">
-			<div class="container">
-				<div class="row">
-					<div class="col-lg-6 col-md-6 col-sm-12">
-						<div class="copy-right-text"><p><a href="templateshub.net">Templates Hub</a></p></div>
-					</div>
-					<div class="col-lg-6 col-md-6 col-sm-12">
-						<div class="payment-methods">
-							{{-- <ul>
-								<li><a href="#" class="payment-link"><img src="assets2/images/card1.jpg" width="51" height="36" alt=""></a></li>
-								<li><a href="#" class="payment-link"><img src="assets2/images/card2.jpg" width="51" height="36" alt=""></a></li>
-								<li><a href="#" class="payment-link"><img src="assets2/images/card3.jpg" width="51" height="36" alt=""></a></li>
-								<li><a href="#" class="payment-link"><img src="assets2/images/card4.jpg" width="51" height="36" alt=""></a></li>
-								<li><a href="#" class="payment-link"><img src="assets2/images/card5.jpg" width="51" height="36" alt=""></a></li>
-							</ul> --}}
-						</div>
-					</div>
-				</div>
-			</div>
 		</div>
 
 	</div>

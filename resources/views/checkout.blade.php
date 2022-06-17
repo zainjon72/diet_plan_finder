@@ -71,7 +71,7 @@
                     </div>
                 </div>
                 <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                   <div class="payment">
+                   <div class="payment none">
                     <form role="form" action="{{ route('stripe.post') }}" method="post" class="require-validation"
                     data-cc-on-file="false"
                     data-stripe-publishable-key="{{ env('STRIPE_KEY') }}"
@@ -217,7 +217,8 @@
 <script type="text/javascript" src="https://js.stripe.com/v2/"></script>
 
 <script type="text/javascript">
-    $('.payment').hide();
+    // $('.payment').hide();
+    $(document).ready(function(){
     $(document).on('submit','.checkout_form', function(e){
         e.preventDefault();
         var action = $('.checkout_form').attr('action');
@@ -228,12 +229,14 @@
             data: form_data,
             headers: { "X-CSRF-TOKEN": $('meta[name="csrf-token"]').attr("content") },
             success: function (response) {
-                $('.info').remove();
-                $('.payment').show();
+                $('.info').addClass('none');
+                $('.payment').removeClass('none');
 
             }
         });
     });
+    });
+
     $(function() {
         var $form = $(".require-validation");
         $('form.require-validation').bind('submit', function(e) {

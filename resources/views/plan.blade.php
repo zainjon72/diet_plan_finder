@@ -66,8 +66,8 @@
                         {{-- </div> --}}
 
 
-                        <div class="buttons">
-                          <a href="{{ url('/my-plan') }}" class="btn  add-to-cart-btn" type="submit">See Your Plans</a>
+                        <div class="" style="display: block;text-align: center;">
+                          <a href="{{ url('/my-plan') }}" class=" checkplans btn btn-success btn-block rounded add-to-cart-btn" type="submit">See Your Plans</a>
                           <p class="pull-row">
                             <a href="#" class="btn wishlist-btn">wishlist</a>
                             <a href="#" class="btn compare-btn">compare</a>
@@ -83,7 +83,7 @@
                         <div class="quantity-box">
                             <span class="title">Quantity:</span>
                             <div class="qty-input">
-                                <input type="number" name="quantity" value="1" data-max_value="20" data-min_value="1" data-step="1" class="form-control">
+                                <input type="number" name="quantity" value="1" data-max_value="20" data-min_value="1" data-step="1" class="form-control" style="width: 100%;">
                                 <input type="hidden" name="diet_plan_id" value="{{ $plan['id'] }}">
 
                             </div>
@@ -93,7 +93,7 @@
                         <div class="buttons">
 
 
-                          <button  class="btn  add-to-cart-btn" type="submit">add to cart</button>
+                          <button class="btn  add-to-cart-btn" type="submit" style="width: 100%;">add to cart</button> 
 
                           
                           <p class="pull-row">
@@ -316,7 +316,7 @@
                                       </div>
                                   </div>
                                   <p class="form-row">
-                                    <input type="hidden" name="item_id" id="txt-comment" value="{{ $order[0] }}">
+                                    {{-- <input type="hidden" name="item_id" id="txt-comment" value="{{ $order[0] }}"> --}}
                                 </p>
                                 <p class="form-row">
                                     <input type="hidden" name="plan_id" id="txt-comment" value="{{ $plan['id'] }}">
@@ -381,9 +381,9 @@
         @else
         <div id="tab_4th" class="tab-contain review-tab">
             <div class="container">
-                <div class="row">
+                <div class="row" style="">
                     <div class="col-lg-5 col-md-5 col-sm-6 col-xs-12">
-                        <div class="rating-info">
+                        <div class="rating-info" style="">
                             <div class="rating">
                                 @if(count($feedbacks) == 0)
                                 @php
@@ -425,21 +425,8 @@
                                     @endif
                                 </div>
                                 <p class="see-all">See all {{ count($feedbacks) }} reviews</p>
-                                @if($average == 5)
-                                <div class="rating">Rating: <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
-                                @endif
-                                @if($average < 5 && $average >3.9)
-                                <div class="rating">Rating: <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="far fa-star"></i></div>
-                                @endif
-                                @if($average < 4 && $average >2.9)
-                                <div class="rating">Rating: <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="far fa-star"></i><i class="far fa-star"></i></div>
-                                @endif
-                                @if($average < 3 && $average >1.9)
-                                <div class="rating">Rating: <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="far fa-star"></i><i class="far fa-star"></i><i class="far fa-star"></i></div>
-                                @endif
-                                @if($average < 2 && $average >0.9)
-                                <div class="rating">Rating: <i class="fas fa-star"></i><i class="far fa-star"></i><i class="far fa-star"></i><i class="far fa-star"></i><i class="far fa-star"></i></div>
-                                @endif
+                                
+                                
                             </div>
                         </div>
                     </div>

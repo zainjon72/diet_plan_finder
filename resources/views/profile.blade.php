@@ -31,9 +31,9 @@
 
                     <table class="table table-bordered">
                       <tr>
-                        <th width="30%">ID</th>
-                        <td width="2%">:</td>
-                        <td>{{ Auth::user()->id }}</td>
+                        {{-- <th width="30%">ID</th> --}}
+                        {{-- <td width="2%">:</td> --}}
+                        {{-- <td>{{ Auth::user()->id }}</td> --}}
                       </tr>
                       <tr>
                         <th width="30%">Name</th>

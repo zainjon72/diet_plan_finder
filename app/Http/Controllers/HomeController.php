@@ -30,13 +30,20 @@ class HomeController extends Controller
       return view($this->view, $data);
     }
 
-    public function plans(){
+    public function plans(Request $request){
 
+      $search = $request->search;
+      // dd($search);
       $health = HealthCondition::with('dietplans')->get();
       $lossplan = DietPlan::where('health_condition_id', 6)->get();
       $gainplan = DietPlan::where('health_condition_id', 7)->get();
       $highplan = DietPlan::where('health_condition_id', 8)->get();
-      $plans = DietPlan::all();
+      if($request->search == ''){
+        $plans = DietPlan::all(); 
+      }else{
+
+      $plans = DietPlan::where('title', 'LIKE', "%$search%")->get();
+      }
       // dd($lossplan);
       // dd($health);
       $data = [];
@@ -55,7 +62,7 @@ class HomeController extends Controller
       $feedback = Feedback::with('user')->where('plan_id', $plan['id'])->get();
       // dd($health);
       $order_items = OrderItems::with('dietplans')->where('user_id', Auth::user()->id)->pluck('diet_plan_id')->toArray();
-      $order = OrderItems::with('dietplans')->where('user_id', Auth::user()->id)->where('diet_plan_id', $plan['id'])->pluck('id')->toArray();
+      // $order = OrderItems::with('dietplans')->where('user_id', Auth::user()->id)->where('diet_plan_id', $plan['id'])->pluck('id')->toArray();
       // dd($order);
       foreach ($order_items as $a) {
         # code...
@@ -67,7 +74,7 @@ class HomeController extends Controller
       $data['meals'] = $meal;
     	$data['health'] = $health;
       $data['order_items'] = $order_items;
-      $data['order'] = $order;
+      // $data['order'] = $order;
       $data['feedbacks'] = $feedback;
     	return view('plan', $data);
     }

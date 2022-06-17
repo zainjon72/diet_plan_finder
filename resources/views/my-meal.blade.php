@@ -7,8 +7,8 @@
 </div>
 
 <div class="shell">
-  <div class="container">
-<a href="{{ url('/my-plan') }}" class="btn btn-success" style="margin-top: 100px; padding: 10px 25px">Back To Plans</a>
+  <div class="container" style="margin-top: 100px;">
+{{-- <a href="{{ url('/my-plan') }}" class="btn btn-success" style="margin-top: 100px; padding: 10px 25px">Back To Plans</a> --}}
     <div class="row">
 		@foreach($meals as $meal)
       <div class="col-md-3 p_card">

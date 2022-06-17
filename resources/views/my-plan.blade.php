@@ -1,13 +1,13 @@
 @extends('layouts.header')
 @section('content')
 
-<div class="container text-center">
+<div class="container text-center" style="margin: 50px auto">
 <h1>Product card</h1>
   <span>Create With <i class="zmdi zmdi-favorite red"></i>  By: <strong>Deni Kurniawan</strong> From: <i><a href="http://blog.wingerdstok.com" class="wsk-btn">Wingerdstok</a></i></span>
 </div>
 
 @if(count($order_items) < 1)
-<h1 class="mt-5" style="margin-top: 300px; text-align: center;">You Don't Have plan Yet <br> <a href="{{ url('/plan') }}" style="text-align: center; font-size: 16px;">Buy Now</a></h1> 
+<h1 class="mt-5" style="margin-top: 300px; text-align: center; font-weight: 800; font-size: 50px; margin-bottom: 200px;">You Don't Have Plan Yet <br> <a href="{{ url('/plan') }}" style="text-align: center; font-size: 30px; font-weight: 800;">Buy Now</a></h1> 
 @endif
 <div class="shell">
   <div class="container">

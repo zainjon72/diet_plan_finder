@@ -71,12 +71,12 @@ Route::middleware(['auth', 'customer'])->group(function(){
 	Route::get('/view_plan/{id}', 'MyPlansController@view_plans');
 	Route::get('/thank_you', 'HomeController@thankyou');
 	Route::post('/plan/{id}', 'FeedbackController@create');
+Route::get('/plan/{id}', 'HomeController@plan');
 });
 
 Route::get('/', 'HomeController@index')->name('home');
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/plan', 'HomeController@plans');
-Route::get('/plan/{id}', 'HomeController@plan');
 Route::get('/delete_plan/{id}', 'CartItemController@delete');
 // Route::get('/', 'DietPlanController@show');
 

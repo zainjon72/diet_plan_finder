@@ -272,10 +272,10 @@ select {
                                     </div>
                                     <div class="form-group">
                                         <label for="inputText3" class="col-form-label">Health Condition</label>
-                                        <select required="" name="health_condition_id" id="inputText3" class="form-control" >
+                                        <select  required="" name="health_condition_id" id="inputText3" class="form-control" >
                                             <option value="">Select Health Condition</option>
                                             @foreach($health as $health)
-                                            <option value="{{ $health['id'] }}">{{ $health['title'] }}</option>
+                                            <option value="{{ $health['id'] }}" >{{ $health['title'] }}</option>
                                             @endforeach
                                         </select>
                                     </div>
