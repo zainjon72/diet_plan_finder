@@ -6,10 +6,11 @@ use App\Meal;
 use Faker\Generator as Faker;
 
 $factory->define(Meal::class, function (Faker $faker) {
-    return [
+	return [
         //
-    ];
-    public function user(){
-    	return $this->belongTo(User::class);
-    }
+		'title' => $faker->text(10),
+		'discription' => $faker->text($maxNbChars = 200),
+		// 'image'=>"https://source.unsplash.com/random/?food",
+		'status' => 'pending'
+	];
 });

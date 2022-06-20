@@ -236,7 +236,7 @@
                                                 <th scope="row">{{ $meal->id }}</th>
                                                 <td>{{ $meal->title }}</td>
                                                 <td>{{ $meal->discription }}</td>
-                                                <td><img style="width: 100px;" src="{{url('/storage/app/public/'.$meal->image) }}"></td>
+                                                <td><img style="width: 100px;" src="{{ url('/storage/app/public/'.$meal->image) }}"></td>
                                                 <td>
                                                     <a class="dropdown-item" data-action="delete_record"  href="{{url('/nutritionist/update_meal/'.$meal['id']) }}" data-url="" >Update</a>
                                                 </td>

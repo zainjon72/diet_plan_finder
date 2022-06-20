@@ -17,6 +17,7 @@ class CreateDietPlanMealTable extends Migration
             $table->id();
             $table->foreignId('diet_plan_id')->constrained('diet_plans')->onDelete('cascade')->onUpdate('cascade');    
             $table->foreignId('meal_id')->constrained('meals')->onDelete('cascade')->onUpdate('cascade');
+               $table->timestamps();
         });
     }
 

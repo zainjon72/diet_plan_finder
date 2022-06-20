@@ -1,7 +1,6 @@
 <?php
 
 use Illuminate\Database\Seeder;
-use Illuminate\Support\Facades\DB;
 
 class HealthConditionSeeder extends Seeder
 {
@@ -12,6 +11,14 @@ class HealthConditionSeeder extends Seeder
      */
     public function run()
     {
-      
+          factory(App\HealthCondition::class)->create([
+            'created_by' => 1,
+        ]);  
+         factory(App\HealthCondition::class)->create([
+            'created_by' => 1,
+        ]);
+           factory(App\HealthCondition::class)->create([
+            'created_by' => 1,
+        ]);
     }
 }
