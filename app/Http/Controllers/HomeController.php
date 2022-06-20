@@ -15,17 +15,8 @@ class HomeController extends Controller
 	private $action   =  "/";
     public function index(){
       $health = HealthCondition::with('dietplans')->get();
-      $lossplan = DietPlan::where('health_condition_id', 6)->get();
-      $gainplan = DietPlan::where('health_condition_id', 7)->get();
-      $highplan = DietPlan::where('health_condition_id', 8)->get();
       $plans = DietPlan::all();
-      // dd($lossplan);
-      // dd($health);
-      $data = [];
       $data['health'] = $health;
-      $data['lossplan'] = $lossplan;
-      $data['gainplan'] = $gainplan;
-      $data['highplan'] = $highplan;
       $data['plans'] = $plans;
       return view($this->view, $data);
     }
@@ -35,22 +26,14 @@ class HomeController extends Controller
       $search = $request->search;
       // dd($search);
       $health = HealthCondition::with('dietplans')->get();
-      $lossplan = DietPlan::where('health_condition_id', 6)->get();
-      $gainplan = DietPlan::where('health_condition_id', 7)->get();
-      $highplan = DietPlan::where('health_condition_id', 8)->get();
       if($request->search == ''){
         $plans = DietPlan::all(); 
       }else{
 
       $plans = DietPlan::where('title', 'LIKE', "%$search%")->get();
       }
-      // dd($lossplan);
-      // dd($health);
       $data = [];
       $data['health'] = $health;
-      $data['lossplan'] = $lossplan;
-      $data['gainplan'] = $gainplan;
-      $data['highplan'] = $highplan;
       $data['plans'] = $plans;
 
       return view('plans', $data);

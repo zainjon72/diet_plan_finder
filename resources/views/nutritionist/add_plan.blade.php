@@ -199,7 +199,7 @@ select {
                                 <a class="nav-link" href="{{ url('/nutritionist/meal') }}"><i class="fa fa-fw fa-rocket"></i>Meal</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="{{ url('/nutritionist/plan') }}"><i class="fas fa-fw fa-chart-pie">...</i></a>
+                                <a class="nav-link" href="{{ url('/nutritionist/home') }}"><i class="fas fa-fw fa-chart-pie">...</i></a>
                             </li>
                         </ul>
                     </div>

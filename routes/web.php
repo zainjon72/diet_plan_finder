@@ -71,7 +71,7 @@ Route::middleware(['auth', 'customer'])->group(function(){
 	Route::get('/view_plan/{id}', 'MyPlansController@view_plans');
 	Route::get('/thank_you', 'HomeController@thankyou');
 	Route::post('/plan/{id}', 'FeedbackController@create');
-Route::get('/plan/{id}', 'HomeController@plan');
+	Route::get('/plan/{id}', 'HomeController@plan');
 });
 
 Route::get('/', 'HomeController@index')->name('home');
