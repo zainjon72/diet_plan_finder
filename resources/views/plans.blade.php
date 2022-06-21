@@ -25,25 +25,33 @@
   <div class="container">
     <div class="row">
       @foreach($plans as $plan)
-      <div class="col-md-3 p_card">
-        <div class="wsk-cp-product">
-          <div class="wsk-cp-img"><img src="{{ url('/storage/app/public/'.$plan->image) }}" alt="Product" class="img-responsive" /></div>
-          <div class="wsk-cp-text">
-            <div class="category">
-              <span>Diet Plan</span>
-            </div>
-            <div class="title-product">
-              <h3>{{ $plan->title }} </h3>
-            </div>
-            <div class="title-product">
-              <h5>{{ $plan->discription }} </h5>
-            </div>
-            <div class="card-footer">
-              {{-- <div class="wcf-left"><span class="price">Rp500.000</span></div> --}}
-              <div class="wcf-right view"><a href="{{ url('/plan/'.$plan->id) }}" class="text-center btn btn-success btn-block">View</a></div>
-            </div>
-          </div>
-        </div>
+      <div class="col-md-3 p_card" style="margin-bottom: 150px;">
+        <li class="product-item" style="list-style: none;">
+                  <div class="contain-product layout-default">
+                    <div class="product-thumb">
+                      <a href="#" class="link-to-product">
+                        <img src="{{ url('/storage/app/public/'.$plan->image) }}" alt="Vegetables" width="270" height="270" class="product-thumnail">
+                      </a>
+                      {{-- <a class="lookup btn_call_quickview" href="#"><i class="biolife-icon icon-search"></i></a> --}}
+                    </div>
+                    <div class="info">
+                      {{-- <b class="categories">Vegetables</b> --}}
+                      <h4 class="product-title"><a href="#" class="pr-name">{{ $plan->title }}</a></h4>
+                      <div class="price ">
+                        <ins><span class="price-amount"><span class="currencySymbol">$</span>{{ $plan->price }}</span></ins>
+                        {{-- <del><span class="price-amount"><span class="currencySymbol">£</span>95.00</span></del> --}}
+                      </div>
+                      <div class="slide-down-box">
+                        <p class="message">{{ $plan->discription }}</p>
+                        <div class="buttons">
+                          <a href="{{ url('/wishlist/'.$plan->id) }}" class="btn wishlist-btn"><i class="fa fa-heart" aria-hidden="true"></i></a>
+                          <a href="{{ url('/plan/'.$plan->id) }}" class="btn add-to-cart-btn"><i class="fa fa-cart-arrow-down" aria-hidden="true"></i>View</a>
+                          {{-- <a href="#" class="btn compare-btn"><i class="fa fa-random" aria-hidden="true"></i></a> --}}
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </li>
       </div>
       @endforeach
     </div>

@@ -59,7 +59,7 @@
                                             <a href="#" class="list-group-item list-group-item-action">
                                                 <div class="notification-info">
                                                     <div class="notification-list-user-img"><img src="assets/images/avatar-3.jpg" alt="" class="user-avatar-md rounded-circle"></div>
-                                                    <div class="notification-list-user-block"><span class="notification-list-user-name">John Abraham </span>is now following you
+                                                    <div class="notification-list-user-block"><span class="notification-list-user-name">{{ Auth::user()->name }} </span>is now following you
                                                         <div class="notification-date">2 days ago</div>
                                                     </div>
                                                 </div>
@@ -121,7 +121,7 @@
                             </ul>
                         </li>
                         <li class="nav-item dropdown nav-user">
-                            <a class="nav-link nav-user-img" href="#" id="navbarDropdownMenuLink2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><img src="assets/images/avatar-1.jpg" alt="" class="user-avatar-md rounded-circle"></a>
+                            <a class="nav-link nav-user-img" href="#" id="navbarDropdownMenuLink2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><img src="{{ url('/storage/app/public/'.Auth::user()->image) }}" alt="" class="user-avatar-md rounded-circle"></a>
                             <div class="dropdown-menu dropdown-menu-right nav-user-dropdown" aria-labelledby="navbarDropdownMenuLink2">
                                 <div class="nav-user-info">
                                     <h5 class="mb-0 text-white nav-user-name">John Abraham </h5>

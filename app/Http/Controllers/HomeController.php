@@ -7,6 +7,7 @@ use App\HealthCondition;
 use App\DietPlan;
 use App\OrderItems;
 use App\Feedback;
+use App\Wishlist;
 use Auth;
 
 class HomeController extends Controller
@@ -16,11 +17,31 @@ class HomeController extends Controller
     public function index(){
       $health = HealthCondition::with('dietplans')->get();
       $plans = DietPlan::all();
+      $highplans = DietPlan::where('health_condition_id', 3)->get();
+      $lossplans = DietPlan::where('health_condition_id', 1)->get();
+      $gainplans = DietPlan::where('health_condition_id', 2)->get();
       $data['health'] = $health;
       $data['plans'] = $plans;
+      $data['highplans'] = $highplans;
+      $data['lossplans'] = $lossplans;
+      $data['gainplans'] = $gainplans;
       return view($this->view, $data);
     }
+    public function add_to_wishlist($id){
+      $data = ['plan_id' => $id,'user_id'=>Auth::user()->id];
+      // dd($data);
+      $obj = new Wishlist();
+      $wish = Wishlist::where('plan_id', $id)->where('user_id', Auth::user()->id)->get()->toArray();
+      // dd($wish);
+      if(!empty($wish)){
+        // dd($data);
+        return back();
+      }else{  
+      $obj->insert($data);
+      return back();
+      }
 
+    }
     public function plans(Request $request){
 
       $search = $request->search;

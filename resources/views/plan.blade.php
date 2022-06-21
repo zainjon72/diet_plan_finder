@@ -1,5 +1,10 @@
 @extends('layouts.header')
 {{-- @dd($order[0]) --}}
+@section('style')
+<style>
+ 
+</style>
+@endsection
 @section('content')
 <!--Hero Section-->
 <div class="hero-section hero-background">
@@ -38,10 +43,53 @@
                 <div class="product-attribute">
                     <h3 class="title">{{ $plan['title'] }}</h3>
                     <div class="rating">
-                        <p class="star-rating"><span class="width-80percent"></span></p>
-                        <span class="review-count">(0{{ count($feedbacks) }} Review)</span>
-                        <span class="qa-text">Q&A</span>
-                        <b class="category">By: {{ $plan['user']['name'] }}</b>
+                        <div class="rating-info">
+                            @if(count($feedbacks) == 0)
+                            @php
+                            $average = 0;
+                            @endphp
+                            @else
+                            @php
+                            $rating = [];
+                            @endphp
+                            @foreach($feedbacks as $feedback)
+                            @php
+                            $rating[] = $feedback['rating'];
+                            @endphp
+                            @endforeach
+                            @php
+                                // $a = array_filter($a);
+                            $a = array_sum($rating);
+                                // echo $a;
+                            $average = $a/count($feedbacks);
+                            $average = round($average, 1)
+                                // echo $average;
+                            @endphp
+                            @endif
+
+                            <div class="rating">
+                                @if($average == 5)
+                                <div class="rating"> <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+                                @endif
+                                @if($average < 5 && $average >3.9)
+                                <div class="rating"> <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="far fa-star"></i></div>
+                                @endif
+                                @if($average < 4 && $average >2.9)
+                                <div class="rating"> <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="far fa-star"></i><i class="far fa-star"></i></div>
+                                @endif
+                                @if($average < 3 && $average >1.9)
+                                <div class="rating"> <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="far fa-star"></i><i class="far fa-star"></i><i class="far fa-star"></i></div>
+                                @endif
+                                @if($average < 2 && $average >0.9)
+                                <div class="rating"> <i class="fas fa-star"></i><i class="far fa-star"></i><i class="far fa-star"></i><i class="far fa-star"></i><i class="far fa-star"></i></div>
+                                @endif
+                                <span class="review-count">(0{{ count($feedbacks) }} Review)</span> 
+                            </div>
+
+
+                        </div>
+                        <span class="qa-text" style="margin: 0px !important">Q&A</span>
+                        <a href="{{ url('/nutritionist/'.$plan['user']['id']) }}"><b class="category">By: {{ $plan['user']['name'] }}</b></a>
                     </div>
                     <span class="sku">Sku: #{{ $plan['id'] }}</span>
                     <p class="excerpt">{{ $plan['discription'] }}.</p>
@@ -117,46 +165,44 @@
         </div>
         {{-- @endforeach --}}
         <div class="meals">
-            <table class="table table-striped table-hover table-dark ">
-                <tr>
-                    {{-- @dd($meal_one->title) --}}
-                    <th>Title</th>
-                    <th>Image</th>
-                    <th>Discription</th>
-                    {{-- <th>View</th> --}}
-                </tr>
+            <table class="border-0" style="border: 0px;">
+
                 {{-- @dd($order_items['dietplans']['id']) --}}
                 {{-- @dd($meal_one) --}}
                 {{-- @dd($plan->id) --}}
-                <h1 class="text-center">Diet Plan's Meal</h1>
+                {{-- <h1 class="text-center">Diet Plan's Meal</h1> --}}
                 @foreach($meals as $meal)
                 @if(in_array($plan->id, $order_items))
 
-                <tr>
-                    <td>{{$meal->title}}</td>
-                    <td><img style="width: 100px;" src="{{ url('/storage/app/public/'.$meal->image) }}" alt=""></td>
-                    <td>{{ $meal->discription }}</td>
-                    {{-- <td></td> --}}
-                </tr>
-                @else
-                {{-- <h1 style="text-align: center; margin-bottom: 50px; background: green; color: white">Buy Diet Plan to View All Meals</h1> --}}
-                <div class="alert alert-danger" role="alert" style="width: 50%; text-align: center; margin: 0px auto; margin-bottom: 50px;">
+                <tr style="">
+                    <td style="padding: 0px 50px;">Meal Id:{{$meal->id}}</td>
+                    <td><img style="" src="{{ url('/storage/app/public/'.$meal->image) }}" alt=""></td>
+                    <td  style="text-align: left; padding: 10px 40px;"><h2>{{ $meal->title }}</h2><br>{{ $meal->discription }}</td>
+                        {{-- <td></td> --}}
+                    </tr>
+                    @else
+                    {{-- <h1 style="text-align: center; margin-bottom: 50px; background: green; color: white">Buy Diet Plan to View All Meals</h1> --}}
+              {{--   <div class="alert alert-danger" role="alert" style="width: 50%; text-align: center; margin: 0px auto; margin-bottom: 50px;">
                     <h4 class="alert-heading">Buy Now</h4>
                     <p>Buy Diet Plan to View All Meals</p>
                     <hr>
                     <p>You can See Only One Meal If You Don't Buy</p>
 
-                </div>
-                
-                <tr>
-                  <td>{{$meal->title}}</td>
-                  <td><img style="width: 100px;" src="{{ url('/storage/app/public/'.$meal->image) }}" alt=""></td>
-                  <td>{{ $meal->discription }}</td>
-                  {{-- <td></td> --}}
-              </tr>
+                </div> --}}
+                <div>
+                    <tr>
+                      <td>Meal No. 1</td>
+                      <td><img style="width: 200px;" src="{{ url('/storage/app/public/'.$meal->image) }}" alt=""></td>
+                      <td style="text-align: left;padding: 50px;"><h2 style="text-align: left;">{{ $meal->title }}</h2><br>{{ $meal->discription }}</td>
+                      {{-- <td></td> --}}
+                 
+              </div>
+
+
               @break
               @endif
               @endforeach
+
               {{-- @dd($meal_one) --}}
 
 
@@ -164,6 +210,10 @@
               {{-- @endforeach --}}
 
           </table>
+          @if(!in_array($plan->id, $order_items))
+              <img src="{{ url('/storage/app/public/all_images/blur.png') }}" alt="">
+              <button onclick="alert('Buy plan to View All Meals')" class="btn btn-success" style="padding: 10px 30px; border-radius: 40px;margin-left: 900px;margin-top: -340px;"><i style="color: black;" class="fas fa-eye"></i> View Meals</button>
+              @endif
       </div>
 
       <!-- Tab info -->
@@ -366,7 +416,7 @@
                                         <p class="author">by: <b>{{ $feedback['name'] }}</b></p>
                                         <p class="comment-text">{{ $feedback['comment'] }}</p>
                                     </div>
-                                   
+
                                 </div>
                             </div>
                         </li>
@@ -459,7 +509,7 @@
                                         <p class="author">by: <b>{{ $feedback['name'] }}</b></p>
                                         <p class="comment-text">{{ $feedback['comment'] }}</p>
                                     </div>
-                                 
+
                                 </div>
                             </div>
                         </li>

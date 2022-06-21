@@ -14,16 +14,19 @@ class UserSeeder extends Seeder
     {
         factory(App\User::class)->create([
             'email' => 'admin@gmail.com',
+            'image' => 'all_images/admin.jfif',
             'role' => 'admin',
             'password' => Hash::make('12345678'),
         ]); 
          factory(App\User::class)->create([
             'email' => 'nutritionist@gmail.com',
+            'image' => 'all_images/nutritionist.jfif',
             'role' => 'nutritionist',
             'password' => Hash::make('12345678'),
         ]);
           factory(App\User::class)->create([
             'email' => 'user@gmail.com',
+            'image' => 'all_images/customer.jfif',
             'role' => 'customer',
             'password' => Hash::make('12345678'),
         ]);

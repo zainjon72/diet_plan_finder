@@ -76,4 +76,7 @@ class User extends Authenticatable
           public function checkout(){
         return $this->hasMany(Checkout::class);
     }
+           public function wishlist(){
+        return $this->belongsTo(Wishlist::class, 'user_id');
+    }
 }

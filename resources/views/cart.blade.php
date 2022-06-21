@@ -29,11 +29,11 @@
                             <form class="shopping-cart-form" action="#" method="post">
                                 <table class="shop_table cart-form">
                                     <thead>
-                                        <tr>
-                                            <th class="product-name">Product Name</th>
-                                            <th class="product-price">Price</th>
-                                            <th class="product-quantity">Quantity</th>
-                                            <th class="product-subtotal">Total</th>
+                                        <tr style="border: none;">
+                                            <th style="border: none; text-align: left;" class="product-name">Product </th>
+                                            <th style="border: none;" class="product-price">Price</th>
+                                            <th style="border: none;" class="product-quantity">Quantity</th>
+                                            <th style="border: none;" class="product-subtotal">Total</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -45,7 +45,7 @@
                                         $total[]= $cart_item->dietplans['price'] * $cart_item->quantity;
                                         // print_r($total);
                                         @endphp
-                                        <tr class="cart_item">
+                                        <tr class="cart_item" style="border: none;">
                                             <td class="product-thumbnail" data-title="Product Name">
                                                 <a class="prd-thumb" href="#">
                                                     <figure><img width="113" height="113" src="{{ url('/storage/app/public/'.$cart_item->dietplans->image) }}" alt="shipping cart"></figure>
@@ -79,7 +79,7 @@
                                         @endforeach
                                         <tr class="cart_item wrap-buttons">
                                             <td class="wrap-btn-control" colspan="4">
-                                                <a class="btn back-to-shop" href="{{ url('/plan') }}">Back to Shop</a>
+                                                <a class="btn back-to-shop" href="{{ url('/plans') }}">Back to Shop</a>
                                                {{--  <button class="btn btn-update" type="submit" disabled>update</button> --}}
                                                 <a href="{{ url('/delete_cart') }}" class="btn btn-clear" type="reset">clear all</a>
                                             </td>

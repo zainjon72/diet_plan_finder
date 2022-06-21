@@ -18,29 +18,27 @@
     </div>
 
     <a title="Mert S. Kaplan" href="https://twitter.com/mertskaplan" class="twPc-avatarLink">
-      <img alt="Mert S. Kaplan" src="{{ url('/storage/app/public/'.Auth::user()->image) }}" class="twPc-avatarImg">
+      <img alt="Mert S. Kaplan" src="{{ url('/storage/app/public/'.$user['image']) }}" class="twPc-avatarImg">
     </a>
 
     <div class="twPc-divUser">
       <div class="twPc-divName">
-        <a style="color: white !important" href="">{{ Auth::user()->name }}</a>
+
+        <a style="color: white !important" href="">{{ $user['name'] }}</a>
       </div><br>
       <span>
-        <a style="margin: 0px 10px;" href=""><span>{{ Auth::user()->email }}</span></a>
+        <a style="margin: 0px 10px;" href=""><span>{{ $user['email'] }}</span></a>
       </span>
     </div>
 
     <div class="twPc-divStats">
       <ul class="twPc-Arrange">
         <li class="twPc-ArrangeSizeFit" style="display: flex;justify-content: flex-start;">
-          <a href="{{ url('/wishlist') }}" title="9.840 Tweet">
-            <span class="twPc-StatLabel twPc-block">Liked Plan</span>
-            <span class="twPc-StatValue">{{ count($wishlist) }}</span>
-          </a>
-          <a style="margin :0px 20px;" href="{{ url('/my-plans') }}" title="9.840 Tweet">
-            <span class="twPc-StatLabel twPc-block">My Plan</span>
+          <a href="#" title="9.840 Tweet">
+            <span class="twPc-StatLabel twPc-block">Nutritionist's Plan</span>
             <span class="twPc-StatValue">{{ count($plans) }}</span>
           </a>
+          
         </li>
       </ul>
     </div>
@@ -51,7 +49,7 @@
     <div class="row">
       {{-- <h1>My Plans</h1> --}}
     @foreach($plans as $plan)
-      @foreach($plan['dietplans'] as $plan)
+      {{-- @foreach($plan['user'] as $nutr) --}}
       <div class="col-md-3 p_card" style="margin-bottom: 150px;">
         <li class="product-item" style="list-style: none;">
                   <div class="contain-product layout-default">
@@ -72,7 +70,7 @@
                         <p class="message">{{ $plan['discription'] }}</p>
                         <div class="buttons">
                           <a href="#" class="btn wishlist-btn"><i class="fa fa-heart" aria-hidden="true"></i></a>
-                          <a href="{{ url('/meal/'.$plan['id']) }}" class="btn add-to-cart-btn"><i class="fa fa-cart-arrow-down" aria-hidden="true"></i>View Meal</a>
+                          <a href="{{ url('/plan/'.$plan['id']) }}" class="btn add-to-cart-btn"><i class="fa fa-cart-arrow-down" aria-hidden="true"></i>View</a>
                           {{-- <a href="#" class="btn compare-btn"><i class="fa fa-random" aria-hidden="true"></i></a> --}}
                         </div>
                       </div>
@@ -80,7 +78,7 @@
                   </div>
                 </li>
       </div>
-      @endforeach
+      {{-- @endforeach --}}
       @endforeach
     </div>
   </div>

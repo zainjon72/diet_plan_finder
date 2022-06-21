@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\User;
 use App\DietPlan;
+use App\Wishlist;
+use App\OrderItems;
 use Auth;
 class UserController extends Controller
 {
@@ -77,7 +79,29 @@ public function plan(){
   return view('admin.plans', $data);
 }
 public function profile(){
-  return view('profile');
+  $wishlist = Wishlist::with('plans')->where('user_id', Auth::user()->id)->get();
+  $plans  = OrderItems::with('dietplans')->where('user_id', Auth::user()->id)->get();
+  $data = [];
+  $data['wishlist'] = $wishlist;
+  $data['plans'] = $plans;
+  return view('profile', $data);
+}
+public function wishlist(){
+  $wishlist = Wishlist::with('plans')->where('user_id', Auth::user()->id)->get()->toArray();
+  $plans = OrderItems::with('dietplans')->where('user_id', Auth::user()->id)->get();
+  $data = [];
+  $data['wishlist'] = $wishlist;
+  $data['plans'] = $plans;
+  // dd($data['wishlist']);
+  return view('wishlist', $data);
+}
+public function nutritionistprofile($id){
+  $plans = DietPlan::with('user')->where('created_by', $id)->get()->toArray();
+  $user = User::find($id);
+  $data = [];
+  $data['plans'] = $plans;
+  $data['user'] = $user;
+  return view('nutritionist_profile', $data); 
 }
 
 }

@@ -9,8 +9,8 @@ use Faker\Generator as Faker;
 
 $factory->define(DietPlanMeal::class, function (Faker $faker) {
     return [
-    	'diet_plan_id' => DietPlan::pluck('id')->random(),
-    	'meal_id' => Meal::pluck('id')->random()
+    	// 'diet_plan_id' => DietPlan::pluck('id')->random(),
+    	// 'meal_id' => Meal::pluck('id')->random()
         //
     ];
 });

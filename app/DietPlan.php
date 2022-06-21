@@ -2,6 +2,7 @@
 
 namespace App;
 
+
 use Illuminate\Database\Eloquent\Model;
 
 class DietPlan extends Model
@@ -23,6 +24,9 @@ class DietPlan extends Model
     }
       public function orderitems(){
         return $this->belongsTo(OrderItems::class,'diet_plan_id');
+    }
+      public function wishlist(){
+        return $this->belongsToMany(Wishlist::class,'plan_id');
     }
 
 }

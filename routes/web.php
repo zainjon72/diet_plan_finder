@@ -93,12 +93,13 @@ Route::middleware(['auth', 'customer'])->group(function(){
 	Route::get('/delete_cart', 'CartItemController@delete_all');
 
 	Route::get('/profile', 'UserController@profile');
+	Route::get('/nutritionist/{id}', 'UserController@nutritionistprofile');
 
 	Route::get('stripe', 'StripePaymentController@stripe');
 
 	Route::post('stripe', 'StripePaymentController@stripePost')->name('stripe.post');
 
-	Route::get('/my-plan', 'MyPlansController@index');
+	Route::get('/my-plans', 'MyPlansController@index');
 	// Route::post('/my-plan', 'MyPlansController@my_plan');
 	Route::get('/meal/{id}', 'MyPlansController@my_meal');
 
@@ -109,15 +110,18 @@ Route::middleware(['auth', 'customer'])->group(function(){
 	Route::post('/plan/{id}', 'FeedbackController@create');
 
 	Route::get('/plan/{id}', 'HomeController@plan');
+	Route::get('/wishlist', 'UserController@wishlist');
 });
 
 Route::get('/', 'HomeController@index')->name('home');
 
 Route::get('/home', 'HomeController@index')->name('home');
 
-Route::get('/plan', 'HomeController@plans');
+Route::get('/plans', 'HomeController@plans');
 
 Route::get('/delete_plan/{id}', 'CartItemController@delete');
+
+Route::get('wishlist/{id}', 'HomeController@add_to_wishlist');
 // Route::get('/', 'DietPlanController@show');
 
 

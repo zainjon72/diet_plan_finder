@@ -24,6 +24,98 @@
 	<link rel="stylesheet" href="{{ asset('assets2/css/main-color01.css') }}">
 	<style>
 		/* component */
+		.twPc-div {
+    background: #fff none repeat scroll 0 0;
+    border: 1px solid #e1e8ed;
+    border-radius: 6px;
+    height: 200px;
+    max-width: 100%; // orginal twitter width: 290px;
+}
+.twPc-bg {
+    background-image: url("https://pbs.twimg.com/profile_banners/50988711/1384539792/600x200");
+    background-position: 0 50%;
+    background-size: 100% auto;
+    border-bottom: 1px solid #e1e8ed;
+    border-radius: 4px 4px 0 0;
+    height: 95px;
+    width: 100%;
+}
+.twPc-block {
+    display: block !important;
+}
+.twPc-button {
+    margin: -35px -10px 0;
+    text-align: right;
+    width: 100%;
+}
+.twPc-avatarLink {
+    background-color: #fff;
+    border-radius: 6px;
+    display: inline-block !important;
+    float: left;
+    margin: -30px 5px 0 8px;
+    max-width: 100%;
+    padding: 1px;
+    vertical-align: bottom;
+}
+.twPc-avatarImg {
+    border: 2px solid #fff;
+    border-radius: 7px;
+    box-sizing: border-box;
+    color: #fff;
+    height: 72px;
+    width: 72px;
+}
+.twPc-divUser {
+    margin: 5px 0 0;
+}
+.twPc-divName {
+    font-size: 18px;
+    font-weight: 700;
+    line-height: 21px;
+}
+.twPc-divName a {
+    color: inherit !important;
+}
+.twPc-divStats {
+    margin-left: 11px;
+    padding: 4px 0;
+}
+.twPc-Arrange {
+    box-sizing: border-box;
+    display: table;
+    margin: 0;
+    min-width: 100%;
+    padding: 0;
+    table-layout: auto;
+}
+ul.twPc-Arrange {
+    list-style: outside none none;
+    margin: 0;
+    padding: 0;
+}
+.twPc-ArrangeSizeFit {
+    display: table-cell;
+    padding: 0;
+    vertical-align: top;
+}
+.twPc-ArrangeSizeFit a:hover {
+    text-decoration: none;
+}
+.twPc-StatValue {
+    display: block;
+    font-size: 18px;
+    font-weight: 500;
+    transition: color 0.15s ease-in-out 0s;
+}
+.twPc-StatLabel {
+    color: #8899a6;
+    font-size: 10px;
+    letter-spacing: 0.02em;
+    overflow: hidden;
+    text-transform: uppercase;
+    transition: color 0.15s ease-in-out 0s;
+}
 		.none{
 			display: none;
 		}
@@ -403,7 +495,7 @@
 				</div>
 				<div class="col-lg-9 col-md-10 padding-top-2px">
 					<div class="header-search-bar layout-01 no-product-cat">
-						<form action="{{ url('/plan') }}" class="form-search" name="desktop-seacrh" method="get">
+						<form action="{{ url('/plans') }}" class="form-search" name="desktop-seacrh" method="get">
 							{{-- @csrf --}}
 							<input type="text" name="search" class="input-text" value="" placeholder="Search here...">
 							<button type="submit" class="btn-submit"><i class="biolife-icon icon-search"></i></button>
@@ -420,16 +512,16 @@
 	</div>
 	<div class="header-bottom biolife-sticky-object">
 		<div class="container md-possition-relative">
-			<div class="row">
+			<div class="row" style="display: flex; justify-content: space-between;     margin: 0px -130px;">
 				<div class="col-lg-6 col-md-6 hidden-sm hidden-xs md-possition-initial">
 					<div class="primary-menu">
 						<ul class="menu biolife-menu clone-main-menu clone-primary-menu" id="primary-menu" data-menuname="main menu">
 							<li class="menu-item"><a href="{{ url('/home') }}">Home</a></li>
 							<li class="menu-item menu-item-has-children has-megamenu">
-								<a href="{{ url('/plan') }}" class="menu-name" data-title="Shop" >Plans</a>
+								<a href="{{ url('/plans') }}" class="menu-name" data-title="Shop" >Plans</a>
 								
 							</li>
-							<li class="menu-item"><a href="{{ url('/my-plan') }}">My Plans</a></li>
+							<li class="menu-item"><a href="{{ url('/my-plans') }}">My Plans</a></li>
 						</ul>
 					</div>
 				</div>
@@ -462,34 +554,37 @@
 						</div>
 						<div class="minicart-block layout-02">
 							<div class="minicart-contain">
-								<a href="{{ url('/cart') }}">
-									<div class="icon-contain">
-										<div class="span-index">
+
+								<div class="icon-contain">
+									<div class="span-index">
+										{{-- <a href="{{ url('/cart') }}"> --}}
+											<a href="{{ url('/wishlist') }}" class="btn wishlist-btn" tabindex="0"><i style="font-size: 22px; color: #05a503; margin:2px 0px;margin-right: 10px !important;" class="fa fa-heart" aria-hidden="true"></i></a>
+										{{-- </a> --}}
+										<a href="{{ url('/cart') }}">
 											<i class="icon-cart-mini biolife-icon"></i>
-											<span class='badge badge-warning' id='lblCartCount'> @php
-										// echo count($cart_items);
-										@endphp</span>
+										</a>
 										<span class="qty">8</span>
 										<span class="sub-total"></span>
 									</div>
 									<a href="{{ url('/cart') }}" class="btn-to-cart">Go</a>
 								</div>
+
+							</div>
+						</div>
+						<div class="mobile-menu-toggle">
+							<a class="btn-toggle" data-object="open-mobile-menu" href="javascript:void(0)">
+								<span></span>
+								<span></span>
+								<span></span>
 							</a>
 						</div>
-					</div>
-					<div class="mobile-menu-toggle">
-						<a class="btn-toggle" data-object="open-mobile-menu" href="javascript:void(0)">
-							<span></span>
-							<span></span>
-							<span></span>
-						</a>
 					</div>
 				</div>
 			</div>
 		</div>
 	</div>
-</div>
 </header>
+@yield('style')
 <main class="pb-4">
 	@yield('content')
 </main>
@@ -508,13 +603,7 @@
 								<span class="number">(700)  9001-1909  (900) 689 -66</span>
 							</p>
 						</div>
-						<div class="contact-info-block footer-layout simple-info">
-							<h4 class="title">Contact info</h4>
-							<div class="info-item">
-								<img src="{{ asset('assets2/images/location-icon.png') }}" width="22" height="26" alt="" class="icon">
-								<p class="desc">7563 St. Vicent Place, Glasgow, Greater Newyork NH7689, UK </p>
-							</div>
-						</div>
+					
 						<div class="biolife-social inline circle-hover">
 							<ul class="socials">
 								<li><a href="#" title="twitter" class="socail-btn"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
@@ -533,49 +622,28 @@
 								<h3 class="section-title">My Account</h3>
 								<div class="wrap-custom-menu vertical-menu-2">
 									<ul class="menu">
-										<li><a href="#">Sign In</a></li>
-										<li><a href="#">View Cart</a></li>
-										<li><a href="#">My Wishlist</a></li>
-										<li><a href="#">Track My Order</a></li>
-										<li><a href="#">Help</a></li>
-										<li><a href="#">Our Blog</a></li>
+										<li><a href="{{ url('/login') }}">Sign In</a></li>
+										<li><a href="{{ url('/cart') }}">View Cart</a></li>
+										<li><a href="{{ url('/wishlist') }}">My Wishlist</a></li>
+										{{-- <li><a href="#">Track My Order</a></li> --}}
+										{{-- <li><a href="#">Help</a></li> --}}
+										{{-- <li><a href="#">Our Blog</a></li> --}}
 									</ul>
 								</div>
 							</section>
 						</div>
-						<div class="col-lg-4 col-sm-4 col-xs-12 md-margin-top-6px xs-margin-top-40px">
-							<section class="footer-item">
-								<h3 class="section-title">Why Buy From Us</h3>
-								<div class="wrap-custom-menu vertical-menu-2">
-									<ul class="menu">
-										<li><a href="#">Shipping & Returns</a></li>
-										<li><a href="#">Secure Shopping</a></li>
-										<li><a href="#">International Shipping</a></li>
-										<li><a href="#">Affiliates</a></li>
-										<li><a href="#">Group Sales</a></li>
-										<li><a href="#">Shipping & Returns</a></li>
-									</ul>
-								</div>
-							</section>
-						</div>
-						<div class="col-lg-4 col-sm-4 col-xs-12 md-margin-top-6px xs-margin-top-40px">
-							<section class="footer-item">
-								<h3 class="section-title">Information</h3>
-								<div class="wrap-custom-menu vertical-menu-2">
-									<ul class="menu">
-										<li><a href="#">Our Blog</a></li>
-										<li><a href="#">About Our Shop</a></li>
-										<li><a href="#">Secure Shopping</a></li>
-										<li><a href="#">Delivery infomation</a></li>
-										<li><a href="#">Privacy Policy</a></li>
-										<li><a href="#">Our Sitemap</a></li>
-									</ul>
-								</div>
-							</section>
+						<div class="contact-info-block footer-layout simple-info">
+							<h4 class="title">Contact info</h4>
+							<div class="info-item">
+								<img src="{{ asset('assets2/images/location-icon.png') }}" width="22" height="26" alt="" class="icon">
+								<p class="desc">7563 St. Vicent Place, Glasgow, Greater Newyork NH7689, UK </p>
+							</div>
 						</div>
 					</div>
+					
 
 				</div>
+
 			</div>
 
 
