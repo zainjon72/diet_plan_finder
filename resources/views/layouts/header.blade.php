@@ -25,97 +25,97 @@
 	<style>
 		/* component */
 		.twPc-div {
-    background: #fff none repeat scroll 0 0;
-    border: 1px solid #e1e8ed;
-    border-radius: 6px;
-    height: 200px;
-    max-width: 100%; // orginal twitter width: 290px;
-}
-.twPc-bg {
-    background-image: url("https://pbs.twimg.com/profile_banners/50988711/1384539792/600x200");
-    background-position: 0 50%;
-    background-size: 100% auto;
-    border-bottom: 1px solid #e1e8ed;
-    border-radius: 4px 4px 0 0;
-    height: 95px;
-    width: 100%;
-}
-.twPc-block {
-    display: block !important;
-}
-.twPc-button {
-    margin: -35px -10px 0;
-    text-align: right;
-    width: 100%;
-}
-.twPc-avatarLink {
-    background-color: #fff;
-    border-radius: 6px;
-    display: inline-block !important;
-    float: left;
-    margin: -30px 5px 0 8px;
-    max-width: 100%;
-    padding: 1px;
-    vertical-align: bottom;
-}
-.twPc-avatarImg {
-    border: 2px solid #fff;
-    border-radius: 7px;
-    box-sizing: border-box;
-    color: #fff;
-    height: 72px;
-    width: 72px;
-}
-.twPc-divUser {
-    margin: 5px 0 0;
-}
-.twPc-divName {
-    font-size: 18px;
-    font-weight: 700;
-    line-height: 21px;
-}
-.twPc-divName a {
-    color: inherit !important;
-}
-.twPc-divStats {
-    margin-left: 11px;
-    padding: 4px 0;
-}
-.twPc-Arrange {
-    box-sizing: border-box;
-    display: table;
-    margin: 0;
-    min-width: 100%;
-    padding: 0;
-    table-layout: auto;
-}
-ul.twPc-Arrange {
-    list-style: outside none none;
-    margin: 0;
-    padding: 0;
-}
-.twPc-ArrangeSizeFit {
-    display: table-cell;
-    padding: 0;
-    vertical-align: top;
-}
-.twPc-ArrangeSizeFit a:hover {
-    text-decoration: none;
-}
-.twPc-StatValue {
-    display: block;
-    font-size: 18px;
-    font-weight: 500;
-    transition: color 0.15s ease-in-out 0s;
-}
-.twPc-StatLabel {
-    color: #8899a6;
-    font-size: 10px;
-    letter-spacing: 0.02em;
-    overflow: hidden;
-    text-transform: uppercase;
-    transition: color 0.15s ease-in-out 0s;
-}
+			background: #fff none repeat scroll 0 0;
+			border: 1px solid #e1e8ed;
+			border-radius: 6px;
+			height: 200px;
+			max-width: 100%; // orginal twitter width: 290px;
+		}
+		.twPc-bg {
+			background-image: url("https://pbs.twimg.com/profile_banners/50988711/1384539792/600x200");
+			background-position: 0 50%;
+			background-size: 100% auto;
+			border-bottom: 1px solid #e1e8ed;
+			border-radius: 4px 4px 0 0;
+			height: 95px;
+			width: 100%;
+		}
+		.twPc-block {
+			display: block !important;
+		}
+		.twPc-button {
+			margin: -35px -10px 0;
+			text-align: right;
+			width: 100%;
+		}
+		.twPc-avatarLink {
+			background-color: #fff;
+			border-radius: 6px;
+			display: inline-block !important;
+			float: left;
+			margin: -30px 5px 0 8px;
+			max-width: 100%;
+			padding: 1px;
+			vertical-align: bottom;
+		}
+		.twPc-avatarImg {
+			border: 2px solid #fff;
+			border-radius: 7px;
+			box-sizing: border-box;
+			color: #fff;
+			height: 72px;
+			width: 72px;
+		}
+		.twPc-divUser {
+			margin: 5px 0 0;
+		}
+		.twPc-divName {
+			font-size: 18px;
+			font-weight: 700;
+			line-height: 21px;
+		}
+		.twPc-divName a {
+			color: inherit !important;
+		}
+		.twPc-divStats {
+			margin-left: 11px;
+			padding: 4px 0;
+		}
+		.twPc-Arrange {
+			box-sizing: border-box;
+			display: table;
+			margin: 0;
+			min-width: 100%;
+			padding: 0;
+			table-layout: auto;
+		}
+		ul.twPc-Arrange {
+			list-style: outside none none;
+			margin: 0;
+			padding: 0;
+		}
+		.twPc-ArrangeSizeFit {
+			display: table-cell;
+			padding: 0;
+			vertical-align: top;
+		}
+		.twPc-ArrangeSizeFit a:hover {
+			text-decoration: none;
+		}
+		.twPc-StatValue {
+			display: block;
+			font-size: 18px;
+			font-weight: 500;
+			transition: color 0.15s ease-in-out 0s;
+		}
+		.twPc-StatLabel {
+			color: #8899a6;
+			font-size: 10px;
+			letter-spacing: 0.02em;
+			overflow: hidden;
+			text-transform: uppercase;
+			transition: color 0.15s ease-in-out 0s;
+		}
 		.none{
 			display: none;
 		}
@@ -556,170 +556,172 @@ ul.twPc-Arrange {
 							<div class="minicart-contain">
 
 								<div class="icon-contain">
-									<div class="span-index">
+									<div class="span-index" style="display: inline-block;">
 										{{-- <a href="{{ url('/cart') }}"> --}}
-											<a href="{{ url('/wishlist') }}" class="btn wishlist-btn" tabindex="0"><i style="font-size: 22px; color: #05a503; margin:2px 0px;margin-right: 10px !important;" class="fa fa-heart" aria-hidden="true"></i></a>
-										{{-- </a> --}}
-										<a href="{{ url('/cart') }}">
-											<i class="icon-cart-mini biolife-icon"></i>
-										</a>
-										<span class="qty">8</span>
-										<span class="sub-total"></span>
+											<a style="" href="{{ url('/wishlist') }}" class="" tabindex="0">
+												<i style="font-size: 22px; color: #05a503;vertical-align: middle;
+												margin: 0px 22px 0px 5px;" class="fa fa-heart" aria-hidden="true"></i></a>
+											{{-- </a> --}}
+											<a href="{{ url('/cart') }}">
+												<i class="icon-cart-mini biolife-icon" style="margin-right: 20px;"></i>
+											</a>
+											{{-- <span class="qty">8</span> --}}
+											{{-- <span class="sub-total"></span> --}}
+										</div>
+										<a href="{{ url('/cart') }}" class="btn-to-cart">Go</a>
 									</div>
-									<a href="{{ url('/cart') }}" class="btn-to-cart">Go</a>
-								</div>
 
+								</div>
 							</div>
-						</div>
-						<div class="mobile-menu-toggle">
-							<a class="btn-toggle" data-object="open-mobile-menu" href="javascript:void(0)">
-								<span></span>
-								<span></span>
-								<span></span>
-							</a>
+							<div class="mobile-menu-toggle">
+								<a class="btn-toggle" data-object="open-mobile-menu" href="javascript:void(0)">
+									<span></span>
+									<span></span>
+									<span></span>
+								</a>
+							</div>
 						</div>
 					</div>
 				</div>
 			</div>
 		</div>
-	</div>
-</header>
-@yield('style')
-<main class="pb-4">
-	@yield('content')
-</main>
-<footer id="footer" class="footer layout-01">
-	<div class="footer-content background-footer-03">
-		<div class="container">
+	</header>
+	@yield('style')
+	<main class="pb-4">
+		@yield('content')
+	</main>
+	<footer id="footer" class="footer layout-01">
+		<div class="footer-content background-footer-03">
+			<div class="container">
 
-			<div class="row">
-				<div class="col-lg-4 col-md-4 col-xs-12">
-					<section class="footer-item">
-						<a href="{{ url('/home') }}" class="logo footer-logo"><img src="{{ asset('/assets2/images/logo-biolife-1.png') }}" alt="biolife logo" width="135" height="34"></a>
-						<div class="footer-phone-info mode-03">
-							<i class="biolife-icon icon-head-phone"></i>
-							<p class="r-info">
-								<span>Got Questions ?</span>
-								<span class="number">(700)  9001-1909  (900) 689 -66</span>
-							</p>
-						</div>
-					
-						<div class="biolife-social inline circle-hover">
-							<ul class="socials">
-								<li><a href="#" title="twitter" class="socail-btn"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
-								<li><a href="#" title="facebook" class="socail-btn"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
-								<li><a href="#" title="pinterest" class="socail-btn"><i class="fa fa-pinterest" aria-hidden="true"></i></a></li>
-								<li><a href="#" title="youtube" class="socail-btn"><i class="fa fa-youtube" aria-hidden="true"></i></a></li>
-								<li><a href="#" title="instagram" class="socail-btn"><i class="fa fa-instagram" aria-hidden="true"></i></a></li>
-							</ul>
-						</div>
-					</section>
-				</div>
-				<div class="col-lg-8 col-md-8 col-xs-12 ">
-					<div class="row">
-						<div class="col-lg-4 col-sm-4 col-xs-12 md-margin-top-6px xs-margin-top-40px">
-							<section class="footer-item">
-								<h3 class="section-title">My Account</h3>
-								<div class="wrap-custom-menu vertical-menu-2">
-									<ul class="menu">
-										<li><a href="{{ url('/login') }}">Sign In</a></li>
-										<li><a href="{{ url('/cart') }}">View Cart</a></li>
-										<li><a href="{{ url('/wishlist') }}">My Wishlist</a></li>
-										{{-- <li><a href="#">Track My Order</a></li> --}}
-										{{-- <li><a href="#">Help</a></li> --}}
-										{{-- <li><a href="#">Our Blog</a></li> --}}
-									</ul>
+				<div class="row">
+					<div class="col-lg-4 col-md-4 col-xs-12">
+						<section class="footer-item">
+							<a href="{{ url('/home') }}" class="logo footer-logo"><img src="{{ asset('/assets2/images/logo-biolife-1.png') }}" alt="biolife logo" width="135" height="34"></a>
+							<div class="footer-phone-info mode-03">
+								<i class="biolife-icon icon-head-phone"></i>
+								<p class="r-info">
+									<span>Got Questions ?</span>
+									<span class="number">(700)  9001-1909  (900) 689 -66</span>
+								</p>
+							</div>
+
+							<div class="biolife-social inline circle-hover">
+								<ul class="socials">
+									<li><a href="#" title="twitter" class="socail-btn"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
+									<li><a href="#" title="facebook" class="socail-btn"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
+									<li><a href="#" title="pinterest" class="socail-btn"><i class="fa fa-pinterest" aria-hidden="true"></i></a></li>
+									<li><a href="#" title="youtube" class="socail-btn"><i class="fa fa-youtube" aria-hidden="true"></i></a></li>
+									<li><a href="#" title="instagram" class="socail-btn"><i class="fa fa-instagram" aria-hidden="true"></i></a></li>
+								</ul>
+							</div>
+						</section>
+					</div>
+					<div class="col-lg-8 col-md-8 col-xs-12 ">
+						<div class="row">
+							<div class="col-lg-4 col-sm-4 col-xs-12 md-margin-top-6px xs-margin-top-40px">
+								<section class="footer-item">
+									<h3 class="section-title">My Account</h3>
+									<div class="wrap-custom-menu vertical-menu-2">
+										<ul class="menu">
+											<li><a href="{{ url('/login') }}">Sign In</a></li>
+											<li><a href="{{ url('/cart') }}">View Cart</a></li>
+											<li><a href="{{ url('/wishlist') }}">My Wishlist</a></li>
+											{{-- <li><a href="#">Track My Order</a></li> --}}
+											{{-- <li><a href="#">Help</a></li> --}}
+											{{-- <li><a href="#">Our Blog</a></li> --}}
+										</ul>
+									</div>
+								</section>
+							</div>
+							<div class="contact-info-block footer-layout simple-info">
+								<h4 class="title">Contact info</h4>
+								<div class="info-item">
+									<img src="{{ asset('assets2/images/location-icon.png') }}" width="22" height="26" alt="" class="icon">
+									<p class="desc">7563 St. Vicent Place, Glasgow, Greater Newyork NH7689, UK </p>
 								</div>
-							</section>
-						</div>
-						<div class="contact-info-block footer-layout simple-info">
-							<h4 class="title">Contact info</h4>
-							<div class="info-item">
-								<img src="{{ asset('assets2/images/location-icon.png') }}" width="22" height="26" alt="" class="icon">
-								<p class="desc">7563 St. Vicent Place, Glasgow, Greater Newyork NH7689, UK </p>
 							</div>
 						</div>
+
+
 					</div>
-					
 
 				</div>
+
 
 			</div>
 
+		</div>
+	</footer>
 
-		</div>
-
-	</div>
-</footer>
-
-<!--Footer For Mobile-->
-<div class="mobile-footer">
-	<div class="mobile-footer-inner">
-		<div class="mobile-block block-menu-main">
-			<a class="menu-bar menu-toggle btn-toggle" data-object="open-mobile-menu" href="javascript:void(0)">
-				<span class="fa fa-bars"></span>
-				<span class="text">Menu</span>
-			</a>
-		</div>
-		<div class="mobile-block block-sidebar">
-			<a class="menu-bar filter-toggle btn-toggle" data-object="open-mobile-filter" href="javascript:void(0)">
-				<i class="fa fa-sliders" aria-hidden="true"></i>
-				<span class="text">Sidebar</span>
-			</a>
-		</div>
-		<div class="mobile-block block-minicart">
-			<a class="link-to-cart" href="{{ url('/cart') }}">
-				<span class="fa fa-shopping-bag" aria-hidden="true"></span>
-				<span class="text">Cart</span>
-			</a>
-		</div>
-		<div class="mobile-block block-global">
-			<a class="menu-bar myaccount-toggle btn-toggle" data-object="global-panel-opened" href="javascript:void(0)">
-				<span class="fa fa-globe"></span>
-				<span class="text">Global</span>
-			</a>
+	<!--Footer For Mobile-->
+	<div class="mobile-footer">
+		<div class="mobile-footer-inner">
+			<div class="mobile-block block-menu-main">
+				<a class="menu-bar menu-toggle btn-toggle" data-object="open-mobile-menu" href="javascript:void(0)">
+					<span class="fa fa-bars"></span>
+					<span class="text">Menu</span>
+				</a>
+			</div>
+			<div class="mobile-block block-sidebar">
+				<a class="menu-bar filter-toggle btn-toggle" data-object="open-mobile-filter" href="javascript:void(0)">
+					<i class="fa fa-sliders" aria-hidden="true"></i>
+					<span class="text">Sidebar</span>
+				</a>
+			</div>
+			<div class="mobile-block block-minicart">
+				<a class="link-to-cart" href="{{ url('/cart') }}">
+					<span class="fa fa-shopping-bag" aria-hidden="true"></span>
+					<span class="text">Cart</span>
+				</a>
+			</div>
+			<div class="mobile-block block-global">
+				<a class="menu-bar myaccount-toggle btn-toggle" data-object="global-panel-opened" href="javascript:void(0)">
+					<span class="fa fa-globe"></span>
+					<span class="text">Global</span>
+				</a>
+			</div>
 		</div>
 	</div>
-</div>
 
-<!--Mobile Global Menu-->
-<div class="mobile-block-global">
-	<div class="biolife-mobile-panels">
-		<span class="biolife-current-panel-title">Global</span>
-		<a class="biolife-close-btn" data-object="global-panel-opened" href="#">&times;</a>
-	</div>
-	<div class="block-global-contain">
-		<div class="glb-item my-account">
-			<b class="title">My Account</b>
-			<ul class="list">
-				<li>
-					{{-- @guest --}}
-					@if(!Auth::check())
-					<li class="nav-item">
-						<a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
+	<!--Mobile Global Menu-->
+	<div class="mobile-block-global">
+		<div class="biolife-mobile-panels">
+			<span class="biolife-current-panel-title">Global</span>
+			<a class="biolife-close-btn" data-object="global-panel-opened" href="#">&times;</a>
+		</div>
+		<div class="block-global-contain">
+			<div class="glb-item my-account">
+				<b class="title">My Account</b>
+				<ul class="list">
+					<li>
+						{{-- @guest --}}
+						@if(!Auth::check())
+						<li class="nav-item">
+							<a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
+						</li>
+						@if (Route::has('register'))
+						<li class="nav-item">
+							<a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
+						</li>
+						@endif
+						@endif
 					</li>
-					@if (Route::has('register'))
-					<li class="nav-item">
-						<a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
-					</li>
-					@endif
-					@endif
-				</li>
-				<li class="list-item"><a href="{{ url('/logout') }}">	@if(Auth::check())
-					<li class="horz-menu-item currency">
-						<a class="dropdown-item" href="{{ route('logout') }}"
-						onclick="event.preventDefault();
-						document.getElementById('logout-form').submit();"><i class="fa fa-sign-out mr-2"></i>
-						{{ __('Logout') }}
-					</a>
-					<form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
-						@csrf
-					</form> 
-				</li> 
-			@endif</a></li>
-			<li class="list-item"><a href="#">Wishlist <span class="index">(8)</span></a></li>
-		</ul>
-	</div>
+					<li class="list-item"><a href="{{ url('/logout') }}">	@if(Auth::check())
+						<li class="horz-menu-item currency">
+							<a class="dropdown-item" href="{{ route('logout') }}"
+							onclick="event.preventDefault();
+							document.getElementById('logout-form').submit();"><i class="fa fa-sign-out mr-2"></i>
+							{{ __('Logout') }}
+						</a>
+						<form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+							@csrf
+						</form> 
+					</li> 
+				@endif</a></li>
+				<li class="list-item"><a href="#">Wishlist <span class="index">(8)</span></a></li>
+			</ul>
+		</div>
          {{--    <div class="glb-item currency">
                 <b class="title">Currency</b>
                 <ul class="list">
