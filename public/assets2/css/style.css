@@ -8350,7 +8350,7 @@ li.slick-current .slider-opt04__layout01 .buttons .btn{
 .biolife-title-box__bgrd-bold{
     display: block;
     text-align: left;
-    margin-top: 73px;
+    margin-top: 173px !important;
     margin-bottom: 18px;
 }
 .biolife-title-box__bgrd-bold .title{

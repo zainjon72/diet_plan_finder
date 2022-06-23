@@ -34,8 +34,8 @@
                         <p class="message">{{ $plan['discription'] }}</p>
                         <div class="buttons" style="display: flex;justify-content: space-around;">
                           {{-- <a href="#" class="btn wishlist-btn"><i class="fa fa-heart" aria-hidden="true"></i></a> --}}
-                          <a href="{{ url('/plan/'.$plan['id']) }}" class="btn add-to-cart-btn btn-danger" style="background: #dfa421;"><i class="fa fa-cart-arrow-down" aria-hidden="true"></i>View Plan</a>
-                          <a href="{{ url('/meal/'.$plan['id']) }}" class="btn add-to-cart-btn"><i class="fa fa-cart-arrow-down" aria-hidden="true"></i>View Meal</a>
+                          <a href="{{ url('/plan/'.$plan['id']) }}" class="btn add-to-cart-btn btn-danger" style="background: #dfa421;padding: 15px 20px 15px 20px;"><i class="fa fa-cart-arrow-down" aria-hidden="true"></i>View Plan</a>
+                          <a href="{{ url('/meal/'.$plan['id']) }}" class="btn add-to-cart-btn" style="padding: 15px 20px 15px 20px;"><i class="fa fa-cart-arrow-down" aria-hidden="true"></i>View Meal</a>
                           {{-- <a href="#" class="btn compare-btn"><i class="fa fa-random" aria-hidden="true"></i></a> --}}
                         </div>
                       </div>

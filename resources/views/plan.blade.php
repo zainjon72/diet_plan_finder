@@ -2,7 +2,7 @@
 {{-- @dd($order[0]) --}}
 @section('style')
 <style>
- 
+
 </style>
 @endsection
 @section('content')
@@ -115,69 +115,73 @@
 
 
                         <div class="" style="display: block;text-align: center;">
-                          <a href="{{ url('/my-plan') }}" class=" checkplans btn btn-success btn-block rounded add-to-cart-btn" type="submit">See Your Plans</a>
-                          <p class="pull-row">
-                            <a href="#" class="btn wishlist-btn">wishlist</a>
-                            <a href="#" class="btn compare-btn">compare</a>
-                        </p>
-                    </div>
-
-                </form>
-                @else
-                <form method="post" action="{{ url('/cart') }}">
-                    @csrf
-                    
-                    <div class="action-form">
-                        <div class="quantity-box">
-                            <span class="title">Quantity:</span>
-                            <div class="qty-input">
-                                <input type="number" name="quantity" value="1" data-max_value="20" data-min_value="1" data-step="1" class="form-control" style="width: 100%;">
-                                <input type="hidden" name="diet_plan_id" value="{{ $plan['id'] }}">
-
+                            <div class="alert alert-success" role="alert">
+                                <h4 class="alert-heading">Already Purchased !</h4>
+                                <p>You Can't Buy This Plan Because You Already Purchased It...</p>
                             </div>
+                            <a href="{{ url('/my-plans') }}" class=" checkplans btn btn-success btn-block rounded add-to-cart-btn" type="submit">See Your Plans</a>
+                            <p class="pull-row">
+                                {{-- <a href="#" class="btn wishlist-btn">wishlist</a> --}}
+                                {{-- <a href="#" class="btn compare-btn">compare</a> --}}
+                            </p>
                         </div>
 
+                    </form>
+                    @else
+                    <form method="post" action="{{ url('/cart') }}">
+                        @csrf
 
-                        <div class="buttons">
+                        <div class="action-form">
+                            <div class="quantity-box">
+                                <span class="title">Quantity:</span>
+                                <div class="qty-input">
+                                    <input type="number" name="quantity" value="1" data-max_value="20" data-min_value="1" data-step="1" class="form-control" style="width: 100%;">
+                                    <input type="hidden" name="diet_plan_id" value="{{ $plan['id'] }}">
+
+                                </div>
+                            </div>
 
 
-                          <button class="btn  add-to-cart-btn" type="submit" style="width: 100%;">add to cart</button> 
+                            <div class="buttons">
 
-                          
-                          <p class="pull-row">
-                            <a href="#" class="btn wishlist-btn">wishlist</a>
-                            <a href="#" class="btn compare-btn">compare</a>
-                        </p>
+
+                              <button class="btn  add-to-cart-btn" type="submit" style="width: 100%;">add to cart</button> 
+
+
+                              <p class="pull-row">
+                                <a href="#" class="btn wishlist-btn">wishlist</a>
+                                <a href="#" class="btn compare-btn">compare</a>
+                            </p>
+                        </div>
+
+                    </form>
+                    @endif
+                    <div class="social-media">
+                        <ul class="social-list">
+                            <li><a href="https://twitter.com/zj_khan" class="social-link"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
+                            <li><a href="https://twitter.com/zj_khan" class="social-link"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
+                            <li><a href="https://twitter.com/zj_khan" class="social-link"><i class="fa fa-pinterest" aria-hidden="true"></i></a></li>
+                            <li><a href="https://twitter.com/zj_khan" class="social-link"><i class="fa fa-share-alt" aria-hidden="true"></i></a></li>
+                            <li><a href="https://twitter.com/zj_khan" class="social-link"><i class="fa fa-instagram" aria-hidden="true"></i></a></li>
+                        </ul>
                     </div>
-
-                </form>
-                @endif
-                <div class="social-media">
-                    <ul class="social-list">
-                        <li><a href="#" class="social-link"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
-                        <li><a href="#" class="social-link"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
-                        <li><a href="#" class="social-link"><i class="fa fa-pinterest" aria-hidden="true"></i></a></li>
-                        <li><a href="#" class="social-link"><i class="fa fa-share-alt" aria-hidden="true"></i></a></li>
-                        <li><a href="#" class="social-link"><i class="fa fa-instagram" aria-hidden="true"></i></a></li>
-                    </ul>
                 </div>
             </div>
-        </div>
-        {{-- @endforeach --}}
-        <div class="meals">
-            <table class="border-0" style="border: 0px;">
+            {{-- @endforeach --}}
+            <div class="meals">
+                <table class="border-0" style="border: 0px;">
 
-                {{-- @dd($order_items['dietplans']['id']) --}}
-                {{-- @dd($meal_one) --}}
-                {{-- @dd($plan->id) --}}
-                {{-- <h1 class="text-center">Diet Plan's Meal</h1> --}}
-                @foreach($meals as $meal)
-                @if(in_array($plan->id, $order_items))
+                    {{-- @dd($order_items['dietplans']['id']) --}}
+                    {{-- @dd($meal_one) --}}
+                    {{-- @dd($plan->id) --}}
+                    {{-- <h1 class="text-center">Diet Plan's Meal</h1> --}}
+                    @foreach($meals as $meal)
+                    @if(in_array($plan->id, $order_items))
 
-                <tr style="">
-                    <td style="padding: 0px 50px;">Meal Id:{{$meal->id}}</td>
-                    <td><img style="" src="{{ url('/storage/app/public/'.$meal->image) }}" alt=""></td>
-                    <td  style="text-align: left; padding: 10px 40px;"><h2>{{ $meal->title }}</h2><br>{{ $meal->discription }}</td>
+                    <tr style="">
+                        <td style="padding: 0px 20px;">Meal&nbsp;Id <br>{{$meal->id}}</td>
+                        <td><img style="width: 300px; height: 150px;" src="{{ url('/storage/app/public/'.$meal->image) }}" alt=""></td>
+                        <td  style="text-align: left; padding: 10px 40px;"><h2>{{ $meal->title }}</h2><br>{{ $meal->discription }}</td>
                         {{-- <td></td> --}}
                     </tr>
                     @else
@@ -195,32 +199,32 @@
                       <td><img style="width: 200px;" src="{{ url('/storage/app/public/'.$meal->image) }}" alt=""></td>
                       <td style="text-align: left;padding: 50px;"><h2 style="text-align: left;">{{ $meal->title }}</h2><br>{{ $meal->discription }}</td>
                       {{-- <td></td> --}}
-                 
-              </div>
+
+                  </div>
 
 
-              @break
-              @endif
-              @endforeach
+                  @break
+                  @endif
+                  @endforeach
 
-              {{-- @dd($meal_one) --}}
+                  {{-- @dd($meal_one) --}}
 
 
-              {{-- @foreach($meal_one as $meal) --}}
-              {{-- @endforeach --}}
+                  {{-- @foreach($meal_one as $meal) --}}
+                  {{-- @endforeach --}}
 
-          </table>
-          @if(!in_array($plan->id, $order_items))
+              </table>
+              @if(!in_array($plan->id, $order_items))
               <img src="{{ url('/storage/app/public/all_images/blur.png') }}" alt="">
               <button onclick="alert('Buy plan to View All Meals')" class="btn btn-success" style="padding: 10px 30px; border-radius: 40px;margin-left: 900px;margin-top: -340px;"><i style="color: black;" class="fas fa-eye"></i> View Meals</button>
               @endif
-      </div>
+          </div>
 
-      <!-- Tab info -->
-      <div class="product-tabs single-layout biolife-tab-contain">
-        <div class="tab-head">
-            <ul class="tabs">
-                <li class="tab-element active"><a href="#tab_1st" class="tab-link">Products Descriptions</a></li>
+          <!-- Tab info -->
+          <div class="product-tabs single-layout biolife-tab-contain">
+            <div class="tab-head">
+                <ul class="tabs">
+                    <li class="tab-element active"><a href="#tab_1st" class="tab-link">Products Descriptions</a></li>
                 {{-- <li class="tab-element" ><a href="#tab_2nd" class="tab-link">Addtional information</a></li>
                 <li class="tab-element" ><a href="#tab_3rd" class="tab-link">Shipping & Delivery</a></li> --}}
                 <li class="tab-element" ><a href="#tab_4th" class="tab-link">Customer Reviews <sup>({{ count($feedbacks) }})</sup></a></li>
@@ -233,7 +237,7 @@
 
                 </div>
             </div>
-            <div id="tab_2nd" class="tab-contain addtional-info-tab">
+           {{--  <div id="tab_2nd" class="tab-contain addtional-info-tab">
                 <table class="tbl_attributes">
                     <tbody>
                         <tr>
@@ -292,7 +296,7 @@
                         </li>
                     </ul>
                 </div>
-            </div>
+            </div> --}}
             @if(in_array($plan->id, $order_items))
 
             <div id="tab_4th" class="tab-contain review-tab">

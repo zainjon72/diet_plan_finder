@@ -102,8 +102,16 @@
                                     <p class="title">Est. Taxes & Fees</p>
                                     <p class="desc">Based on 56789</p>
                                 </div>
+                                @php
+                                $cart_items = $cart_items->toArray();
+                                // dd($cart_items);
+                                @endphp
                                 <div class="btn-checkout">
+                                    @if(empty($cart_items))
+                                    <a href="#" onclick="alert('You Dont have plans in the cart')" class="btn checkout">Check out</a>
+                                    @else
                                     <a href="{{ url('/checkout') }}" class="btn checkout">Check out</a>
+                                    @endif
                                 </div>
                                 <div class="biolife-progress-bar">
                            

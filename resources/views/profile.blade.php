@@ -1,105 +1,199 @@
 @extends('layouts.header')
+@section('style')
+<style>
+body {
+    background-color: #f9f9fa
+}
+
+.padding {
+    padding: 3rem !important;
+    margin-left:350px !important;
+}
+
+.user-card-full {
+    overflow: hidden;
+}
+
+.card {
+    border-radius: 5px;
+    -webkit-box-shadow: 0 1px 20px 0 rgba(69,90,100,0.08);
+    box-shadow: 0 1px 20px 0 rgba(69,90,100,0.08);
+    border: none;
+    margin-bottom: 30px;
+}
+
+.m-r-0 {
+    margin-right: 0px;
+}
+
+.m-l-0 {
+    margin-left: 0px;
+}
+
+.user-card-full .user-profile {
+    border-radius: 5px 0 0 5px;
+}
+
+.bg-c-lite-green {
+        background: -webkit-gradient(linear, left top, right top, from(#f29263), to(#ee5a6f));
+    background: linear-gradient(to right, #ee5a6f, #f29263);
+}
+
+.user-profile {
+    padding: 20px 0;
+}
+
+.card-block {
+    padding: 1.25rem;
+}
+
+.m-b-25 {
+    margin-bottom: 25px;
+}
+
+.img-radius {
+    border-radius: 5px;
+}
+
+
+ 
+h6 {
+    font-size: 14px;
+}
+
+.card .card-block p {
+    line-height: 25px;
+}
+
+@media only screen and (min-width: 1400px){
+p {
+    font-size: 14px;
+}
+}
+
+.card-block {
+    padding: 1.25rem;
+}
+
+.b-b-default {
+    border-bottom: 1px solid #e0e0e0;
+}
+
+.m-b-20 {
+    margin-bottom: 20px;
+}
+
+.p-b-5 {
+    padding-bottom: 5px !important;
+}
+
+.card .card-block p {
+    line-height: 25px;
+}
+
+.m-b-10 {
+    margin-bottom: 10px;
+}
+
+.text-muted {
+    color: #919aa3 !important;
+}
+
+.b-b-default {
+    border-bottom: 1px solid #e0e0e0;
+}
+
+.f-w-600 {
+    font-weight: 600;
+}
+
+.m-b-20 {
+    margin-bottom: 20px;
+}
+
+.m-t-40 {
+    margin-top: 20px;
+}
+
+.p-b-5 {
+    padding-bottom: 5px !important;
+}
+
+.m-b-10 {
+    margin-bottom: 10px;
+}
+
+.m-t-40 {
+    margin-top: 20px;
+}
+
+.user-card-full .social-link li {
+    display: inline-block;
+}
+
+.user-card-full .social-link li a {
+    font-size: 20px;
+    margin: 0 10px 0 0;
+    -webkit-transition: all 0.3s ease-in-out;
+    transition: all 0.3s ease-in-out;
+}
+
+
+
+</style>
+@endsection
 @section('content')
-
-<div class="container" style="margin-top: 300px !important; margin: auto;">
-<div class="row">
-{{-- <h1>MY PROFILE</h1> --}}
-{{-- <p>You can use with Twitter API, bot or manual.</p> --}}
-<!-- code start -->
-<div class="twPc-div">
-    <a class="twPc-bg twPc-block"></a>
-
-  <div>
-    <div class="twPc-button">
-            <!-- Twitter Button | you can get from: https://about.twitter.com/tr/resources/buttons#follow -->
-            {{-- <a href="https://twitter.com/zj_khan" class="twitter-follow-button" data-show-count="false" data-size="large" data-show-screen-name="false" data-dnt="true"></a> --}}
-            <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
-            <!-- Twitter Button -->   
-    </div>
-
-    <a title="Mert S. Kaplan" href="https://twitter.com/mertskaplan" class="twPc-avatarLink">
-      <img alt="Mert S. Kaplan" src="{{ url('/storage/app/public/'.Auth::user()->image) }}" class="twPc-avatarImg">
-    </a>
-
-    <div class="twPc-divUser">
-      <div class="twPc-divName">
-        <a style="color: white !important" href="">{{ Auth::user()->name }}</a>
-      </div><br>
-      <span>
-        <a style="margin: 0px 10px;" href=""><span>{{ Auth::user()->email }}</span></a>
-      </span>
-    </div>
-
-    <div class="twPc-divStats">
-      <ul class="twPc-Arrange">
-        <li class="twPc-ArrangeSizeFit" style="display: flex;justify-content: flex-start;">
-          <a href="{{ url('/wishlist') }}" title="9.840 Tweet">
-            <span class="twPc-StatLabel twPc-block">Liked Plan</span>
-            <span class="twPc-StatValue">{{ count($wishlist) }}</span>
-          </a>
-          <a style="margin :0px 20px;" href="{{ url('/my-plans') }}" title="9.840 Tweet">
-            <span class="twPc-StatLabel twPc-block">My Plan</span>
-            <span class="twPc-StatValue">{{ count($plans) }}</span>
-          </a>
-        </li>
-      </ul>
-    </div>
-  </div>
-</div>
-<div class="shell">
-  <div class="container">
-    <div class="row">
-      {{-- <h1>My Plans</h1> --}}
-    @foreach($plans as $plan)
-      @foreach($plan['dietplans'] as $plan)
-      <div class="col-md-3 p_card" style="margin-bottom: 150px;">
-        <li class="product-item" style="list-style: none;">
-                  <div class="contain-product layout-default">
-                    <div class="product-thumb">
-                      <a href="#" class="link-to-product">
-                        <img src="{{ url('/storage/app/public/'.$plan['image']) }}" alt="Vegetables" width="270" height="270" class="product-thumnail">
-                      </a>
-                      {{-- <a class="lookup btn_call_quickview" href="#"><i class="biolife-icon icon-search"></i></a> --}}
-                    </div>
-                    <div class="info">
-                      {{-- <b class="categories">Vegetables</b> --}}
-                      <h4 class="product-title"><a href="#" class="pr-name">{{ $plan['title'] }}</a></h4>
-                      <div class="price ">
-                        {{-- <ins><span class="price-amount"><span class="currencySymbol">$</span>{{ $plan-> }}</span></ins> --}}
-                        {{-- <del><span class="price-amount"><span class="currencySymbol">£</span>95.00</span></del> --}}
-                      </div>
-                      <div class="slide-down-box">
-                        <p class="message">{{ $plan['discription'] }}</p>
-                        <div class="buttons">
-                          <a href="#" class="btn wishlist-btn"><i class="fa fa-heart" aria-hidden="true"></i></a>
-                          <a href="{{ url('/meal/'.$plan['id']) }}" class="btn add-to-cart-btn"><i class="fa fa-cart-arrow-down" aria-hidden="true"></i>View Meal</a>
-                          {{-- <a href="#" class="btn compare-btn"><i class="fa fa-random" aria-hidden="true"></i></a> --}}
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </li>
-      </div>
-      @endforeach
-      @endforeach
-    </div>
-  </div>
-</div>
-{{-- <div class="form-group add-exp mt-s w-75 mx-auto" style="width: 70%; margin: 0px auto;">
-  <h2>Add Experiences</h2>
-  <div class="all-exps">
-    <div class="new-exp">
-      <label>Title:</label>
-      <input type="text" name="exp[title][]" class="form-control cv_field" placeholder="Ex: Web Developer" value="Web Designer">
-      <label>Company:</label>
-      <input type="text" name="exp[company][]" class="form-control cv_field" placeholder="Ex: ProgressSoft" value="ProgressSoft">
-      <label>Description (optional):</label>
-      <textarea name="exp[description][]" class="form-control cv_field" placeholder="Enter your Description:">Web design encompasses many different skills and disciplines in the production and maintenance of websites. The different areas of web design include web graphic design; user interface design; authoring, including standardised code and proprietary software; user experience design; and search engine optimization.</textarea>
-    </div>
-  </div>
-  <div class="add-blk btn btn-info" id="add-exp">
-    <i class="fa fa-plus"></i>
-    <span>Add another experience</span>
-  </div>
-</div> --}}
+<div class="page-content page-container" id="page-content" style="margin-top: 300px;">
+    <div class="padding">
+        <div class="row container d-flex justify-content-center">
+<div class="col-xl-6 col-md-12">
+                                                <div class="card user-card-full">
+                                                    <div class="row m-l-0 m-r-0">
+                                                        <div class="col-sm-4 bg-c-lite-green user-profile">
+                                                            <div class="card-block text-center text-white">
+                                                                <div class="m-b-25">
+                                                                    <img width="100px;" src="{{ url('/storage/app/public/'.auth::user()->image)}}" class="img-radius" alt="User-Profile-Image">
+                                                                </div>
+                                                                <h6 class="f-w-600">{{auth::user()->name}}</h6>
+                                                                <p>{{ auth::user()->role}}</p>
+                                                                <i class=" mdi mdi-square-edit-outline feather icon-edit m-t-10 f-16"></i>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-sm-8">
+                                                            <div class="card-block">
+                                                                <h6 class="m-b-20 p-b-5 b-b-default f-w-600">Information</h6>
+                                                                <div class="row">
+                                                                    <div class="col-sm-6">
+                                                                        <p class="m-b-10 f-w-600">Email</p>
+                                                                        <h6 class="text-muted f-w-400">{{ auth::user()->email}}</h6>
+                                                                    </div>
+                                                                    <div class="col-sm-6">
+                                                                        <p class="m-b-10 f-w-600">Phone</p>
+                                                                        <h6 class="text-muted f-w-400">98979989898</h6>
+                                                                    </div>
+                                                                </div>
+                                                                <h6 class="m-b-20 m-t-40 p-b-5 b-b-default f-w-600">Projects</h6>
+                                                                <div class="row">
+                                                                    <div class="col-sm-6">
+                                                                        <p class="m-b-10 f-w-600">Liked Plans</p>
+                                                                        <h6 class="text-muted f-w-400">{{ count($wishlist)}}</h6>
+                                                                    </div>
+                                                                    <div class="col-sm-6">
+                                                                        <p class="m-b-10 f-w-600">Purchased Plan</p>
+                                                                        <h6 class="text-muted f-w-400">{{count($plans)}}</h6>
+                                                                    </div>
+                                                                </div>
+                                                                <ul class="social-link list-unstyled m-t-40 m-b-10">
+                                                                    <li><a href="#!" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="facebook" data-abc="true"><i class="mdi mdi-facebook feather icon-facebook facebook" aria-hidden="true"></i></a></li>
+                                                                    <li><a href="#!" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="twitter" data-abc="true"><i class="mdi mdi-twitter feather icon-twitter twitter" aria-hidden="true"></i></a></li>
+                                                                    <li><a href="#!" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="instagram" data-abc="true"><i class="mdi mdi-instagram feather icon-instagram instagram" aria-hidden="true"></i></a></li>
+                                                                </ul>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                             </div>
+                                                </div>
+                                            </div>
 @endsection

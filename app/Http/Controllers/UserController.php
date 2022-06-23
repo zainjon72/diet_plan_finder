@@ -16,7 +16,9 @@ class UserController extends Controller
     //
  public function index(){
    $users = User::paginate($this->perpage);
+   // $wishlist = Wishlist::where('user_id', Auth::user()->id);
    $data = [];
+   // $data['wishlist'] = $wishlist
    $data['users'] = $users;
    return view($this->view, $data);
  } 	

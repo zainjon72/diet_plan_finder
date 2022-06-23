@@ -14,6 +14,7 @@ class UserSeeder extends Seeder
     {
         factory(App\User::class)->create([
             'email' => 'admin@gmail.com',
+            // 'number' => 
             'image' => 'all_images/admin.jfif',
             'role' => 'admin',
             'password' => Hash::make('12345678'),
