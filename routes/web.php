@@ -76,7 +76,7 @@ Route::prefix('nutritionist')->middleware('nutritionist')->group(function(){
 	Route::post('/edit_plan/{id}', 'Nutritionist\\DietPlanController@edit');
 
 	// Route::post('/add_plan', 'Nutritionist\\DietPlanController@create');
-	
+
 	Route::get('/meal', 'Nutritionist\\MealController@index');
 
 	Route::post('/meal', 'Nutritionist\\MealController@create');
