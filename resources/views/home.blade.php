@@ -1,4 +1,4 @@
-@extends('layouts.app')
+{{-- @extends('layouts.app')
 <!doctype html>
 <html lang="en">
 
@@ -302,3 +302,4 @@
     </script>
 </body>
 </html>
+ --}}

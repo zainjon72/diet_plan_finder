@@ -110,7 +110,7 @@
 											<div class="slide-down-box">
 												<p class="message">{{ $plan->discription }}</p>
 												<div class="buttons">
-													<a href="#" class="btn wishlist-btn"><i class="fa fa-heart" aria-hidden="true"></i></a>
+													<a href="{{ url('/wishlist/'.$plan->id)}}" class="btn wishlist-btn"><i class="fa fa-heart" aria-hidden="true"></i></a>
 													<a href="{{ url('/plan/'.$plan->id) }}" class="btn add-to-cart-btn"><i class="fa fa-cart-arrow-down" aria-hidden="true"></i>View</a>
 													{{-- <a href="#" class="btn compare-btn"><i class="fa fa-random" aria-hidden="true"></i></a> --}}
 												</div>
@@ -142,7 +142,7 @@
 											<div class="slide-down-box">
 												<p class="message">{{ $plan->discription }}</p>
 												<div class="buttons">
-													<a href="#" class="btn wishlist-btn"><i class="fa fa-heart" aria-hidden="true"></i></a>
+													<a href="{{ url('/wishlist/'.$plan->id)}}" class="btn wishlist-btn"><i class="fa fa-heart" aria-hidden="true"></i></a>
 													<a href="{{ url('/plan/'.$plan->id) }}" class="btn add-to-cart-btn"><i class="fa fa-cart-arrow-down" aria-hidden="true"></i>View</a>
 													{{-- <a href="#" class="btn compare-btn"><i class="fa fa-random" aria-hidden="true"></i></a> --}}
 												</div>
@@ -174,7 +174,7 @@
 											<div class="slide-down-box">
 												<p class="message">{{ $plan->discription }}</p>
 												<div class="buttons">
-													<a href="#" class="btn wishlist-btn"><i class="fa fa-heart" aria-hidden="true"></i></a>
+													<a href="{{ url('/wishlist/'.$plan->id)}}" class="btn wishlist-btn"><i class="fa fa-heart" aria-hidden="true"></i></a>
 													<a href="{{ url('/plan/'.$plan->id) }}" class="btn add-to-cart-btn"><i class="fa fa-cart-arrow-down" aria-hidden="true"></i>View</a>
 													{{-- <a href="#" class="btn compare-btn"><i class="fa fa-random" aria-hidden="true"></i></a> --}}
 												</div>
@@ -206,7 +206,7 @@
 											<div class="slide-down-box">
 												<p class="message">{{ $plan->discription }}</p>
 												<div class="buttons">
-													<a href="#" class="btn wishlist-btn"><i class="fa fa-heart" aria-hidden="true"></i></a>
+													<a href="{{ url('/wishlist/'.$plan->id)}}" class="btn wishlist-btn"><i class="fa fa-heart" aria-hidden="true"></i></a>
 													<a href="{{ url('/plan/'.$plan->id) }}" class="btn add-to-cart-btn"><i class="fa fa-cart-arrow-down" aria-hidden="true"></i>View</a>
 													{{-- <a href="#" class="btn compare-btn"><i class="fa fa-random" aria-hidden="true"></i></a> --}}
 												</div>
@@ -297,7 +297,7 @@
 											<div class="slide-down-box">
 												<p class="message">{{ $plan->discription }}</p>
 												<div class="buttons">
-													<a href="#" class="btn wishlist-btn"><i class="fa fa-heart" aria-hidden="true"></i></a>
+													<a href="{{ url('/wishlist/'.$plan->id)}}" class="btn wishlist-btn"><i class="fa fa-heart" aria-hidden="true"></i></a>
 													<a href="{{ url('/plan/'.$plan->id) }}" class="btn add-to-cart-btn"><i class="fa fa-cart-arrow-down" aria-hidden="true"></i>View</a>
 													{{-- <a href="#" class="btn compare-btn"><i class="fa fa-random" aria-hidden="true"></i></a> --}}
 												</div>
@@ -345,7 +345,7 @@
 										<p class="desc">{{ $plan->discription }}</p>
 										<div class="buttons">
 											<a href="{{ url('/plan/'.$plan->id) }}" class="btn add-to-cart-btn" tabindex="0">View</a>
-											<a href="#" class="btn wishlist-btn" tabindex="0"><i class="fa fa-heart" aria-hidden="true"></i></a>
+											<a href="{{ url('/wishlist/'.$plan->id)}}" class="btn wishlist-btn" tabindex="0"><i class="fa fa-heart" aria-hidden="true"></i></a>
 											{{-- <a href="#" class="btn compare-btn" tabindex="0"><i class="fa fa-random" aria-hidden="true"></i></a> --}}
 										</div>
 									</div>

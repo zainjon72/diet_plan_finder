@@ -244,13 +244,13 @@
                                                 <div class="dropdown-menu text-center" aria-labelledby="dropdownMenuButton">
                                                     {{-- <a class="dropdown-item" data-action="delete_record"  href="{{url('/admin/delete_user/'.$plan['id']) }}" data-url="" >Delete</a> --}} 
                                                    
-                                                    @if($plan->status == 'Pending')
+                                                    @if($plan->status == 'pending')
                                                     <a class="dropdown-item" href="{{url('/admin/approve_plan/'.$plan['id'])}}"> Approve </a>
                                                     @endif
                                                        @if($plan->status == 'Cancel')
                                                     <a class="dropdown-item" href="{{url('/admin/delete_plan/'.$plan['id'])}}"> Delete </a>
                                                     @endif
-                                                    @if($plan->status == 'Pending' || $plan->status == 'Approve')
+                                                    @if($plan->status == 'pending' || $plan->status == 'Approve')
                                                     <a class="dropdown-item" href="{{url('/admin/cancel_plan/'.$plan['id'])}}"> Cancel </a>
                                                     @endif
                                                 </div>
