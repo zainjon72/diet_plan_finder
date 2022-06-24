@@ -97,6 +97,13 @@ public function wishlist(){
   // dd($data['wishlist']);
   return view('wishlist', $data);
 }
+public function delete_wishlist($id){
+  // dd(Wishlist::find($id));
+  $wishlist = Wishlist::where('plan_id', $id)->pluck('id');
+  // dd($wishlist);
+  Wishlist::destroy($wishlist);
+  return redirect (url('/wishlist'));
+}
 public function nutritionistprofile($id){
   $plans = DietPlan::with('user')->where('created_by', $id)->get()->toArray();
   $user = User::find($id);

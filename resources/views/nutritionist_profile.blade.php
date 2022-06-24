@@ -7,7 +7,10 @@ body {
 
 .padding {
     padding: 3rem !important;
-    margin-left:350px !important;
+    /*margin-left:350px !important;*/
+}
+.padding .row{
+    margin: 0px auto;
 }
 
 .user-card-full {
@@ -35,8 +38,8 @@ body {
 }
 
 .bg-c-lite-green {
-        background: -webkit-gradient(linear, left top, right top, from(#f29263), to(#ee5a6f));
-    background: linear-gradient(to right, #ee5a6f, #f29263);
+        background: #ddd;
+    /*background: linear-gradient(to right, #ee5a6f, #f29263);
 }
 
 .user-profile {
@@ -152,7 +155,7 @@ p {
                                                         <div class="col-sm-4 bg-c-lite-green user-profile">
                                                             <div class="card-block text-center text-white">
                                                                 <div class="m-b-25">
-                                                                    <img width="100px;" src="{{ url('/storage/app/public/'.$user->image)}}" class="img-radius" alt="User-Profile-Image">
+                                                                    <img  src="{{ url('/storage/app/public/'.$user->image)}}" class="img-radius" alt="User-Profile-Image">
                                                                 </div>
                                                                 <h6 class="f-w-600">{{$user->name}}</h6>
                                                                 <p>{{ $user->role}}</p>

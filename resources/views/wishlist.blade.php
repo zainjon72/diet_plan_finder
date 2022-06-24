@@ -33,18 +33,21 @@
             <td style="border-top: 1px solid #e6e6e6 !important; border: none;">${{ $plan['price'] }}</td>
             <form action="{{ url('/cart') }}" method="post">
               @csrf
-            <td class="form-group" style="width: 150px; border-top: 1px solid #e6e6e6 !important; border: none;">
+              <td class="form-group" style="width: 150px; border-top: 1px solid #e6e6e6 !important; border: none;">
                 <input name="quantity" type="number" value="1" class="form-control" style="width: 50%; margin: auto;">
-            </td>
-            <td style="border-top: 1px solid #e6e6e6 !important; border: none;">
-              <input name="diet_plan_id" type="hidden" value="{{ $plan['id'] }}">
-              <button type="submit" value="" class="form-control btn btn-success" style="width: 50%; margin: auto;padding: 0px 30px;height: 50px;border-radius: 40px;">Add to Cart</button>
-              
-            </td>
-          </form>
+              </td>
+              <td style="border-top: 1px solid #e6e6e6 !important; border: none;">
+                <input name="diet_plan_id" type="hidden" value="{{ $plan['id'] }}">
+                <span style="display: flex;justify-content: space-around;">
+                  <button type="submit" value="" class="form-control btn btn-success" style="width: 30%; margin: auto;padding: 0px 30px;height: 50px;border-radius: 40px;">Add to Cart</button>
+                  <a href="{{ url('/delete_wishlist/'.$plan['id'])}}" type="submit" value="" class="form-control btn btn-danger" style="width: 30%; margin: auto;padding: 15px 15px;height: 50px;border-radius: 40px;">Delete from Wishlist</a>
+                </span>
+
+              </td>
+            </form>
           </tr>
-      @endforeach
-      @endforeach
+          @endforeach
+          @endforeach
         </tbody>
       </table>
       @endif
