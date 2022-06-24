@@ -28,7 +28,8 @@
             <p class="form-row wrap-btn">
                 <button class="btn btn-submit btn-bold" type="submit">{{ __('Login') }}</button>
                 @if (Route::has('password.request'))
-                <a class="btn btn-link" href="{{ route('password.request') }}">
+                {{-- {{ route('password.request') }} --}}
+                <a class="btn btn-link" href="#">
                     {{ __('Forgot Your Password?') }}
                 </a>
                 @endif

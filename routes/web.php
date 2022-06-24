@@ -129,6 +129,7 @@ Route::middleware(['auth', 'customer'])->group(function(){
 
 	Route::get('/delete_wishlist/{id}', 'UserController@delete_wishlist');
 
+Route::get('wishlist/{id}', 'HomeController@add_to_wishlist');
 });
 
 Route::get('/', 'HomeController@index')->name('home');
@@ -139,7 +140,6 @@ Route::get('/plans', 'HomeController@plans');
 
 Route::get('/delete_plan/{id}', 'CartItemController@delete');
 
-Route::get('wishlist/{id}', 'HomeController@add_to_wishlist');
 
 // Route::get('/', 'DietPlanController@show');
 

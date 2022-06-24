@@ -38,6 +38,10 @@
     .user-card-full .user-profile {
         border-radius: 5px 0 0 5px;
     }
+    .card-block {
+    border: 1px solid #ddd;
+    padding: 10px;
+}
 
     .bg-c-lite-green {
         background: #ddd;
@@ -48,9 +52,7 @@
     padding: 20px 0;
 }
 
-.card-block {
-    padding: 1.25rem;
-}
+
 
 .m-b-25 {
     margin-bottom: 25px;

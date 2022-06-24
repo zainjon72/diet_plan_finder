@@ -16,9 +16,9 @@ class UserController extends Controller
     //
  public function index(){
    $users = User::paginate($this->perpage);
-   // $wishlist = Wishlist::where('user_id', Auth::user()->id);
+   $wishlist = Wishlist::where('user_id', Auth::user()->id);
    $data = [];
-   // $data['wishlist'] = $wishlist
+   $data['wishlist'] = $wishlist;
    $data['users'] = $users;
    return view($this->view, $data);
  } 	
@@ -105,11 +105,13 @@ public function delete_wishlist($id){
   return redirect (url('/wishlist'));
 }
 public function nutritionistprofile($id){
+   $wishlist = Wishlist::where('user_id', Auth::user()->id);
   $plans = DietPlan::with('user')->where('created_by', $id)->get()->toArray();
   $user = User::find($id);
   $data = [];
   $data['plans'] = $plans;
   $data['user'] = $user;
+  $data['wishlist'] = $wishlist;
   return view('nutritionist_profile', $data); 
 }
 

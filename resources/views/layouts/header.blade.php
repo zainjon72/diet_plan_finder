@@ -425,6 +425,16 @@
 		.p_card{
 			margin-top: 100px;
 		}
+		@media only screen and (max-width: 1199px){
+
+			.span-index
+			{
+				border:0px solid !important;
+				width: auto !important;
+			}
+
+
+		}
 
 	</style>
 </head>
@@ -450,9 +460,9 @@
 						<li><a href="#"><i class="fa fa-envelope" aria-hidden="true"></i>zainjon12@gmail.com</a></li>
 					</ul>
 					<ul class="social-list circle-layout">
-						<li><a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
-						<li><a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
-						<li><a href="#"><i class="fa fa-pinterest" aria-hidden="true"></i></a></li>
+						<li><a href="https://twitter.com/"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
+						<li><a href="https://facebook.com/"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
+						<li><a href="https://pinterest.com/"><i class="fa fa-pinterest" aria-hidden="true"></i></a></li>
 					</ul>
 				</div>
 				<div class="top-bar right">
@@ -559,8 +569,14 @@
 									<div class="span-index" style="display: inline-block;">
 										{{-- <a href="{{ url('/cart') }}"> --}}
 											<a style="" href="{{ url('/wishlist') }}" class="" tabindex="0">
+
 												<i style="font-size: 22px; color: #05a503;vertical-align: middle;
-												margin: 0px 22px 0px 5px;" class="fa fa-heart" aria-hidden="true"></i></a>
+												margin: 0px 22px 0px 5px;" class="fa fa-heart" aria-hidden="true">
+											{{-- <span class="badge badge-light" style="margin-top: -20px; margin-left: -5px; font-size: 10px; width: 20px;">{{count($wishlist)}}</span> --}}
+													
+												</i>
+
+											</a>
 											{{-- </a> --}}
 											<a href="{{ url('/cart') }}">
 												<i class="icon-cart-mini biolife-icon" style="margin-right: 20px;"></i>

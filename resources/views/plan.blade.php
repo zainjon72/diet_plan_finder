@@ -158,11 +158,11 @@
                     @endif
                     <div class="social-media">
                         <ul class="social-list">
-                            <li><a href="https://twitter.com/zj_khan" class="social-link"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
-                            <li><a href="https://twitter.com/zj_khan" class="social-link"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
-                            <li><a href="https://twitter.com/zj_khan" class="social-link"><i class="fa fa-pinterest" aria-hidden="true"></i></a></li>
-                            <li><a href="https://twitter.com/zj_khan" class="social-link"><i class="fa fa-share-alt" aria-hidden="true"></i></a></li>
-                            <li><a href="https://twitter.com/zj_khan" class="social-link"><i class="fa fa-instagram" aria-hidden="true"></i></a></li>
+                            <li><a href="https://twitter.com/" class="social-link"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
+                            <li><a href="https://facebook.com/" class="social-link"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
+                            <li><a href="https://pinterest.com/" class="social-link"><i class="fa fa-pinterest" aria-hidden="true"></i></a></li>
+                            <li><a href="https://youtube.com/" class="social-link"><i class="fa fa-youtube" aria-hidden="true"></i></a></li>
+                            <li><a href="https://instagram.com/" class="social-link"><i class="fa fa-instagram" aria-hidden="true"></i></a></li>
                         </ul>
                     </div>
                 </div>
